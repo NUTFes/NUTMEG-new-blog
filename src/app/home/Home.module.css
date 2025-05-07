@@ -1,0 +1,20 @@
+/* Home.module.css */
+
+.aboutUs {
+    margin: 0 auto;
+    z-index: 1;  /* 他の要素より手前に表示 */
+    position: relative;  /* z-indexが効くようにpositionをrelativeに設定 */
+    color: black;
+    text-align: center;  /* 文字を中央に配置 */
+    margin-bottom: 100px;  /* ボトムバー分 */
+    display: flex;
+    flex-direction: column; /* 縦に並べる */
+    align-items: center;     /* 横方向中央 */
+    width: 100%;
+  }
+
+.title{
+    font-size: 24px;
+    font-weight: bold;
+}
+  

@@ -1,0 +1,58 @@
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 20;
+  transition: background-color 0.3s ease, color 0.3s ease, border-bottom 0.3s ease;
+}
+
+/* Homeでヒーローにかぶってる時 */
+.transparent {
+  background-color: transparent;
+  color: white;
+  border-bottom: 1px solid white;
+}
+
+/* スクロール後や他ページ */
+.whiteBg {
+  background-color: white;
+  color: black;
+  border-bottom: 1px solid #ccc;
+}
+
+.logo {
+  height: 40px;
+}
+
+/* リンク全体 */
+.links {
+  display: flex;
+  gap: 20px;
+}
+
+/* 各リンクの色を親の状態で制御 */
+.links a {
+  text-decoration: none;
+  /* font-weight: bold; */
+  transition: color 0.3s ease;
+}
+
+/* active（選択中）リンクの色 */
+.active {
+  color: orange !important;
+}
+
+/* リンク色：白背景時は黒に */
+.whiteBg .links a {
+  color: black;
+}
+
+/* リンク色：透過時は白に */
+.transparent .links a {
+  color: white;
+}
