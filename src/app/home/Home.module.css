@@ -18,3 +18,15 @@
     font-weight: bold;
 }
   
+.slide {
+  margin: 0;
+  width: 100vw;
+  display: flex; /* Flexboxを使用 */
+  justify-content: center; /* 水平方向の中央寄せ */
+  align-items: center; /* 垂直方向の中央寄せ */
+  /* height: 100vh; ビューポートの高さを確保 */
+}
+
+.slide iframe{
+  border: none;
+}

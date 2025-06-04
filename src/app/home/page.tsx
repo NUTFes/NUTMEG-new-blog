@@ -15,8 +15,7 @@ const Home = () => {
         スライドから詳しい活動内容をぜひご覧ください。</p>
       </div>    
       <div className={styles.slide}>
-        <p>ここにスライドを埋め込み</p>
-      </div>
+        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRddj7n0EF3wilAeazD5a1UNbRp-G1UjxbvwRXDtQxxmpH2CGEwjhWMbjKC477d3CtREI3Vrv7_KC1G/pubembed?start=false&loop=false&delayms=3000" frameBorder="none" width="960" height="569" allowFullScreen ></iframe>      </div>
       <div className={styles.projects}>
         <p className={styles.title}>Projects</p>
       </div>
