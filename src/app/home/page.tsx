@@ -2,9 +2,43 @@
 import React from "react";
 import Layout from "../components/layout";
 import HeroSlider from "../components/HeroSlider";
+import Card from "../components/BlogCard"; // カードコンポーネントのインポート
+
 import styles from "./Home.module.css"; // CSSファイルのインポート
 
 const Home = () => {
+    const blogData = [
+    {
+      thumbnail: "/test.png",
+      tags: ["Tech", "Next.js"],
+      title: "Next.jsでカードコンポーネントを作る",
+      abstract: "Next.jsでシンプルなカードコンポーネントを作成し、スタイリングする方法を解説します。",
+      authorIcon: "/test-icon.png",
+      authorName: "John Doe",
+      date: "2025-06-07",
+      link: "/article",
+    },
+    {
+      thumbnail: "/test.png",
+      tags: ["React", "UI/UX"],
+      title: "Reactで美しいUIを作る",
+      abstract: "Reactを使って洗練されたUIを作るためのデザインのポイントを解説します。",
+      authorIcon: "/test-icon.png",
+      authorName: "Jane Smith",
+      date: "2025-06-06",
+      link: "/article-2",
+    },
+        {
+      thumbnail: "/test.png",
+      tags: ["React", "UI/UX"],
+      title: "Reactで美しいUIを作る",
+      abstract: "Reactを使って洗練されたUIを作るためのデザインのポイントを解説します。",
+      authorIcon: "/test-icon.png",
+      authorName: "Jane Smith",
+      date: "2025-06-06",
+      link: "/article-2",
+    },
+  ];
   return (
     <Layout>
       <HeroSlider/>
@@ -19,8 +53,23 @@ const Home = () => {
       <div className={styles.projects}>
         <p className={styles.title}>Projects</p>
       </div>
+
       <div className={styles.blogs}>
+
         <p className={styles.title}>Blogs</p>
+        {/* ここほんとはスライダーにしたい */}
+
+        <div className={styles.blogBox}>
+            <div className={styles.cardContainer}>
+              {blogData.map((data, index) => (
+                <Card key={index} {...data} />
+              ))}
+            </div>
+            <a href="/home/blogs">
+              <button className={styles.button}>もっとみる → </button>
+            </a>
+        </div>
+
       </div>
     </Layout>
   );

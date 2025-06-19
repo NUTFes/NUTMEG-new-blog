@@ -3,12 +3,14 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 0px 30px;
+  padding: 10px 30px 10px 10px;
+  /* 上・右・下・左  */
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 20;
   transition: background-color 0.3s ease, color 0.3s ease, border-bottom 0.3s ease;
+  font-size: 20px;
 }
 
 /* Homeでヒーローにかぶってる時 */
@@ -55,4 +57,13 @@
 /* リンク色：透過時は白に */
 .transparent .links a {
   color: white;
+}
+
+.links a {
+  margin-right: 16px; /* 右側に余白を追加 */
+  font-weight: 400;
+}
+
+.links a:last-child {
+  margin-right: 0; /* 最後のリンクには余白を適用しない */
 }
