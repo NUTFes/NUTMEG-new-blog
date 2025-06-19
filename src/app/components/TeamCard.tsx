@@ -12,15 +12,24 @@ const TeamCard: React.FC<TeamProps> = ({ name, description, technologies, pm }) 
     <div className={styles.card}>
       <h2 className={styles.title}>{name}</h2>
       <p className={styles.description}>{description}</p>
-      <div className={styles.techList}>
+
+      {/* 使用技術のセクション */}
+      <h3 className={styles.sectionTitle}>使用技術：</h3>
+      <span className={styles.techList}>
         {technologies.map((tech, index) => (
-          <span key={index} className={styles.tech}>{tech}</span>
+          <span key={index} className={styles.tech}>
+            {tech}{index !== technologies.length - 1 ? ", " : ""}
+          </span>
         ))}
-      </div>
-      <div className={styles.pm}>
+      </span>
+
+      {/* PMのセクション */}
+      <h3 className={styles.sectionTitle}>PM：</h3>
+      <span className={styles.pm}>
         <img src={pm.icon} alt={pm.name} className={styles.pmIcon} />
         <span className={styles.pmName}>{pm.name}</span>
-      </div>
+      </span>
+
       <button className={styles.button}>詳しく見る</button>
     </div>
   );
