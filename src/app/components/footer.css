@@ -1,15 +1,28 @@
+footer {
+  border-top: 1px solid #f0932e;
+  padding: 24px;
+}
+
 .menu {
-  border-top: 1px solid black;
   display: flex;
   justify-content: start;
 }
 .links {
   width: 100%;
-  background-color: white;
   color: black;
   padding: 10px;
   display: flex;
   gap: 20px;
-  justify-content: center;
-  height: 300px;
+  justify-content: start;
+  align-items: center;
+  font-size: 20px;
+}
+.links a:hover {
+  text-decoration: underline;
+}
+.address {
+  color: #6b6b6b;
+  font-size: 20px;
+  display: flex;
+  justify-content: start;
 }
