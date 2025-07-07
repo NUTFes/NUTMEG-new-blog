@@ -1,12 +1,15 @@
-.footer {
-    width: 100%;
-    background-color: white;
-    color: black;
-    padding: 10px;
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    height: 300px;
-    border-top: 1px solid black;
-  }
-  
+.menu {
+  border-top: 1px solid black;
+  display: flex;
+  justify-content: start;
+}
+.links {
+  width: 100%;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  height: 300px;
+}
