@@ -8,12 +8,15 @@ const Footer = () => {
       <div className="footer-contents">
         <div className="menu">
           <div className="column1">
-            <Image
-              src="/logo_footer.png"
-              alt="NUTMEG"
-              height={72}
-              width={225}
-            />
+            <a href="/home">
+              <Image
+                src="/logo_footer.png"
+                alt="NUTMEG"
+                height={72}
+                width={225}
+              />
+            </a>
+
             <div className="links">
               <Link href="/">Home</Link>
               <Link href="/teams-projects">Teams & Projects</Link>
