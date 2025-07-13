@@ -1,6 +1,9 @@
 footer {
   border-top: 1px solid #f0932e;
-  padding: 24px;
+  padding-left: 144px;
+  padding-right: 144px;
+  padding-top:30px;
+  padding-bottom: 44px;
 }
 
 .menu {
@@ -35,4 +38,5 @@ footer {
   font-size: 20px;
   display: flex;
   justify-content: start;
+  padding-left: 20px;
 }
