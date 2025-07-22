@@ -1,6 +1,14 @@
 import { Client } from '@notionhq/client';
-import { BlogPost, NotionPage, NotionProperty, NotionBlock } from '../types/blog';
+import { 
+  BlogPost, 
+  NotionPage, 
+  NotionProperty, 
+  // NotionBlock 
+} from '../types/blog';
+import { NotionAPI } from 'notion-client';
+import { ExtendedRecordMap } from 'notion-types';
 
+const notionAPI = new NotionAPI();
 const notion = new Client({
   auth: process.env.INTEGRATION_TOKEN,
 });
@@ -51,35 +59,40 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   }
 }
 
-// ブログ記事の詳細を取得する関数
-export async function getBlogPost(pageId: string): Promise<BlogPost | null> {
-  try {
-    const page = await notion.pages.retrieve({ page_id: pageId });
-    const blocks = await notion.blocks.children.list({ block_id: pageId });
-    
-    const notionPage = page as unknown as NotionPage;
-    
-    // プロパティが存在しない場合のフォールバック
-    if (!notionPage.properties) {
-      console.error('No properties found for page:', pageId);
-      return null;
-    }
-    
-    const content = extractContentFromBlocks(blocks.results as NotionBlock[]);
-
-    return {
-      id: notionPage.id,
-      title: getTitle(notionPage.properties),
-      thumbnail: getThumbnail(notionPage.properties),
-      content,
-      publishedAt: getPublishedAt(notionPage.properties),
-      slug: notionPage.id,
-    };
-  } catch (error) {
-    console.error('Error fetching blog post:', error);
-    return null;
-  }
+// Notionページ構成を取得する関数
+export async function getNotionPage(pageId: string): Promise<ExtendedRecordMap> {
+  return await notionAPI.getPage(pageId);
 }
+
+// // ブログ記事の詳細を取得する関数
+// export async function getBlogPost(pageId: string): Promise<BlogPost | null> {
+//   try {
+//     const page = await notion.pages.retrieve({ page_id: pageId });
+//     const blocks = await notion.blocks.children.list({ block_id: pageId });
+    
+//     const notionPage = page as unknown as NotionPage;
+    
+//     // プロパティが存在しない場合のフォールバック
+//     if (!notionPage.properties) {
+//       console.error('No properties found for page:', pageId);
+//       return null;
+//     }
+    
+//     const content = extractContentFromBlocks(blocks.results as NotionBlock[]);
+
+//     return {
+//       id: notionPage.id,
+//       title: getTitle(notionPage.properties),
+//       thumbnail: getThumbnail(notionPage.properties),
+//       content,
+//       publishedAt: getPublishedAt(notionPage.properties),
+//       slug: notionPage.id,
+//     };
+//   } catch (error) {
+//     console.error('Error fetching blog post:', error);
+//     return null;
+//   }
+// }
 
 // ==== ヘルパー関数群 ====
 // Notionのタイトルプロパティから値を取得
@@ -137,28 +150,28 @@ function getPublishedAt(properties: Record<string, NotionProperty>): string | un
   return undefined;
 }
 
-// ブロックからコンテンツを抽出するヘルパー関数
-function extractContentFromBlocks(blocks: NotionBlock[]): string {
-  return blocks
-    .map((block) => {
-      switch (block.type) {
-        // 各ブロックタイプに応じてコンテンツを抽出
-        case 'paragraph': // パラグラフブロック
-          return block.paragraph?.rich_text?.map((text) => text.plain_text).join('') || '';
-        case 'heading_1': // 見出し1ブロック
-          return block.heading_1?.rich_text?.map((text) => text.plain_text).join('') || '';
-        case 'heading_2': // 見出し2ブロック
-          return block.heading_2?.rich_text?.map((text) => text.plain_text).join('') || '';
-        case 'heading_3': // 見出し3ブロック
-          return block.heading_3?.rich_text?.map((text) => text.plain_text).join('') || '';
-        case 'bulleted_list_item':  // 箇条書きリストブロック
-          return '• ' + (block.bulleted_list_item?.rich_text?.map((text) => text.plain_text).join('') || '');
-        case 'numbered_list_item':  // 番号付きリストブロック
-          return '1. ' + (block.numbered_list_item?.rich_text?.map((text) => text.plain_text).join('') || '');
-        default:
-          return '';
-      }
-    })
-    .filter(Boolean)
-    .join('\n\n');
-}
+// // ブロックからコンテンツを抽出するヘルパー関数
+// function extractContentFromBlocks(blocks: NotionBlock[]): string {
+//   return blocks
+//     .map((block) => {
+//       switch (block.type) {
+//         // 各ブロックタイプに応じてコンテンツを抽出
+//         case 'paragraph': // パラグラフブロック
+//           return block.paragraph?.rich_text?.map((text) => text.plain_text).join('') || '';
+//         case 'heading_1': // 見出し1ブロック
+//           return block.heading_1?.rich_text?.map((text) => text.plain_text).join('') || '';
+//         case 'heading_2': // 見出し2ブロック
+//           return block.heading_2?.rich_text?.map((text) => text.plain_text).join('') || '';
+//         case 'heading_3': // 見出し3ブロック
+//           return block.heading_3?.rich_text?.map((text) => text.plain_text).join('') || '';
+//         case 'bulleted_list_item':  // 箇条書きリストブロック
+//           return '• ' + (block.bulleted_list_item?.rich_text?.map((text) => text.plain_text).join('') || '');
+//         case 'numbered_list_item':  // 番号付きリストブロック
+//           return '1. ' + (block.numbered_list_item?.rich_text?.map((text) => text.plain_text).join('') || '');
+//         default:
+//           return '';
+//       }
+//     })
+//     .filter(Boolean)
+//     .join('\n\n');
+// }
