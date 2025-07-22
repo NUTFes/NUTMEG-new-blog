@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import BlogCard from './BlogCard';
-import Pagination from './Pagination';
-import { BlogPost } from '../../types/blog';
+import BlogCard from '@/app/components/BlogCard/BlogCard';
+import Pagination from '@/app/components/Pagination/Pagination';
+import { BlogPost } from '@/types/blog';
 
 interface BlogListProps {
   posts: BlogPost[];
