@@ -44,6 +44,9 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
           thumbnail: getThumbnail(notionPage.properties),
           publishedAt: getPublishedAt(notionPage.properties),
           slug: notionPage.id,
+          tags: getTags(notionPage.properties),
+          summary: getSummary(notionPage.properties),
+          // author: getAuthor(notionPage.properties),
         };
         
         posts.push(post);
@@ -148,6 +151,48 @@ function getPublishedAt(properties: Record<string, NotionProperty>): string | un
   }
   
   return undefined;
+}
+
+// タグプロパティからタグを取得する関数
+function getTags(properties: Record<string, NotionProperty>): string[] {
+  // タグプロパティを取得
+  if (!properties || typeof properties !== 'object') {
+    return [];
+  }
+  
+  const tagsProperty = properties['タグ'];
+  
+  if (tagsProperty?.type === 'multi_select' && Array.isArray(tagsProperty.multi_select)) {
+    return tagsProperty.multi_select.map((tag: { name: string }) => tag.name);
+  }
+  
+  return [];
+}
+
+// // ユーザープロパティから著者名を取得する関数
+// function getAuthor(properties: Record<string, NotionProperty>): string {
+//   // ユーザープロパティを取得
+//   if (!properties || typeof properties !== 'object') {
+//     return '';
+//   }
+//   const userProperty = properties['ユーザー'];
+//   if (userProperty?.type === 'rich_text' && Array.isArray(userProperty.rich_text) && userProperty.rich_text.length > 0) {
+//     return userProperty.rich_text[0].plain_text || '';
+//   }
+//   return '';
+// }
+
+// 要約プロパティから要約を取得する関数
+function getSummary(properties: Record<string, NotionProperty>): string {
+  // 要約プロパティを取得
+  if (!properties || typeof properties !== 'object') {
+    return '';  
+  }
+  const summaryProperty = properties['アブスト'];
+  if (summaryProperty?.type === 'rich_text' && Array.isArray(summaryProperty.rich_text) && summaryProperty.rich_text.length > 0) {
+    return summaryProperty.rich_text[0].plain_text || '';
+  }
+  return '';
 }
 
 // // ブロックからコンテンツを抽出するヘルパー関数
