@@ -1,7 +1,7 @@
 import React from "react";
-import Layout from "../../components/layout";
-import BlogList from "../../components/BlogList";
-import { getBlogPosts } from "../../../lib/notion";
+import Layout from "@/app/components/layout";
+import BlogList from "@/app/components/BlogList/BlogList";
+import { getBlogPosts } from "@/lib/notion"; // ブログ記事を取得する関数
 
 const Blogs = async () => {
   // ブログ記事を取得
