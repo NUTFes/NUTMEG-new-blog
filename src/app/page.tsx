@@ -1,103 +1,77 @@
-import Image from "next/image";
+// pages/index.tsx
+import React from "react";
+import HeroSlider from "./components/HeroSlider";
+import Card from "./components/BlogCard"; // カードコンポーネントのインポート
 
-export default function Home() {
+import styles from "./Home.module.css"; // CSSファイルのインポート
+
+const Home = () => {
+    const blogData = [
+    {
+      thumbnail: "/test.png",
+      tags: ["Tech", "Next.js"],
+      title: "Next.jsでカードコンポーネントを作る",
+      abstract: "Next.jsでシンプルなカードコンポーネントを作成し、スタイリングする方法を解説します。",
+      authorIcon: "/test-icon.png",
+      authorName: "John Doe",
+      date: "2025-06-07",
+      link: "/article",
+    },
+    {
+      thumbnail: "/test.png",
+      tags: ["React", "UI/UX"],
+      title: "Reactで美しいUIを作る",
+      abstract: "Reactを使って洗練されたUIを作るためのデザインのポイントを解説します。",
+      authorIcon: "/test-icon.png",
+      authorName: "Jane Smith",
+      date: "2025-06-06",
+      link: "/article-2",
+    },
+        {
+      thumbnail: "/test.png",
+      tags: ["React", "UI/UX"],
+      title: "Reactで美しいUIを作る",
+      abstract: "Reactを使って洗練されたUIを作るためのデザインのポイントを解説します。",
+      authorIcon: "/test-icon.png",
+      authorName: "Jane Smith",
+      date: "2025-06-06",
+      link: "/article-2",
+    },
+  ];
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <HeroSlider/>
+      <div className={styles.aboutUs}>
+        <p className={styles.title}>About Us</p>
+        <img src="/logo_mark_vertical_color.png" alt="ロゴ" />
+        <p>NUTMEG [ナツメグ] は、長岡技術科学大学の文化祭運営を円滑にするためにアプリケーション開発を行う学生団体です。<br />
+        スライドから詳しい活動内容をぜひご覧ください。</p>
+      </div>    
+      <div className={styles.slide}>
+        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRddj7n0EF3wilAeazD5a1UNbRp-G1UjxbvwRXDtQxxmpH2CGEwjhWMbjKC477d3CtREI3Vrv7_KC1G/pubembed?start=false&loop=false&delayms=3000" frameBorder="none" width="960" height="569" allowFullScreen ></iframe>      </div>
+      <div className={styles.projects}>
+        <p className={styles.title}>Projects</p>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <div className={styles.blogs}>
+
+        <p className={styles.title}>Blogs</p>
+        {/* ここほんとはスライダーにしたい */}
+
+        <div className={styles.blogBox}>
+            <div className={styles.cardContainer}>
+              {blogData.map((data, index) => (
+                <Card key={index} {...data} />
+              ))}
+            </div>
+            <a href="/blogs">
+              <button className={styles.button}>もっとみる → </button>
+            </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+      </div>
+    </>
   );
-}
+};
+
+export default Home;

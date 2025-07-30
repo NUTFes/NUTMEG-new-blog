@@ -34,12 +34,11 @@ const TopBar = () => {
     <header className={topbarClass}>
       <img src="/logo.png" alt="ロゴ" className={styles.logo} />
       <div className={styles.links}>
-        <Link href="/home" className={pathname === "/home" ? styles.active : ""}>Home</Link>
-        <Link href="/home/teams&projects" className={pathname === "/home/teams&projects" ? styles.active : ""}>Teams & Projects</Link>
-        <Link href="/home/blogs" className={pathname === "/home/blogs" ? styles.active : ""}>Blogs</Link>
-        <Link href="/home/members" className={pathname === "/home/members" ? styles.active : ""}>Members</Link>
-        <Link href="/home/contact" className={pathname === "/home/contact" ? styles.active : ""}>Contact</Link>
-      </div>
+        <Link href="/" className={pathname === "/" ? styles.active : ""}>Home</Link>
+        <Link href="/teams&projects" className={pathname === "/teams&projects" ? styles.active : ""}>Teams & Projects</Link>
+        <Link href="/blogs" className={pathname === "/blogs" ? styles.active : ""}>Blogs</Link>
+        <Link href="/members" className={pathname === "/members" ? styles.active : ""}>Members</Link>
+        <Link href="/contact" className={pathname === "/contact" ? styles.active : ""}>Contact</Link>      </div>
     </header>
   );
 };
