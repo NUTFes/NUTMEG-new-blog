@@ -3,23 +3,34 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  border: 1px solid black;
-  border-radius: 3px;
+  border: 2.5px solid var(--accent-color-blue);
+  border-radius: 5px;
+  background-color: #FFFFFF;
   overflow: hidden;
-  width: 320px;
-  height: 404px;
+  width: 322px;
+  height: 327px;
   text-decoration: none;
   color: inherit;
   margin: 5px;
 }
 
-.card-thumbnail {
-  width: 100%;
-  height: auto;
+
+.card:hover{
+    background-color: var(--accent-color-blue);
+    .card-abstract{
+    color: #FFFFFF;
+    }
 }
 
-.card-content {
-  padding: 16px;
+.card:active{
+  background-color: var(--sub-color-skyblue);
+    .card-abstract{
+    color: #FFFFFF;
+    }
+}
+
+.card-padding{
+  padding: 20px;
 }
 
 .card-tags {
@@ -44,34 +55,26 @@
 }
 
 .card-abstract {
-  font-size: 14px;
-  color: #555;
+  color: #000;
+
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-.card-footer {
-  position: absolute;
+.ArrowBox{
+  width: 100%;
   display: flex;
-  align-items: center;
-  bottom: 0;
-  left: 0;
-  width: 100%; /* フル幅にする */
-  padding: 10px;
-  background: white; /* 背景を設定すると重ならない */
+  justify-content: end;
 }
 
-.author-info {
-  display: flex; /* アイコンと名前を横並びに */
-  align-items: center;
-  gap: 8px; /* アイコンと名前の間にスペースを追加 */
+.Arrow {
+  transition: 0.2s ease;
 }
 
-.author-icon{
-    border-radius: 50%;
-    border: 1px solid black;
-}
-
-.date {
-  margin-left: auto; /* 右寄せ */
-  font-size: 12px;
-  color: #777;
+.card:hover .Arrow,
+.card:active .Arrow {
+  content: url("/ArrowWhite.svg");
 }

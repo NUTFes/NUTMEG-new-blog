@@ -1,45 +1,69 @@
-"use client";
+// TopBar.tsx
 
+'use client' // ← クライアントコンポーネントであることを明示（必要なら）
+
+import { useState } from "react"; // ← これを忘れずに！
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 import styles from "./topbar.module.css";
+import { usePathname } from "next/navigation";
+
+
+
 
 const TopBar = () => {
-  const pathname = usePathname();
-  const [isTransparent, setIsTransparent] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 250) {
-        setIsTransparent(false);
-      } else {
-        setIsTransparent(true);
-      }
-    };
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
 
-    if (pathname === "/home") {
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    } else {
-      setIsTransparent(false); // 他のページでは白背景
-    }
-  }, [pathname]);
-
-  const topbarClass = `${styles.topbar} ${
-    isTransparent && pathname === "/home" ? styles.transparent : styles.whiteBg
-  }`;
+  
+  const pathname = usePathname(); 
 
   return (
-    <header className={topbarClass}>
-      <img src="/logo.png" alt="ロゴ" className={styles.logo} />
-      <div className={styles.links}>
-        <Link href="/home" className={pathname === "/home" ? styles.active : ""}>Home</Link>
-        <Link href="/home/teams&projects" className={pathname === "/home/teams&projects" ? styles.active : ""}>Teams & Projects</Link>
-        <Link href="/home/blogs" className={pathname === "/home/blogs" ? styles.active : ""}>Blogs</Link>
-        <Link href="/home/members" className={pathname === "/home/members" ? styles.active : ""}>Members</Link>
-        <Link href="/home/contact" className={pathname === "/home/contact" ? styles.active : ""}>Contact</Link>
+    <header>
+      <div className={styles.topbar}>
+        <Link href="/">
+          <img src="/topbar_icons/NUTMEG_Icon.svg" alt="NUTMEG" className={styles.icon} />
+        </Link>
+
+        <div className={styles.topbarRight}>
+          <Link href="/contact">
+            <img src="/topbar_icons/ContactButton.svg" alt="Contact" className={styles.icon} />
+          </Link>
+          <div className={styles.hamburgerButton} onClick={toggleMenu}>
+          </div>
+        </div>
       </div>
+
+      {/* ハンバーガーメニュー */}
+      <nav className={`${styles.menuPanel} ${menuOpen ? styles.menuOpen : ""}`}>
+        <div className={styles.hamburgerMenuTop}>
+          <Link href="/">
+            <img src="/topbar_icons/NUTMEG_Icon_White.svg" alt="NUTMEG" className={styles.icon} />
+          </Link>
+          <div className={styles.hamburgerButton} onClick={toggleMenu}></div>
+        </div>
+
+      <ul>
+        <li className={pathname === "/" ? styles.active : ""}>
+          <Link href="/">Home</Link>
+        </li>
+        <li className={pathname === "/teams&projects" ? styles.active : ""}>
+          <Link href="/teams&projects">Projects</Link>
+        </li>
+        <li className={pathname === "/blogs" ? styles.active : ""}>
+          <Link href="/blogs">Blogs</Link>
+        </li>
+        <li className={pathname === "/members" ? styles.active : ""}>
+          <Link href="/members">Members</Link>
+        </li>
+        <li className={pathname === "/contact" ? styles.active : ""}>
+          <Link href="/contact">Contact</Link>
+        </li>
+      </ul>
+
+      </nav>
     </header>
   );
 };

@@ -3,67 +3,114 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px 30px 10px 10px;
+  padding: 16px 40px 0px 40px;
   /* 上・右・下・左  */
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   z-index: 20;
   transition: background-color 0.3s ease, color 0.3s ease, border-bottom 0.3s ease;
   font-size: 20px;
 }
-
-/* Homeでヒーローにかぶってる時 */
-.transparent {
-  background-color: transparent;
-  color: white;
-  border-bottom: 1px solid white;
-}
-
-/* スクロール後や他ページ */
-.whiteBg {
-  background-color: white;
-  color: black;
-  border-bottom: 1px solid #ccc;
-}
-
-.logo {
-  height: 40px;
-}
-
-/* リンク全体 */
-.links {
+.topbarRight {
   display: flex;
-  gap: 20px;
+  width: 282px;
+  flex-direction: row;
+  align-items: center;
+  gap: 54px;
 }
 
-/* 各リンクの色を親の状態で制御 */
-.links a {
-  text-decoration: none;
-  /* font-weight: bold; */
-  transition: color 0.3s ease;
+.hamburgerButton {
+  width: 52px;
+  height: 52px;
+  border-radius: 100px;
+  background-color: #FE7222;
 }
 
-/* active（選択中）リンクの色 */
-.active {
-  color: orange !important;
+.hamburgerLine {
+  width: 24px;
+  height: 2px;
+  background-color: #333;
+  transition: 0.3s;
 }
 
-/* リンク色：白背景時は黒に */
-.whiteBg .links a {
-  color: black;
+.menuPanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, #FFCC4A 0%, #FF592B 100%);  padding: 0;
+  transition: transform 0.3s ease;
+  transform: translateX(100%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  color: #FFF;
+  justify-content: center; /* ← 左右中央 */
+  align-items: center;     /* ← 上下中央 */
+
+
 }
 
-/* リンク色：透過時は白に */
-.transparent .links a {
-  color: white;
+.menuOpen {
+  transform: translateX(0);
 }
 
-.links a {
-  margin-right: 16px; /* 右側に余白を追加 */
-  font-weight: 400;
+.hamburgerMenuTop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px 40px 0px 40px;
+  /* 上・右・下・左  */
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  z-index: 20;
+  transition: background-color 0.3s ease, color 0.3s ease, border-bottom 0.3s ease;
+  font-size: 20px;
+  
 }
 
-.links a:last-child {
-  margin-right: 0; /* 最後のリンクには余白を適用しない */
+.menuPanel ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;      /* ← 子要素を左に寄せる */
+  text-align: left;             /* ← テキストも左揃えに */
+  gap: 24px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 320px;             /* ← 横幅制限 */
+  margin-left: 100px;
+}
+
+.menuPanel a {
+font-family: "Noto Sans JP";
+font-size: 48px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+
+
+
+.menuPanel li {
+  font-size: 20px;
+  color: #FFFFFF;
+}
+
+.menuPanel li.active a {
+  color: #FFFFFF;
+  font-weight: bold;
+  position: relative;
+}
+
+.menuPanel li.active a::before {
+  content: url("/IconWhite.svg");
+  position: absolute;
+  left: -1.2em;
 }

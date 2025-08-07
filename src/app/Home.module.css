@@ -1,0 +1,98 @@
+/* Home.module.css */
+.HeroImage{
+  width: 100%;
+  display: flex;
+  justify-content: center; /* 水平方向中央 */
+  align-items: center;     /* 垂直方向中央 */
+  padding-top: 65px;
+  padding-bottom: 70px;
+}
+
+.title{
+    font-size: 24px;
+    font-weight: bold;
+}
+  
+.slide {
+  margin: 0;
+  width: 100vw;
+  display: flex; /* Flexboxを使用 */
+  justify-content: center; /* 水平方向の中央寄せ */
+  align-items: center; /* 垂直方向の中央寄せ */
+  /* height: 100vh; ビューポートの高さを確保 */
+}
+.projects{
+  width: 100vw;
+  display: flex;
+  text-align: left;
+  justify-content: center; /* 中央揃え */
+  margin-bottom: 200px;
+  color: #0B556E;
+  font-size: 20px;
+}
+.projectsBox{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.blogs{
+  width: 100vw;
+  display: flex;
+  text-align: left;
+  justify-content: center; /* 中央揃え */
+  margin-bottom: 300px;
+  color: var(--accent-color-blue);
+  font-size: 20px;
+}
+
+.whiteBox{
+  width: 1340px; /* 全幅 */
+  height: 811px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: var(--white-box-shadow);
+  padding-top: 92px;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+
+.projectsWhiteBox{
+  height: 700px;
+}
+
+.titleProjects{
+  width: 258px;
+  height: 74px;
+  text-align: left;
+  margin-bottom: 40px;
+  margin-left: 10px;
+}
+
+.titleBlogs{
+  width: 177px;
+  height: 74px;
+  text-align: left;
+  margin-bottom: 40px;
+  margin-left: 10px;
+}
+.cardContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+
+
+
+.NavigationButtonBox{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+
