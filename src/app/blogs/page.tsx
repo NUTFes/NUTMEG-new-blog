@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "@/app/components/layout";
+import Layout from "@/app/layout";
 import BlogList from "@/app/components/BlogList/BlogList";
 import { getBlogPosts } from "@/lib/notion"; // ブログ記事を取得する関数
 
