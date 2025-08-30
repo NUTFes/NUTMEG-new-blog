@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { BlogPost } from '@/types/blog';
+// import { BlogPost } from '@/types/blog';
+import { BlogPost } from '../../types/blog';
 
 interface BlogCardProps {
   post: BlogPost;

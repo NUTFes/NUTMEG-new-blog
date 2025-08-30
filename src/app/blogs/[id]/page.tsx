@@ -1,7 +1,11 @@
 import React from 'react';
-import Layout from '@/app/components/layout';
-import { getNotionPage } from '@/lib/notion'; // Notionからページを取得する関数
-import NotionPage from '@/app/components/NotionPage/notionPage';
+import Layout from '../../../app/layout';
+// import { getNotionPage } from '@/lib/notion'; // Notionからページを取得する関数
+import { getNotionPage } from '../../lib/notion'; // Notionからページを取得する関数
+
+// import NotionPage from '@/app/components/NotionPage/notionPage';
+import NotionPage from '../../../app/components/NotionPage/notionPage';
+
 import Image from 'next/image';
 
 interface BlogPostPageProps {
