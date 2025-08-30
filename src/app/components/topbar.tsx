@@ -49,8 +49,8 @@ const TopBar = () => {
         <li className={pathname === "/" ? styles.active : ""}>
           <Link href="/">Home</Link>
         </li>
-        <li className={pathname === "/teams&projects" ? styles.active : ""}>
-          <Link href="/teams&projects">Projects</Link>
+        <li className={pathname === "/projects" ? styles.active : ""}>
+          <Link href="/projects">Projects</Link>
         </li>
         <li className={pathname === "/blogs" ? styles.active : ""}>
           <Link href="/blogs">Blogs</Link>

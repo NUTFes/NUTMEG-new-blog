@@ -27,7 +27,7 @@ npm install
 npm run dev
 ```
 
-ブラウザで [**http://localhost:3000/home**](http://localhost:3000/home) を開くと、ライブリロード付きでサイトを確認できます。
+ブラウザで [**http://localhost:3000**](http://localhost:3000) を開くと、ライブリロード付きでサイトを確認できます。
 
 ## 利用可能なスクリプト
 

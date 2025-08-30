@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  border: 2.5px solid var(--accent-color-blue);
+  border: 2.5px solid var(--red-orange);
   border-radius: 5px;
   background-color: #FFFFFF;
   overflow: hidden;
@@ -15,94 +15,42 @@
 }
 
 .card:hover {
-  background-color: var(--accent-color-blue);
+  background-color: var(--red-orange);
 }
-.card:hover .card-abstract,
-.card:hover .pm-name {
+.card:hover .cardAbstract,
+.card:hover .pmName {
   color: #FFFFFF;
 }
 
 .card:active {
-  background-color: var(--sub-color-skyblue);
+  background-color: var(--yellow-orange);
 }
-.card:active .card-abstract,
-.card:active .pm-name {
+.card:active .cardAbstract,
+.card:active .pmName {
   color: #FFFFFF;
 }
 
-.card-padding {
+.cardPadding {
   padding: 20px;
 }
 
-.card-title {
+.cardTitle {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 8px;
 }
 
-.card-abstract {
+.cardAbstract {
   font-size: 15px;
   margin-bottom: 16px;
 }
 
-.section-title {
-  font-size: 14px;
-  margin-top: 12px;
-  margin-bottom: 6px;
-}
-
-.card-tags {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.tag {
-  /* color: orange; */
-  color: black;
-  font-size: 15px;
-}
-
-.pm-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.pm-name {
-  font-size: 15px;
-}
-
-.ArrowBox {
-  width: 100%;
-  display: flex;
-  justify-content: end;
-  margin-top: 20px;
-}
-
-.Arrow {
-  transition: 0.2s ease;
-}
-
-.card:hover .Arrow,
-.card:active .Arrow {
-  content: url("/ArrowWhite.svg");
-}
-
-
-.tech-inline {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.section-title {
+.sectionTitle {
   margin: 0;
   font-size: 14px;
 }
 
-.card-tags {
+.cardTags {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
@@ -113,28 +61,46 @@
   font-size: 15px;
 }
 
-.pm-inline {
+.pmInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pmName {
+  font-size: 15px;
+}
+
+.arrowBox {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+
+.arrow {
+  transition: 0.2s ease;
+}
+
+.card:hover .arrow,
+.card:active .arrow {
+  content: url("/ArrowWhite.svg");
+}
+
+.techInline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pmInline {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
 }
 
-.section-title {
-  margin: 0;
-  font-size: 14px;
-}
-
-.pm-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.pm-icon {
+.pmIcon {
   border-radius: 50%;
-}
-
-.pm-name {
-  font-size: 15px;
 }

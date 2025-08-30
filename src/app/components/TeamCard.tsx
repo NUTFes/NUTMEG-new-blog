@@ -1,5 +1,5 @@
 import Image from "next/image";
-import "./TeamCard.css";
+import styles from "./TeamCard.module.css"; 
 
 type TeamProps = {
   name: string;
@@ -10,32 +10,31 @@ type TeamProps = {
 
 const TeamCard: React.FC<TeamProps> = ({ name, description, technologies, pm }) => {
   return (
-    <div className="card">
-      <div className="card-padding">
-        <h2 className="card-title">{name}</h2>
-        <p className="card-abstract">{description}</p>
+    <div className={styles.card}>
+      <div className={styles.cardPadding}>
+        <h2 className={styles.cardTitle}>{name}</h2>
+        <p className={styles.cardAbstract}>{description}</p>
 
-        <div className="card-section tech-inline">
-          <h3 className="section-title">使用技術：</h3>
-          <div className="card-tags">
+        <div className={`${styles.cardSection} ${styles.techInline}`}>
+          <h3 className={styles.sectionTitle}>使用技術：</h3>
+          <div className={styles.cardTags}>
             {technologies.map((tech, index) => (
-              <span key={index} className="tag">{tech}</span>
+              <span key={index} className={styles.tag}>{tech}</span>
             ))}
           </div>
         </div>
 
-        <div className="card-section pm-inline">
-          <h3 className="section-title">PM：</h3>
-          <div className="pm-info">
-            <Image src={pm.icon} alt={pm.name} width={30} height={30} className="pm-icon" />
-            <span className="pm-name">{pm.name}</span>
+        <div className={`${styles.cardSection} ${styles.pmInline}`}>
+          <h3 className={styles.sectionTitle}>PM：</h3>
+          <div className={styles.pmInfo}>
+            <Image src={pm.icon} alt={pm.name} width={30} height={30} className={styles.pmIcon} />
+            <span className={styles.pmName}>{pm.name}</span>
           </div>
         </div>
 
-        <div className="ArrowBox">
-          <Image src="/Arrow.svg" alt="Arrow" className="Arrow" height={40} width={40} />
+        <div className={styles.arrowBox}>
+          <Image src="/Arrow.svg" alt="Arrow" className={styles.arrow} height={40} width={40} />
         </div>
-        
       </div>
     </div>
   );

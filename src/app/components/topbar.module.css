@@ -103,14 +103,21 @@ line-height: normal;
   color: #FFFFFF;
 }
 
-.menuPanel li.active a {
+/* .menuPanel li.active a {
   color: #FFFFFF;
   font-weight: bold;
   position: relative;
+} */
+
+.menuPanel li:hover{
+  color: var(--accent-color-blue);
 }
 
-.menuPanel li.active a::before {
+.menuPanel li:active{
+  color: var(--sub-color-skyblue);
+}
+/* .menuPanel li.active a::before {
   content: url("/IconWhite.svg");
   position: absolute;
   left: -1.2em;
-}
+} */

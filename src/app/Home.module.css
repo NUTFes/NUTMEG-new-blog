@@ -1,32 +1,26 @@
 /* Home.module.css */
 .HeroImage{
+
   width: 100%;
   display: flex;
   justify-content: center; /* 水平方向中央 */
   align-items: center;     /* 垂直方向中央 */
-  padding-top: 65px;
+  /* padding-top: 65px; */
   padding-bottom: 70px;
 }
 
-.title{
-    font-size: 24px;
-    font-weight: bold;
+.HeroImageimage{
+  width: 95vw;
+  height: 700px;
 }
-  
-.slide {
-  margin: 0;
-  width: 100vw;
-  display: flex; /* Flexboxを使用 */
-  justify-content: center; /* 水平方向の中央寄せ */
-  align-items: center; /* 垂直方向の中央寄せ */
-  /* height: 100vh; ビューポートの高さを確保 */
-}
+
+
 .projects{
-  width: 100vw;
+  width: 100%;
   display: flex;
   text-align: left;
   justify-content: center; /* 中央揃え */
-  margin-bottom: 200px;
+  margin-bottom: 100px;
   color: #0B556E;
   font-size: 20px;
 }
@@ -38,7 +32,7 @@
 }
 
 .blogs{
-  width: 100vw;
+  width: 100%;
   display: flex;
   text-align: left;
   justify-content: center; /* 中央揃え */

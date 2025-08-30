@@ -1,0 +1,138 @@
+
+
+.teamsBox{
+    margin-top: 100px;
+    height: 400px;
+    /* background-color: aliceblue; */
+}
+.title{
+    font-size: 24px;
+    font-weight: bold;
+    
+}
+
+.projects{
+  width: 100vw;
+  display: flex;
+  text-align: left;
+  justify-content: center; /* 中央揃え */
+  margin-bottom: 100px;
+  color: #0B556E;
+  font-size: 20px;
+  margin-top: 60px;
+}
+.projectsBox {
+  width: 90%;
+  gap: 40px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  padding: 60px;
+  box-shadow: var(--white-box-shadow);
+
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; ← これを追加！！中央配置に必要 */
+  text-align: left;
+  /* justify-content: center; */
+}
+
+.cardsContainer {
+  width: 100%; /* または fit-content */
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+.cardsContainerProject{
+    width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+
+}
+
+
+
+.teams{
+  width: 100vw;
+  display: flex;
+  text-align: left;
+  justify-content: center; /* 中央揃え */
+  margin-bottom: 200px;
+  color: #0B556E;
+  font-size: 20px;
+  align-items: center;
+}
+.teamsBox{
+  width: 90%;
+  height: 800px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  padding: 60px;
+  box-shadow: var( --white-box-shadow);
+}
+
+
+
+.breadcrumbLinkSmall{
+    color: var(--accent-color-blue);
+    font-family: "Noto Sans JP";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+}
+
+.breadcrumbLinkArrow{
+    color: var(--accent-color-blue);
+    font-family: "Noto Sans JP";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+}
+
+.breadcrumbLinkBig{
+    color: var(--accent-color-blue);
+    font-family: "Noto Sans JP";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+}
+
+
+.bigTitleTeams{
+    color: var(--red-orange);
+    font-family: "Noto Sans JP";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.cardsContainerTeams{
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}

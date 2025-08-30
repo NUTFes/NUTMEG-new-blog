@@ -10,7 +10,7 @@ const Home = () => {
       thumbnail: "/test.png",
       tags: ["Tech", "Next.js"],
       title: "Next.jsでカードコンポーネントを作る",
-      abstract: "Next.jsでシンプルなカードコンポーネントを作成しする方法を解説します。",
+      abstract: "Next.jsでシンプルなカードコンポーネントを作成する方法を解説します。",
       authorIcon: "/test-icon.png",
       authorName: "John Doe",
       date: "2025-06-07",
@@ -40,7 +40,7 @@ const Home = () => {
   return (
     <>
       <div className={styles.HeroImage}>
-        <img src="/home/HeroImage.svg" alt="HeroImage"/>
+        <img src="/home/HeroImage.svg" alt="HeroImage" className={styles.HeroImageimage}/>
       </div>
 
       <div className={styles.projects}>
@@ -54,7 +54,7 @@ const Home = () => {
                 ヒアリングから開発を通じて、技大祭運営のお悩み解決や、<br />
                 効率向上に貢献しています。</p>
                 <div className={styles.NavigationButtonBox}>
-                <NavigationButton text="プロジェクト紹介ページへ" href="/teams&projects"/>
+                <NavigationButton text="プロジェクト紹介ページへ" href="/projects"/>
                 </div>
               </div>
 
@@ -67,7 +67,7 @@ const Home = () => {
       <div className={styles.blogs}>
         <div className={styles.whiteBox}>
           <img src="/home/TitleBlogs.svg" className={styles.titleBlogs} alt="blogs"/>
-          <p>NUTMEGでは、文書化して記録に残すことと、アウトプットの機会を目的として、<br></br>定期的に学生がブログを投稿しています。</p>
+          <p>NUTMEGでは、文書化して記録に残すことと、アウトプットの機会を目的として、<br />定期的に学生がブログを投稿しています。</p>
           <div className={styles.blogBox}>
               <div className={styles.cardContainer}>
                 {blogData.map((data, index) => (
