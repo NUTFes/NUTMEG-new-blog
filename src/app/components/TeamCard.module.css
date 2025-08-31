@@ -12,6 +12,7 @@
   text-decoration: none;
   color: inherit;
   margin: 5px;
+  padding-bottom: 20px;
 }
 
 .card:hover {
@@ -73,6 +74,9 @@
 
 .arrowBox {
   width: 100%;
+  position:absolute;
+  bottom: 20px;
+  right: 20px;
   display: flex;
   justify-content: end;
   margin-top: 20px;

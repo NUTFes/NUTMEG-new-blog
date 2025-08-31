@@ -7,6 +7,8 @@
   align-items: center;     /* 垂直方向中央 */
   /* padding-top: 65px; */
   padding-bottom: 70px;
+  margin-top: 20px;
+  margin-bottom: 100px;
 }
 
 .HeroImageimage{
@@ -20,7 +22,7 @@
   display: flex;
   text-align: left;
   justify-content: center; /* 中央揃え */
-  margin-bottom: 100px;
+  margin-bottom: 200px;
   color: #0B556E;
   font-size: 20px;
 }
