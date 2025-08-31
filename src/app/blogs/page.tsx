@@ -1,0 +1,30 @@
+import React from "react";
+import styles from "./page.module.css";
+import BlogList from "../components/BlogList/BlogList";
+import { getBlogPosts } from "../../app/lib/notion";
+import Link from "next/link";
+
+const Blogs = async () => {
+  const posts = await getBlogPosts();
+
+  return (
+    <div className={styles.container}>
+      
+      <div className={styles.title}>
+        <Link href="/" className={styles.breadcrumb}>Home</Link>
+        <span className={styles.separator}>&gt;</span>
+        <Link href="/blogs" className={styles.heading}>Blogs</Link>
+      </div>
+
+
+      <p className={styles.description}>
+        NUTMEGでは、外部の方へ活動の様子を伝えることと、文面でのアウトプットを目的として、
+        定期的にメンバーがブログの更新を行っています。
+      </p>
+
+      <BlogList posts={posts} />
+    </div>
+  );
+};
+
+export default Blogs;

@@ -1,0 +1,56 @@
+/* NavigationButton.css */
+.navigation-button {
+  height: 64px;
+  width: fit-content;
+  border: 2px solid var(--yellow-orange);
+  border-radius: 200px;
+  background-color: #FFFFFF;
+  font-size: 16px;
+  color: var(--red-orange);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 20px;
+  padding-right: 12px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.navigation-button:hover {
+  background: linear-gradient(91deg, #FFB808 0.01%, #FF5C2B 137.22%);
+  color: #FFFFFF;
+}
+
+/* 画像切り替え用 */
+.arrow-wrapper {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.arrow-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.2s ease;
+}
+
+.arrow-normal {
+  opacity: 1;
+}
+
+.arrow-hover {
+  opacity: 0;
+}
+
+.navigation-button:hover .arrow-normal {
+  opacity: 0;
+}
+
+.navigation-button:hover .arrow-hover {
+  opacity: 1;
+}
+
+.navigation-button:active{
+    background: var(--red-orange);
+}

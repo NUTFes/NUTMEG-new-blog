@@ -1,0 +1,73 @@
+.container {
+  margin-top: 4rem;
+  padding: 2rem 8rem;
+  /* background-color: white; */
+  min-height: 100vh;
+  text-align: left;
+}
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  
+  /* margin-bottom: 2rem; */
+  /* border-bottom: 1px solid #e5e7eb; */
+  /* padding-bottom: 1rem; */
+}
+
+.breadcrumb {
+    color: var(--accent-color-blue);
+    font-family: "Noto Sans JP";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    /* text-decoration-line: underline; */
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+}
+
+.breadcrumb:hover {
+  text-decoration: underline;
+}
+
+.separator {
+    color: var(--accent-color-blue);
+    font-family: "Noto Sans JP";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.heading {
+    color: var(--blog-AccentColorBlue, #00749B);
+    font-family: "Noto Sans JP";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    /* text-decoration-line: underline; */
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+}
+
+.heading:hover {
+  text-decoration: underline;
+}
+
+
+
+.description {
+  font-size: 16px;
+  color: #374151;
+  margin-bottom: 2.5rem;
+  line-height: 1.75;
+  margin-top: 20px;
+}

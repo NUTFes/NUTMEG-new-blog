@@ -1,0 +1,109 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  border: 2.5px solid var(--accent-color-blue);
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  overflow: hidden;
+  width: 322px;
+  height: 270px;
+  text-decoration: none;
+  color: inherit;
+  margin: 5px;
+}
+
+.card:hover {
+  background-color: var(--accent-color-blue);
+}
+.card:hover .cardAbstract,
+.card:hover .pmName {
+  color: #FFFFFF;
+}
+
+.card:active {
+  background-color: var(--sub-color-skyblue);
+}
+.card:active .cardAbstract,
+.card:active .pmName {
+  color: #FFFFFF;
+}
+
+.cardPadding {
+  padding: 20px;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.cardAbstract {
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 14px;
+}
+
+.cardTags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  color: orange;
+  font-size: 15px;
+}
+
+.pmInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pmName {
+  font-size: 15px;
+}
+
+.arrowBox {
+  width: 100%;
+  position:absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+
+.arrow {
+  transition: 0.2s ease;
+}
+
+.card:hover .arrow,
+.card:active .arrow {
+  content: url("/ArrowWhite.svg");
+}
+
+.techInline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pmInline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pmIcon {
+  border-radius: 50%;
+}
