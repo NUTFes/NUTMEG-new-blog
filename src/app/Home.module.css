@@ -8,7 +8,7 @@
   /* padding-top: 65px; */
   padding-bottom: 70px;
   margin-top: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 }
 
 .HeroImageimage{
@@ -90,5 +90,14 @@
   display: flex;
   justify-content: end;
   margin-top: 20px;
+}
+
+.slide {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* お好みで余白調整 */
+  margin-bottom: 200px;
 }
 

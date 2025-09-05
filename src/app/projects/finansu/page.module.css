@@ -1,0 +1,68 @@
+.slide {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* お好みで余白調整 */
+  margin-bottom: 200px;
+}
+.pagebox{
+    margin-top: 100px;
+}
+
+
+.breadcrumb{
+  margin-left: 160px;
+  text-align: left;
+}
+.breadcrumbLinkSmall{
+    color: var(--accent-color-blue);
+    font-family: "Noto Sans JP";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+}
+
+.breadcrumbLinkSmall:hover{
+    text-decoration-line: underline;
+}
+.breadcrumbLinkArrow{
+    color: var(--accent-color-blue);
+    font-family: "Noto Sans JP";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.breadcrumbLinkBig{
+    color: var(--accent-color-blue);
+    font-family: "Noto Sans JP";
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+}
+
+.breadcrumbLinkBig:hover{
+    text-decoration-line: underline;
+
+}

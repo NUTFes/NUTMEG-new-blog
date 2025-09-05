@@ -20,11 +20,11 @@ const TeamsAndProjects = () => {
         <div className={styles.projectsBox}>
 
           <div className={styles.breadcrumb}>
-            <Link href="/" className={styles.breadcrumbLinkSmall}>Home</Link>
+            <button onClick={() => router.replace("/")} className={styles.breadcrumbLinkSmall}>Home</button>
             <span className={styles.breadcrumbLinkArrow}> &gt; </span>
             <button
               className={styles.breadcrumbLinkBig}
-              onClick={() => router.replace("/teams&projects")}
+              onClick={() => router.replace("/projects")}
             >
               Projects
             </button>
