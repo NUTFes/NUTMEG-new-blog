@@ -17,6 +17,7 @@ const Footer = () => {
               />
             </a>
 
+
             <div className="links">
               <Link href="/">Home</Link>
               <Link href="/teams-projects">Teams & Projects</Link>
