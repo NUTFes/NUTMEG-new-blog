@@ -11,7 +11,7 @@
   height: 270px;
   text-decoration: none;
   color: inherit;
-  margin: 5px;
+  margin: 15px;
 }
 
 .card:hover {
@@ -34,11 +34,7 @@
   padding: 20px;
 }
 
-.cardTitle {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
+
 
 .cardAbstract {
   font-size: 15px;
@@ -106,4 +102,22 @@
 
 .pmIcon {
   border-radius: 50%;
+}
+
+.cardTitle {
+  position: relative;
+  width: 244px; /* 必要に応じて調整 */
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* ← 左寄せ */
+  overflow: hidden;
+  margin-bottom: 20px;
+
+}
+.logoImage{
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+
 }

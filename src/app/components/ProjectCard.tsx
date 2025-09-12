@@ -28,8 +28,9 @@ const ProjectCard: React.FC<ProjectProps> = ({
             <Image
               src={logo}
               alt="Project Logo"
-              width={150}
-              height={47}
+              // width={150}
+              // height={47}
+              fill
               className={styles.logoImage}
             />
           </div>

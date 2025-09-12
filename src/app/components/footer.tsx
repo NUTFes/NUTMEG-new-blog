@@ -27,15 +27,15 @@ const Footer = () => {
           </div>
           <div className="links-sns">
             {/* リンク先は適宜追加してください */}
-            <Link href="">
+            <Link href="https://x.com/nutfes_nutmeg">
               <Image
-                src="/footer_icons/X_Icon.svg"
+                src="/footer_icons/X_Icon.png"
                 alt="x"
                 width={25}
                 height={25}
               />
             </Link>
-            <Link href="">
+            <Link href="https://www.instagram.com/nutfes/?hl=ja">
               <Image
                 src="/footer_icons/Instagram_Icon.svg"
                 alt="instagram"
@@ -43,7 +43,7 @@ const Footer = () => {
                 height={25}
               />
             </Link>
-            <Link href="">
+            <Link href="https://github.com/NUTFes">
               <Image
                 src="/footer_icons/Git_Icon.svg"
                 alt="github"
