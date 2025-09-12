@@ -131,7 +131,7 @@
 
 @keyframes bounceText {
   0% {
-    transform: translateY(-250px);
+    transform: translateY(-130px);
     animation-timing-function: ease-in;
   }
   40% {
