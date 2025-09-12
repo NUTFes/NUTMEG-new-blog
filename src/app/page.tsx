@@ -44,7 +44,8 @@ const Home = () => {
   return (
     <>
       <div className={styles.HeroImage}>
-        <img src="/home/HeroImage.svg" alt="HeroImage" className={styles.HeroImageimage}/>
+        <img src="/home/HeroImage_Mission.svg" alt="HeroImage" className={styles.HeroImageimageMisson}/>
+        <img src="/home/HeroImage_backImage.svg" alt="HeroImage" className={styles.HeroImageimage}/>
       </div>
 
 
