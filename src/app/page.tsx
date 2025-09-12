@@ -1,8 +1,12 @@
 // pages/index.tsx
+"use client";
 import React from "react";
 import Card from "./components/BlogCard"; // カードコンポーネントのインポート
 import NavigationButton from "./components/NavigationButton"; 
 import styles from "./Home.module.css"; // CSSファイルのインポート
+// import { useEffect, useRef, useState } from "react";
+import FadeInSection from "./components/FadeInSection/FadeInSection";
+
 
 const Home = () => {
     const blogData = [
@@ -43,6 +47,8 @@ const Home = () => {
         <img src="/home/HeroImage.svg" alt="HeroImage" className={styles.HeroImageimage}/>
       </div>
 
+
+<FadeInSection>
       <div className={styles.slide}>
         <iframe
           className="speakerdeck-iframe"
@@ -65,6 +71,9 @@ const Home = () => {
         />
               </div>
 
+</FadeInSection>
+
+<FadeInSection>
       <div className={styles.projects}>
         <div className={`${styles.whiteBox} ${styles.projectsWhiteBox}`} >
           <img src="/home/TitleProjects.svg" className={styles.titleProjects} alt="Projects"/>
@@ -82,10 +91,14 @@ const Home = () => {
 
           </div>
         </div>
+        {/* ほんとはこのdecorationも、別でフワッとうかせたい */}
+        <img src="/decoration.svg" alt="decoration" width={154.96} height={138.2} className={styles.decoration1}/>
+        <img src="/decoration2.svg" alt="decoration" width={170.9} height={193.2} className={styles.decoration2}/>
       </div>
 
+</FadeInSection>
 
-
+<FadeInSection>
       <div className={styles.blogs}>
         <div className={styles.whiteBox}>
           <img src="/home/TitleBlogs.svg" className={styles.titleBlogs} alt="blogs"/>
@@ -103,6 +116,7 @@ const Home = () => {
 
         </div>
     </div>
+    </FadeInSection>
     </>
   );
 };

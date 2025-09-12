@@ -19,13 +19,37 @@
   align-items: center;
   gap: 54px;
 }
-
 .hamburgerButton {
+  position: relative;
   width: 52px;
   height: 52px;
   border-radius: 100px;
   background-color: #FE7222;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
 }
+
+.bar {
+  width: 28px;
+  height: 2px;
+  border-radius: 5px;
+  background-color: white;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* メニュー開いたとき：クロス */
+.bar1Open {
+  transform: rotate(45deg) translate(3px, 3px);
+}
+
+.bar2Open {
+  transform: rotate(-45deg) translate(3px, -3px);
+}
+
 
 .hamburgerLine {
   width: 24px;
@@ -34,7 +58,7 @@
   transition: 0.3s;
 }
 
-.menuPanel {
+/* .menuPanel {
   position: fixed;
   top: 0;
   left: 0;
@@ -48,13 +72,41 @@
   flex-direction: column;
   color: #FFF;
   justify-content: center; /* ← 左右中央 */
-  align-items: center;     /* ← 上下中央 */
+  /* align-items: center;     /* ← 上下中央 */
 
 
+/* } */
+/* 
+.menuOpen {
+  transform: translateX(0);
+} */ 
+
+.menuPanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, #FFCC4A 0%, #FF592B 100%);
+  padding: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  color: #FFF;
+  justify-content: center;
+  align-items: center;
+
+  /* フェードイン用の初期状態 */
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .menuOpen {
-  transform: translateX(0);
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
 }
 
 .hamburgerMenuTop {
