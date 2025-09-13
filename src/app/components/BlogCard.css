@@ -36,6 +36,9 @@
 .card-tags {
   display: flex;
   gap: 8px;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
 }
 
 .tag {
@@ -68,6 +71,9 @@
   width: 100%;
   display: flex;
   justify-content: end;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;  
 }
 
 .Arrow {
