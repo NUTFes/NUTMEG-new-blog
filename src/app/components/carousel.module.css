@@ -1,0 +1,27 @@
+.sliderWrapper {
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 200px;
+}
+
+.sliderTrack {
+  display: flex;
+  gap: 24px;
+  animation: scroll 30s linear infinite; /* ←速度調整 */
+}
+
+.pics {
+  border-radius: 20px;
+  width: 400px;
+  height: auto;
+  flex: 0 0 auto;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%); /* 全部流し切る */
+  }
+}

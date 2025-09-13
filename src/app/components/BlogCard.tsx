@@ -29,9 +29,9 @@ const Card: React.FC<CardProps> = ({
             <span key={index} className="tag">{"#" + tag}</span> 
           ))}
         </div>
-        <div className="ArrowBox">
+        {/* <div className="ArrowBox">
           <Image src="/Arrow.svg" alt="Arrow" className="Arrow" height={40} width={40}/>
-        </div>
+        </div> */}
       </div>
     </a>
   );

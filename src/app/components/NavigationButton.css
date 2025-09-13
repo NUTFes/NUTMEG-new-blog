@@ -2,8 +2,8 @@
 .navigation-button {
   height: 64px;
   width: fit-content;
-  border: 2px solid var(--yellow-orange);
-  border-radius: 200px;
+  /* border: 2px solid var(--yellow-orange);
+  border-radius: 200px; */
   background-color: #FFFFFF;
   font-size: 16px;
   color: var(--red-orange);

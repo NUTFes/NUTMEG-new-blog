@@ -3,30 +3,29 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  border: 2.5px solid var(--accent-color-blue);
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #FFFFFF;
   overflow: hidden;
-  width: 322px;
-  height: 327px;
+  width: 360px;
+  height: 400px;
   text-decoration: none;
   color: inherit;
   margin: 5px;
+
+  /* 影とアニメーション追加 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-
-.card:hover{
-    background-color: var(--accent-color-blue);
-    .card-abstract{
-    color: #FFFFFF;
-    }
+.card:hover {
+  /* 影をふわっと広げる */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px); /* 少し浮かせる */
 }
 
-.card:active{
-  background-color: var(--sub-color-skyblue);
-    .card-abstract{
-    color: #FFFFFF;
-    }
+.card:active {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(0); /* 押した感じに戻す */
 }
 
 .card-padding{
@@ -43,7 +42,8 @@
 
 .tag {
   background: none;
-  color: orange;
+  /* color: orange; */
+  color: #545454;
   /* padding: 4px 8px; */
   border-radius: 4px;
   font-size: 15px;
@@ -83,4 +83,8 @@
 .card:hover .Arrow,
 .card:active .Arrow {
   content: url("/ArrowWhite.svg");
+}
+
+.card-thumbnail{
+ overflow: hidden;
 }
