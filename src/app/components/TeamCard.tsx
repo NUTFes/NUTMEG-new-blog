@@ -33,7 +33,7 @@ const TeamCard: React.FC<TeamProps> = ({ name, description, technologies, pm }) 
         </div>
 
         <div className={styles.arrowBox}>
-          <Image src="/Arrow.svg" alt="Arrow" className={styles.arrow} height={40} width={40} />
+          <Image src="/ArrowOrange.svg" alt="Arrow" className={styles.arrow} height={40} width={40} />
         </div>
       </div>
     </div>

@@ -1,10 +1,6 @@
 
 
-.teamsBox{
-    margin-top: 100px;
-    height: 400px;
-    /* background-color: aliceblue; */
-}
+
 .title{
     font-size: 24px;
     font-weight: bold;
@@ -16,18 +12,18 @@
   display: flex;
   text-align: left;
   justify-content: center; /* 中央揃え */
-  margin-bottom: 100px;
+  /* margin-bottom: 50px; */
   color: #0B556E;
   font-size: 20px;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 .projectsBox {
-  width: 90%;
-  gap: 40px;
-  background-color: #FFFFFF;
+  width: 100%;
+  gap: 20px;
+  /* background-color: #FFFFFF; */
   border-radius: 20px;
   padding: 60px;
-  box-shadow: var(--white-box-shadow);
+  /* box-shadow: var(--white-box-shadow); */
 
   display: flex;
   flex-direction: column;
@@ -39,10 +35,10 @@
 .cardsContainer {
   width: 100%; /* または fit-content */
   display: flex;
-  gap: 16px;
+  /* gap: 40px; */
   justify-content: center;
   margin-top: 0px;
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
 }
 .cardsContainerProject{
   width: 80%;
@@ -65,20 +61,29 @@
   align-items: center;
 }
 .teamsBox{
-  width: 90%;
-  height: 600px;
-  background-color: #FFFFFF;
+  width: 100%;
+  /* gap: 20px; */
+  /* background-color: #FFFFFF; */
   border-radius: 20px;
   padding: 60px;
-  box-shadow: var( --white-box-shadow);
+  /* box-shadow: var(--white-box-shadow); */
+
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; ← これを追加！！中央配置に必要 */
+  text-align: left;
+  /* justify-content: center; */
+
 }
 
 
 .breadcrumb{
-  margin-left: 100px;
+  margin-left: 150px;
 }
 .breadcrumbLinkSmall{
-    color: var(--accent-color-blue);
+    /* color: var(--accent-color-blue); */
+    color: var(--red-orange);
+
     font-family: "Noto Sans JP";
     font-size: 32px;
     font-style: normal;
@@ -95,7 +100,9 @@
     text-decoration-line: underline;
 }
 .breadcrumbLinkArrow{
-    color: var(--accent-color-blue);
+    /* color: var(--accent-color-blue); */
+    color: var(--red-orange);
+
     font-family: "Noto Sans JP";
     font-size: 32px;
     font-style: normal;
@@ -111,7 +118,9 @@
 }
 
 .breadcrumbLinkBig{
-    color: var(--accent-color-blue);
+    /* color: var(--accent-color-blue); */
+    color: var(--red-orange);
+
     font-family: "Noto Sans JP";
     font-size: 50px;
     font-style: normal;
@@ -141,9 +150,9 @@
 }
 
 .cardsContainerTeams{
+  width: 80%;
   display: flex;
-  gap: 16px;
-  justify-content: center;
-  margin-top: 0px;
-  margin-bottom: 60px;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin: 0 auto;
 }

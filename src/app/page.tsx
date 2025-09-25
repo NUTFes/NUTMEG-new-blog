@@ -1,5 +1,5 @@
-"use client";
-import React, { useEffect, useState } from "react";
+// "use client";
+// import React, { useEffect, useState } from "react";
 import Card from "./components/BlogCard"; // カードコンポーネントのインポート
 import NavigationButton from "./components/NavigationButton";
 import styles from "./Home.module.css"; // CSSファイルのインポート
@@ -7,82 +7,89 @@ import FadeInSection from "./components/FadeInSection/FadeInSection";
 import Carousel from "./components/carousel";
 import LoadingScreen from "./components/LoadingScreen";
 
-const Home = () => {
-  const [isLoading, setIsLoading] = useState(true);
+import BlogList from "./components/BlogList/BlogList";
+import { getBlogPosts } from "./../app/lib/notion";
+import Link from "next/link";
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
 
-  const blogData = [
-    {
-      thumbnail: "/test.png",
-      tags: ["Tech", "Next.js"],
-      title: "Next.jsでカードコンポーネントを作る",
-      abstract: "Next.jsでシンプルなカードコンポーネントを作成する方法を解説します。",
-      authorIcon: "/test-icon.png",
-      authorName: "John Doe",
-      date: "2025-06-07",
-      link: "/article",
-    },
-    {
-      thumbnail: "/test.png",
-      tags: ["React", "UI/UX"],
-      title: "Reactで美しいUIを作る",
-      abstract: "Reactを使って洗練されたUIを作るためのデザインのポイントを解説します。",
-      authorIcon: "/test-icon.png",
-      authorName: "Jane Smith",
-      date: "2025-06-06",
-      link: "/article-2",
-    },
-        {
-      thumbnail: "/test.png",
-      tags: ["React", "UI/UX"],
-      title: "Reactで美しいUIを作る",
-      abstract: "Reactを使って洗練されたUIを作るためのデザインのポイントを解説します。",
-      authorIcon: "/test-icon.png",
-      authorName: "Jane Smith",
-      date: "2025-06-06",
-      link: "/article-2",
-    },
-        {
-      thumbnail: "/test.png",
-      tags: ["React", "UI/UX"],
-      title: "Reactで美しいUIを作る",
-      abstract: "Reactを使って洗練されたUIを作るためのデザインのポイントを解説します。",
-      authorIcon: "/test-icon.png",
-      authorName: "Jane Smith",
-      date: "2025-06-06",
-      link: "/article-2",
-    },
-        {
-      thumbnail: "/test.png",
-      tags: ["React", "UI/UX"],
-      title: "Reactで美しいUIを作る",
-      abstract: "Reactを使って洗練されたUIを作るためのデザインのポイントを解説します。",
-      authorIcon: "/test-icon.png",
-      authorName: "Jane Smith",
-      date: "2025-06-06",
-      link: "/article-2",
-    },
-    {
-      thumbnail: "/test.png",
-      tags: ["React", "UI/UX"],
-      title: "Reactで美しいUIを作る",
-      abstract: "Reactを使って洗練されたUIを作るためのデザインのポイントを解説します。",
-      authorIcon: "/test-icon.png",
-      authorName: "Jane Smith",
-      date: "2025-06-06",
-      link: "/article-2",
-    },
-  ];
+export default async function Home() {
 
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
+  const posts = await getBlogPosts();
+  // const [isLoading, setIsLoading] = useState(true);
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 2000);
+  //   return () => clearTimeout(timer);
+  // }, []);
+
+  // const blogData = [
+  //   {
+  //     thumbnail: "/test.png",
+  //     tags: ["Tech", "Next.js"],
+  //     title: "Next.jsでカードコンポーネントを作る",
+  //     abstract: "Next.jsでシンプルなカードコンポーネントを作成する方法を解説します。",
+  //     authorIcon: "/test-icon.png",
+  //     authorName: "John Doe",
+  //     date: "2025-06-07",
+  //     link: "/article",
+  //   },
+  //   {
+  //     thumbnail: "/test.png",
+  //     tags: ["React", "UI/UX"],
+  //     title: "Reactで美しいUIを作る",
+  //     abstract: "Reactを使って洗練されたUIを作るためのデザインのポイントを解説します。",
+  //     authorIcon: "/test-icon.png",
+  //     authorName: "Jane Smith",
+  //     date: "2025-06-06",
+  //     link: "/article-2",
+  //   },
+  //       {
+  //     thumbnail: "/test.png",
+  //     tags: ["React", "UI/UX"],
+  //     title: "Reactで美しいUIを作る",
+  //     abstract: "Reactを使って洗練されたUIを作るためのデザインのポイントを解説します。",
+  //     authorIcon: "/test-icon.png",
+  //     authorName: "Jane Smith",
+  //     date: "2025-06-06",
+  //     link: "/article-2",
+  //   },
+  //       {
+  //     thumbnail: "/test.png",
+  //     tags: ["React", "UI/UX"],
+  //     title: "Reactで美しいUIを作る",
+  //     abstract: "Reactを使って洗練されたUIを作るためのデザインのポイントを解説します。",
+  //     authorIcon: "/test-icon.png",
+  //     authorName: "Jane Smith",
+  //     date: "2025-06-06",
+  //     link: "/article-2",
+  //   },
+  //       {
+  //     thumbnail: "/test.png",
+  //     tags: ["React", "UI/UX"],
+  //     title: "Reactで美しいUIを作る",
+  //     abstract: "Reactを使って洗練されたUIを作るためのデザインのポイントを解説します。",
+  //     authorIcon: "/test-icon.png",
+  //     authorName: "Jane Smith",
+  //     date: "2025-06-06",
+  //     link: "/article-2",
+  //   },
+  //   {
+  //     thumbnail: "/test.png",
+  //     tags: ["React", "UI/UX"],
+  //     title: "Reactで美しいUIを作る",
+  //     abstract: "Reactを使って洗練されたUIを作るためのデザインのポイントを解説します。",
+  //     authorIcon: "/test-icon.png",
+  //     authorName: "Jane Smith",
+  //     date: "2025-06-06",
+  //     link: "/article-2",
+  //   },
+  // ];
+
+  // if (isLoading) {
+  //   return <LoadingScreen />;
+  // }
 
   return (
     <>
@@ -184,32 +191,42 @@ const Home = () => {
               alt="blogs"
             /> */}
             <div className={styles.flexBox}>
-              <h1 className={styles.BlogTitle}>Blog</h1>
+              {/* <h1 className={styles.BlogTitle}>Blog</h1> */}
+            <img
+              src="/home/TitleBlog.svg"
+              className={styles.titleBlogs}
+              alt="Blog"
+            />
                   {/* <div className={styles.NavigationButtonBox}>
                   <a href="/blogs">ブログ一覧ページへ</a> */}
 
                 {/* </div> */}
+            </div>
+            <div className={styles.description}>
+              NUTMEGでは、外部の方へ活動の様子を伝えることと、文面でのアウトプットを目的として、
+              定期的にメンバーがブログの更新を行っています。
             </div>
 
             {/* <p>
               NUTMEGでは、文書化して記録に残すことと、アウトプットの機会を目的として、<br />
               定期的に学生がブログを投稿しています。
             </p> */}
+            <BlogList posts={posts.slice(0, 3)} />{/*             
             <div className={styles.blogBox}>
               <div className={styles.cardContainer}>
                 {blogData.map((data, index) => (
                   <Card key={index} {...data} />
                 ))}
-                          <div className={styles.BlogNavigationButtonBox}>
-            <NavigationButton
-                    text="ブログ一覧ページへ"
-                    href="/blogs"
-            />
-            </div>
+
               </div>
 
+            </div> */}
+            <div className={styles.BlogNavigationButtonBox}>
+              <NavigationButton
+                      text="ブログ一覧ページへ"
+                      href="/blogs"
+              />
             </div>
-
           </div>
         </div>
 
@@ -218,4 +235,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+// export default Home;

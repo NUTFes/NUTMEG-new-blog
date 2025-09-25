@@ -3,18 +3,31 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  border: 2.5px solid var(--accent-color-blue);
-  border-radius: 5px;
+  /* border: 2.5px solid var(--accent-color-blue); */
+  border-radius: 10px;
   background-color: #FFFFFF;
   overflow: hidden;
-  width: 322px;
-  height: 270px;
+  width: 350px;
+  height: 300px;
   text-decoration: none;
   color: inherit;
   margin: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+}
+.card:hover {
+  /* 影をふわっと広げる */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px); /* 少し浮かせる */
 }
 
-.card:hover {
+.card:active {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(0); /* 押した感じに戻す */
+}
+
+/* .card:hover {
   background-color: var(--accent-color-blue);
 }
 .card:hover .cardAbstract,
@@ -24,11 +37,11 @@
 
 .card:active {
   background-color: var(--sub-color-skyblue);
-}
-.card:active .cardAbstract,
+} */
+/* .card:active .cardAbstract,
 .card:active .pmName {
   color: #FFFFFF;
-}
+} */
 
 .cardPadding {
   padding: 20px;
@@ -80,11 +93,11 @@
 .arrow {
   transition: 0.2s ease;
 }
-
+/* 
 .card:hover .arrow,
 .card:active .arrow {
   content: url("/ArrowWhite.svg");
-}
+} */
 
 .techInline {
   display: flex;

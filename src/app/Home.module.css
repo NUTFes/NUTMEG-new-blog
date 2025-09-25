@@ -39,8 +39,8 @@
   text-align: left;
   justify-content: center; /* 中央揃え */
   margin-bottom: 300px;
-  color: var(--accent-color-blue);
-  font-size: 20px;
+  /* color: var(--accent-color-blue); */
+  font-size: 18px;
 
 }
 
@@ -77,11 +77,13 @@
 }
 
 .titleBlogs{
-  width: 177px;
-  height: 74px;
   text-align: left;
   margin-bottom: 25px;
-  margin-left: 140px;
+  margin-left: 0px;
+}
+
+.description{
+  margin-bottom: 20px;
 }
 .cardContainer{
   width: 100%;
@@ -93,7 +95,10 @@
 
 }
 .BlogNavigationButtonBox{
-  color: var(--accent-color-blue);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 
@@ -101,7 +106,9 @@
 .BlogTitle{
   font-size: 70px;
   font-weight: bold;
-  color: var(--accent-color-blue);
+  /* color: var(--accent-color-blue); */
+  color: var(--red-orange);
+
   margin-left: 40px;
 }
 .NavigationButtonBox{

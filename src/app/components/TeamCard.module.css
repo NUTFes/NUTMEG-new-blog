@@ -3,19 +3,31 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  border: 2.5px solid var(--red-orange);
-  border-radius: 5px;
+  /* border: 2.5px solid var(--accent-color-blue); */
+  border-radius: 10px;
   background-color: #FFFFFF;
   overflow: hidden;
-  width: 322px;
-  height: auto;
+  width: 350px;
+  height: 300px;
   text-decoration: none;
   color: inherit;
-  margin: 5px;
-  padding-bottom: 20px;
+  margin: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+}
+.card:hover {
+  /* 影をふわっと広げる */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px); /* 少し浮かせる */
 }
 
-.card:hover {
+.card:active {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(0); /* 押した感じに戻す */
+}
+
+/* .card:hover {
   background-color: var(--red-orange);
 }
 .card:hover .cardAbstract,
@@ -29,7 +41,7 @@
 .card:active .cardAbstract,
 .card:active .pmName {
   color: #FFFFFF;
-}
+} */
 
 .cardPadding {
   padding: 20px;
@@ -86,10 +98,10 @@
   transition: 0.2s ease;
 }
 
-.card:hover .arrow,
+/* .card:hover .arrow,
 .card:active .arrow {
   content: url("/ArrowWhite.svg");
-}
+} */
 
 .techInline {
   display: flex;

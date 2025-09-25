@@ -20,4 +20,11 @@ export const teamsData = [
     technologies: ["Flutter", "Dart"],
     pm: { name: "Hanako Suzuki", icon: "/test-icon.png" },
   },
+    {
+    id: 4,
+    name: "Data Science Team",
+    description: "モバイルアプリ開発チーム",
+    technologies: ["Flutter", "Dart"],
+    pm: { name: "Hanako Suzuki", icon: "/test-icon.png" },
+  },
 ];

@@ -14,17 +14,21 @@
 
   /* 影とアニメーション追加 */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 8px 0 rgba(188, 99, 4, 0.1); */
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .card:hover {
   /* 影をふわっと広げる */
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 12px 24px 0 rgba(188, 99, 4, 0.20); */
+
   transform: translateY(-4px); /* 少し浮かせる */
 }
 
 .card:active {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    /* box-shadow: 0 6px 12px 0 rgba(188, 99, 4, 0.15); */
   transform: translateY(0); /* 押した感じに戻す */
 }
 

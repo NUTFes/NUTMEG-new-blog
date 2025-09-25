@@ -64,7 +64,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
 
           <div className={styles.arrowBox}>
             <Image
-              src="/Arrow.svg"
+              src="/ArrowOrange.svg"
               alt="Arrow"
               width={40}
               height={40}
