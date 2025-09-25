@@ -202,10 +202,10 @@ export default async function Home() {
 
                 {/* </div> */}
             </div>
-            <div className={styles.description}>
+            {/* <div className={styles.description}>
               NUTMEGでは、外部の方へ活動の様子を伝えることと、文面でのアウトプットを目的として、
               定期的にメンバーがブログの更新を行っています。
-            </div>
+            </div> */}
 
             {/* <p>
               NUTMEGでは、文書化して記録に残すことと、アウトプットの機会を目的として、<br />

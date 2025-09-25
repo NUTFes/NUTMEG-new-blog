@@ -44,8 +44,8 @@ export default function BlogList({ posts }: BlogListProps) {
       newSearchParams.set('page', page.toString());
     }
     const newUrl = newSearchParams.toString() 
-      ? `/home/blogs?${newSearchParams.toString()}`
-      : '/home/blogs';
+      ? `/blogs?${newSearchParams.toString()}`
+      : '/blogs';
     // 新しいURLを生成してルーターを更新
     router.push(newUrl);
   };

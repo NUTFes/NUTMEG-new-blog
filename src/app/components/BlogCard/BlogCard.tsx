@@ -37,7 +37,7 @@ export default function BlogCard({ post }: BlogCardProps) {
   }).toString();
 
   return (
-    <Link href={`/home/blogs/${post.id}?${queryParams}`} className="block">
+    <Link href={`/blogs/${post.id}?${queryParams}`} className="block">
       <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
         {/* サムネイル画像が存在する場合は表示 */}
         {post.thumbnail && (
