@@ -38,7 +38,7 @@ export default async function BlogPostPage({ params, searchParams }: BlogPostPag
     const recordMap = await getNotionPage(NOTION_PAGE_ID);
     // レコードマップを取得してNotionPageコンポーネント(clientコンポーネント)に渡す
     return (
-      <Layout>
+      // <Layout>
         <div className='align-left text-left'>
           <div className='max-w-[688px] mt-32 mx-auto px-4'>
             {/* クエリパラメータから取得したデータを表示 */}
@@ -66,7 +66,7 @@ export default async function BlogPostPage({ params, searchParams }: BlogPostPag
           </div>
           <NotionPage recordMap={recordMap} />
         </div>
-      </Layout>
+      // </Layout>
     );
   } catch (error) {
     console.error('Failed to load Notion page:', error);

@@ -27,20 +27,29 @@ export default function BlogCard({ post }: BlogCardProps) {
   
   // クエリパラメータを生成
   // これによって、ブログカードをクリックしたときに必要な情報をURLに含める
+  // const queryParams = new URLSearchParams({
+  //   title: post.title,                    // タイトル
+  //   thumbnail: post.thumbnail || '',      // サムネイルURL
+  //   publishedAt: post.publishedAt || '',  // 公開日
+  //   tags: post.tags ? post.tags.join(',') : '', // タグ (カンマ区切りの文字列)
+  //   summary: post.summary || '',          // 要約
+  //   // author: post.author || '',         // 著者名
+  // }).toString();
   const queryParams = new URLSearchParams({
-    title: post.title,                    // タイトル
-    thumbnail: post.thumbnail || '',      // サムネイルURL
-    publishedAt: post.publishedAt || '',  // 公開日
-    tags: post.tags ? post.tags.join(',') : '', // タグ (カンマ区切りの文字列)
-    summary: post.summary || '',          // 要約
-    // author: post.author || '',         // 著者名
-  }).toString();
+  title: post.title ?? '',
+  thumbnail: post.thumbnail ?? '',
+  publishedAt: post.publishedAt ?? '',
+  tags: post.tags?.join(',') ?? '',
+  summary: post.summary ?? '',
+}).toString();
+
 
   return (
     <Link href={`/blogs/${post.id}?${queryParams}`} className="block">
       <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+      {/* {<div className="bg-white rounded-lg shadow-[0_12px_24px_0_rgba(188,99,4,0.10)] hover:shadow-[0_12px_24px_0_rgba(188,99,4,0.30)] active:shadow-[0_12px_24px_0_rgba(188,99,4,0.15)] transition-shadow transition-transform duration-300 hover:-translate-y-1 active:translate-y-0 overflow-hidden">} */}
         {/* サムネイル画像が存在する場合は表示 */}
-        {post.thumbnail && (
+        {/* {post.thumbnail && (
           <div className="relative h-48 w-full">
             <Image
               src={post.thumbnail}
@@ -50,7 +59,25 @@ export default function BlogCard({ post }: BlogCardProps) {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
+        )} */}
+
+        {post.thumbnail ? (
+          <div className="relative h-48 w-full">
+            <Image
+              src={post.thumbnail}
+              alt={post.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          </div>
+        ) : (
+          <div className="h-48 w-full bg-gray-200 flex items-center justify-center text-gray-500">
+            No Image
+          </div>
         )}
+
+
         <div className="p-6">
           {/* タイトルを表示 */}
           <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2">
