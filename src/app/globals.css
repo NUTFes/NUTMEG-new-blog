@@ -36,3 +36,13 @@ body {
 
 
 
+/* globals.css */
+.hide-on-mobile {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}

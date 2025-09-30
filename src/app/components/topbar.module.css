@@ -1,4 +1,44 @@
+
+@media screen and (max-width: 768px) {
+
+  .topbar,
+  .hamburgerMenuTop {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px 0px 0px 0px; /* 横の余白を減らす */
+    font-size: 16px;
+  }
+
+  .topbarRight {
+
+    width: 100%;
+    justify-content: space-between; /* ← 左右に広げる */
+    gap: 16px;
+  
+
+  }
+
+  .hamburgerButton {
+    width: 44px;
+    height: 44px;
+  }
+
+  .menuPanel ul {
+    margin-left: 16px;
+    max-width: 90%;
+  }
+
+  .menuPanel a {
+    font-size: 32px;
+  
+}
+  .icon {
+    width: 120px; /* もしくはもっと小さく */
+  }
+
+}
 .topbar {
+  margin: 0 auto;
   position: fixed;
   top: 0;
   left: 0;
@@ -173,3 +213,6 @@ line-height: normal;
   position: absolute;
   left: -1.2em;
 } */
+
+
+

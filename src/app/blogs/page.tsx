@@ -23,6 +23,7 @@ const Blogs = async () => {
       </p>
 
       <BlogList posts={posts} />
+      
     </div>
   );
 };

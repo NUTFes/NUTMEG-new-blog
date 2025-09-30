@@ -3,6 +3,7 @@ import TopBar from './components/topbar';
 import Footer from './components/footer';
 import './globals.css'; // 必要なスタイルをここで
 
+
 export default function RootLayout({
   children,
 }: {
@@ -13,7 +14,9 @@ export default function RootLayout({
       <body>
         <TopBar />
         <main>{children}</main>
+        <div className='hide-on-mobile'>
         <Footer />
+        </div>
       </body>
     </html>
   );

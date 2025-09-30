@@ -46,8 +46,8 @@ export default function BlogCard({ post }: BlogCardProps) {
 
   return (
     <Link href={`/blogs/${post.id}?${queryParams}`} className="block">
-      <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-      {/* {<div className="bg-white rounded-lg shadow-[0_12px_24px_0_rgba(188,99,4,0.10)] hover:shadow-[0_12px_24px_0_rgba(188,99,4,0.30)] active:shadow-[0_12px_24px_0_rgba(188,99,4,0.15)] transition-shadow transition-transform duration-300 hover:-translate-y-1 active:translate-y-0 overflow-hidden">} */}
+      {/* <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"> */}
+      <div className="bg-white rounded-lg shadow-[0_12px_24px_0_rgba(188,99,4,0.10)] hover:shadow-[0_12px_24px_0_rgba(188,99,4,0.30)] active:shadow-[0_12px_24px_0_rgba(188,99,4,0.15)] transition-shadow transition-transform duration-300 hover:-translate-y-1 active:translate-y-0 overflow-hidden">
         {/* サムネイル画像が存在する場合は表示 */}
         {/* {post.thumbnail && (
           <div className="relative h-48 w-full">

@@ -17,6 +17,7 @@
 }
 
 
+
 .projects{
   width: 100%;
   display: flex;
@@ -45,6 +46,8 @@
 }
 
 .whiteBox{
+   margin: 0 auto;
+
   width: 1340px; /* 全幅 */
   height: 811px;
   background-color: #FFFFFF;
@@ -58,6 +61,8 @@
 .BlogwhiteBox{
   /* height: 811px; */
   /* background-color: #FFFFFF; */
+   margin: 0 auto;
+
   border-radius: 20px;
   /* box-shadow: var(--white-box-shadow); */
   padding-top: 92px;
