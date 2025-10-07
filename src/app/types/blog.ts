@@ -7,7 +7,7 @@ export interface BlogPost {
   slug?: string;    // スラッグ（URLの一部として使用）
   tags?: string[];  // タグの配列
   summary?: string; // 要約
-  // author?: string;  // 著者名 (オプション)
+  author?: string;  // 著者名 (オプション)
 }
 
 export interface NotionPage {
@@ -21,12 +21,18 @@ export interface NotionPage {
 export interface NotionProperty {
   type: string;
   title?: NotionRichText[];
-  created_time?: string;
+  rich_text?: NotionRichText[];
   date?: {
     start: string;
     end?: string;
   };
   files?: NotionFile[];
+  multi_select?: {
+    name: string;
+  }[];
+  select?: {
+    name: string;
+  };
   [key: string]: unknown;
 }
 

@@ -46,7 +46,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
           slug: notionPage.id,
           tags: getTags(notionPage.properties),
           summary: getSummary(notionPage.properties),
-          // author: getAuthor(notionPage.properties),
+          author: getAuthor(notionPage.properties),
         };
         
         posts.push(post);
@@ -181,6 +181,20 @@ function getTags(properties: Record<string, NotionProperty>): string[] {
 //   }
 //   return '';
 // }
+function getAuthor(properties: Record<string, NotionProperty>): string {
+  if (!properties || typeof properties !== 'object') {
+    return '';
+  }
+
+  const userProperty = properties['ユーザー'];
+
+  if (userProperty?.type === 'select' && userProperty.select?.name) {
+    return userProperty.select.name;
+  }
+
+  return '';
+}
+
 
 // 要約プロパティから要約を取得する関数
 function getSummary(properties: Record<string, NotionProperty>): string {
@@ -220,3 +234,7 @@ function getSummary(properties: Record<string, NotionProperty>): string {
 //     .filter(Boolean)
 //     .join('\n\n');
 // }
+export async function getBlogPostsByAuthor(authorName: string): Promise<BlogPost[]> {
+  const allPosts = await getBlogPosts();
+  return allPosts.filter(post => post.author?.trim() === authorName.trim());
+}
