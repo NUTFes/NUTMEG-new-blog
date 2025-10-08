@@ -54,3 +54,18 @@
 .navigation-button:active{
     background: var(--red-orange);
 }
+/* 左矢印用 */
+.navigation-button.arrow-left {
+  flex-direction: row-reverse; /* 矢印が文字の左に */
+  padding-left: 12px;
+  padding-right: 20px;
+}
+/* NavigationButton.css に追加 */
+.navigation-button .arrow-wrapper img {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* 左矢印の場合 */
+.navigation-button .arrow-wrapper.left img {
+  transform: rotate(180deg); /* 右向きを左向きに */
+}

@@ -10,14 +10,20 @@ export default async function Members() {
   return (
     <div className='container mx-auto'>
       <main className="flex min-h-screen flex-col items-center justify-center p-8 lg:w-5/6 mx-auto">
-        <h1 className="text-md md:text-xl font-bold mb-6">メンバー一覧</h1>
+        <h1 className="text-md md:text-xl font-bold mb-6">Members</h1>
         <div className="grid gap-8 p-3 md:p-10 pt-5 md:grid-cols-2 lg:grid-cols-3">
           {members.map((member, index) => (
-            <Link
-              href={`/members/${member.id}`}
-              key={index}
-              className="border rounded-lg p-10 shadow-lg transition-shadow hover:shadow-xl"
-            >
+            // <Link
+            //   href={`/members/${member.id}`}
+            //   key={index}
+            //   className="bg-white  rounded-lg p-10 shadow-lg transition-shadow hover:shadow-xl"
+            // >
+          <Link
+            href={`/members/${member.id}`}
+            key={index}
+            className="bg-white rounded-lg p-10 transition-shadow shadow-[0_4px_20px_rgba(255,184,8,0.05)] hover:shadow-[0_8px_30px_rgba(255,184,8,0.3)]"
+          >
+
               <div className="mb-4">
                 {member.icon && (
                   <Image
@@ -25,7 +31,7 @@ export default async function Members() {
                     alt={`${member.nickname}のアイコン`}
                     width={200}
                     height={200}
-                    className="rounded-full object-cover mx-auto mb-4"
+                    className="rounded-full object-cover mx-auto mb-4 aspect-square w-40 h-40"
                   />
                 )}
               </div>
