@@ -8,7 +8,7 @@ export default async function Members() {
   const members = await getAllMembers();
 
   return (
-    <div className='container mx-auto'>
+    <div className='container mx-auto mb-20'>
       <main className="flex min-h-screen flex-col items-center justify-center p-8 lg:w-5/6 mx-auto">
         <h1 className="text-md md:text-xl font-bold mb-6">Members</h1>
         <div className="grid gap-8 p-3 md:p-10 pt-5 md:grid-cols-2 lg:grid-cols-3">
