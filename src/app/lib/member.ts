@@ -14,9 +14,17 @@ interface MemberProfile {
 }
 
 export async function getAllMembers(): Promise<MemberProfile[]> {
+console.log("API KEY:", process.env.INTEGRATION_TOKEN);
+console.log("DB ID:", process.env.MEMBER_DATABASE_ID);
   const response = await notion.databases.query({
     database_id: process.env.MEMBER_DATABASE_ID, // メンバー用DBのID
+    
   });
+// const response = await notion.databases.retrieve({
+//   database_id: "28641f1920638072b59a000c65a52f31", // ← .env.localを使わず直接書く
+// });
+console.log("✅ DB取得成功:", response.id);
+  
 
   const members = response.results;
   const memberProperties = members.map((member: any) => {
@@ -32,7 +40,9 @@ export async function getAllMembers(): Promise<MemberProfile[]> {
 
     return { id, nickname, icon, project, about };
   });
-
+await notion.databases.query({
+  database_id: process.env.MEMBER_DATABASE_ID,
+});
   return memberProperties;
 }
 
