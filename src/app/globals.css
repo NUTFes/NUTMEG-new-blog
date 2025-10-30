@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+
+
 :root {
   --background: #FFF9F0;
   /* --background:#FFFFFF; */
@@ -45,4 +47,8 @@ body {
   .hide-on-mobile {
     display: none;
   }
+}
+
+body, html {
+  overflow-x: hidden;
 }

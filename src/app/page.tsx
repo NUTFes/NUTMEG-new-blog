@@ -119,7 +119,9 @@ export default async function Home() {
             />
 
             </div>
-
+              <p className={styles.BlogExplanation}>
+                NUTMEGでは、文書化して記録に残すことと、アウトプットの機会を目的として、定期的に学生がブログを投稿しています。
+              </p>          
             <BlogList posts={posts.slice(0, 3)} />
             <div className={styles.BlogNavigationButtonBox}>
               <NavigationButton

@@ -1,43 +1,5 @@
-
-@media screen and (max-width: 768px) {
-
-  .topbar,
-  .hamburgerMenuTop {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 16px 0px 0px 0px; /* 横の余白を減らす */
-    font-size: 16px;
-  }
-
-  .topbarRight {
-
-    width: 100%;
-    justify-content: space-between; /* ← 左右に広げる */
-    gap: 16px;
-  
-
-  }
-
-  .hamburgerButton {
-    width: 44px;
-    height: 44px;
-  }
-
-  .menuPanel ul {
-    margin-left: 16px;
-    max-width: 90%;
-  }
-
-  .menuPanel a {
-    font-size: 32px;
-  
-}
-  .icon {
-    width: 120px; /* もしくはもっと小さく */
-  }
-
-}
 .topbar {
+  box-sizing: border-box; 
   margin: 0 auto;
   position: fixed;
   top: 0;
@@ -216,3 +178,78 @@ line-height: normal;
 
 
 
+
+@media screen and (max-width: 768px) {
+  .topbar {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100vw; /* ← これ追加！ */
+  overflow-x: hidden; /* ← 念のため */
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px 10px 0px 10px;
+  /* 上・右・下・左  */
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  z-index: 20;
+  transition: background-color 0.3s ease, color 0.3s ease, border-bottom 0.3s ease;
+  font-size: 20px;
+  }
+    .menuPanel ul {
+    margin-left: 16px;
+    max-width: 90%;
+    padding: 0;
+    list-style: none;
+  }
+
+  .menuPanel a {
+    font-size: 32px;
+    display: block;
+    padding: 8px 0;
+  }
+  .topbarRight {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px; /* ← 間隔を最小限に */
+    flex-shrink: 0; /* ← 折りたたまない */
+    width: auto; /* ← 固定幅解除 */
+  }
+
+  .icon {
+    width: 100px; /* ← ロゴ小さめに */
+    height: auto;
+  }
+
+  .topbarRight .icon {
+    width: 80px; /* ← Contactボタン用、少し大きめ */
+    height: auto;
+  }
+
+  .hamburgerButton {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    border-radius: 50%;
+    background-color: #FE7222;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .bar {
+    width: 20px;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+  }
+
+}

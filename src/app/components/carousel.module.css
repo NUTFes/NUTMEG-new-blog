@@ -25,3 +25,31 @@
     transform: translateX(-100%); /* 全部流し切る */
   }
 }
+
+@media screen and (max-width: 768px) {
+  .sliderWrapper {
+    margin-bottom: 60px; /* 余白を少し詰める */
+  }
+
+  .sliderTrack {
+    gap: 12px; /* 画像間隔を少し狭める */
+    animation: scroll 25s linear infinite; /* 少し遅くして見やすく */
+  }
+
+  .pics {
+    width: 220px; /* ← ここが肝！画像を小さく */
+    border-radius: 12px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .pics {
+    width: 180px; /* さらに小さいデバイスではもっと縮小 */
+    border-radius: 10px;
+  }
+
+  .sliderTrack {
+    gap: 8px;
+    animation: scroll 22s linear infinite;
+  }
+}
