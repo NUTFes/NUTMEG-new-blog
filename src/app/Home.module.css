@@ -221,7 +221,7 @@
 
   /* ✅ 全体 */
   .HeroImage {
-    padding-top: 60px;
+    padding-top: 80px;
     flex-direction: column;
     padding-bottom: 40px;
     margin-bottom: 0px;
@@ -243,6 +243,7 @@
     animation: bounceText 1.5s ease-in-out 1;
     animation-fill-mode: forwards;
   }
+  
 
   /* ✅ スライド */
   .slide {

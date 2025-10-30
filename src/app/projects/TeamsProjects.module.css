@@ -15,14 +15,14 @@
   /* margin-bottom: 50px; */
   color: #0B556E;
   font-size: 20px;
-  margin-top: 30px;
+  margin-top: 60px;
 }
 .projectsBox {
   width: 100%;
   gap: 20px;
   /* background-color: #FFFFFF; */
   border-radius: 20px;
-  padding: 60px;
+  padding:0px;
   /* box-shadow: var(--white-box-shadow); */
 
   display: flex;
@@ -155,4 +155,93 @@
   flex-wrap: wrap;
   justify-content: left;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  /* Projects & Teams 全体 */
+  .projects,
+  .teams {
+    flex-direction: column;
+    align-items: center; /* 中央寄せ */
+    text-align: center;
+    margin-bottom: 60px; /* モバイル向けに縮小 */
+  }
+
+  .projectsBox,
+  .teamsBox {
+    width: 95%;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    margin:0px; /* 下の余白を小さく */
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* 中央→左寄せ */
+    gap: 6px;
+    text-align: left;
+  }
+
+  .breadcrumbLinkSmall {
+    font-size: 20px;
+  }
+
+  .breadcrumbLinkArrow {
+    font-size: 20px;
+    margin: 0 2px;
+  }
+
+  .breadcrumbLinkBig {
+    font-size: 28px;
+  }
+
+  /* カードとの距離を縮める */
+  .projectsBox {
+    padding: 16px 16px 16px 16px; /* 上下左右のパディング調整 */
+  } 
+  
+  /* Projectsカードコンテナ */
+  .cardsContainerProject,
+  .cardsContainerTeams {
+    width: 100%;
+    justify-content: center; /* 左寄せ→中央揃え */
+    gap: 16px;
+  }
+
+  /* カード個別サイズはコンポーネント内で max-width 指定があれば活きる */
+  .cardsContainerProject > * ,
+  .cardsContainerTeams > * {
+    flex: 1 1 90%; /* 幅はほぼ全幅、カードが縦に並ぶ */
+    max-width: 400px; /* 任意で調整 */
+  }
+
+  /* Titles */
+  .bigTitleTeams {
+    font-size: 32px;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .projectsBox .title,
+  .teamsBox .title {
+    font-size: 24px;
+  }
+   /* bigTitleTeams */
+  .bigTitleTeams {
+    font-size: 32px;
+    text-align: left;       /* 左揃え */
+    margin-left: 0;         /* 左余白リセット */
+    margin-bottom: 12px;    /* 下の余白を縮める */
+  }
+
+  /* ProjectsBox / TeamsBox 全体のパディング調整 */
+  .projectsBox,
+  .teamsBox {
+    padding: 16px 16px 16px 16px; /* 上下左右パディング調整 */
+    gap: 12px;                     /* 内部要素の間隔も少し縮める */
+  }
+
 }

@@ -126,6 +126,19 @@
   font-size: 20px;
   
 }
+.hamburgerMenuTop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;             /* 高さを固定して中央揃えしやすくする */
+  padding: 40px, 16px;          /* 上下の padding は 0 に */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;      /* ← ここを有効にする */
+  z-index: 20;
+}
+
 
 .menuPanel ul {
   display: flex;
@@ -198,6 +211,9 @@ line-height: normal;
   transition: background-color 0.3s ease, color 0.3s ease, border-bottom 0.3s ease;
   font-size: 20px;
   }
+  .hamburgerMenuTop {
+      padding: 10px 10px 0px 10px;
+  }
     .menuPanel ul {
     margin-left: 16px;
     max-width: 90%;
@@ -214,26 +230,26 @@ line-height: normal;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 10px; /* ← 間隔を最小限に */
+    gap: 13px; /* ← 間隔を最小限に */
     flex-shrink: 0; /* ← 折りたたまない */
     width: auto; /* ← 固定幅解除 */
   }
 
   .icon {
-    width: 100px; /* ← ロゴ小さめに */
+    width: 130px; /* ← ロゴ小さめに */
     height: auto;
   }
 
   .topbarRight .icon {
-    width: 80px; /* ← Contactボタン用、少し大きめ */
-    height: auto;
+    height: 30px;
+    width: auto;
   }
 
   .hamburgerButton {
-    width: 30px;
-    height: 30px;
-    min-width: 30px;
-    min-height: 30px;
+    width: 40px;
+    height: 40px;
+    min-width:40px;
+    min-height: 40px;
     border-radius: 50%;
     background-color: #FE7222;
     display: flex;
@@ -246,10 +262,20 @@ line-height: normal;
   }
 
   .bar {
-    width: 20px;
-    height: 2px;
+    width: 20px;      /* 少し細く */
+    height: 1.5px;    /* 細くする */
     background-color: white;
     border-radius: 2px;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    transform-origin: center;
+  }
+
+  .bar1Open {
+    transform: rotate(45deg) translate(3px, 3px); /* 幅に合わせて調整 */
+  }
+
+  .bar2Open {
+    transform: rotate(-45deg) translate(1.5px, -1.5px);
   }
 
 }

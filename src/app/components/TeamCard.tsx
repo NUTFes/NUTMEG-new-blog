@@ -1,16 +1,18 @@
 import Image from "next/image";
-import styles from "./TeamCard.module.css"; 
+import Link from "next/link";
+import styles from "./TeamCard.module.css";
 
 type TeamProps = {
   name: string;
   description: string;
   technologies: string[];
   pm: { name: string; icon: string };
+  href: string; // 遷移先を追加
 };
 
-const TeamCard: React.FC<TeamProps> = ({ name, description, technologies, pm }) => {
+const TeamCard: React.FC<TeamProps> = ({ name, description, technologies, pm, href }) => {
   return (
-    <div className={styles.card}>
+    <Link href={href} className={styles.card}>
       <div className={styles.cardPadding}>
         <h2 className={styles.cardTitle}>{name}</h2>
         <p className={styles.cardAbstract}>{description}</p>
@@ -36,7 +38,7 @@ const TeamCard: React.FC<TeamProps> = ({ name, description, technologies, pm }) 
           <Image src="/ArrowOrange.svg" alt="Arrow" className={styles.arrow} height={40} width={40} />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
