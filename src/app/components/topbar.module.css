@@ -156,9 +156,10 @@
 
 .menuPanel a {
 font-family: "Noto Sans JP";
-font-size: 48px;
+font-size: 40px;
 font-style: normal;
-font-weight: 700;
+/* font-weight: 700; */
+font-weight: 500;
 line-height: normal;
 }
 
@@ -223,6 +224,7 @@ line-height: normal;
 
   .menuPanel a {
     font-size: 32px;
+    font-weight: normal;
     display: block;
     padding: 8px 0;
   }
