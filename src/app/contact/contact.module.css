@@ -1,0 +1,78 @@
+.contactContainer {
+    margin-top: 160px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contactHeader {
+    position: absolute;
+    top: 120px;
+    left: 45px;
+    text-align: start;
+}
+
+.contactForm {
+    display: grid;
+    text-align: start;
+    grid-template: 
+        "name" 100px
+        "email" 100px
+        "inquiry" 100px
+        "submit" 100px
+        1fr;
+    gap: 60px;
+}
+
+.contactForm label {
+    display: block;
+    font-weight: bold;
+}
+
+.contactForm input[type="text"] {
+    border: solid;
+    width: 600px;
+    height: 50px;
+    border-radius:10px
+}
+
+.contactForm textarea {
+    border: solid;
+    width: 600px;
+    height: 200px;
+    resize: none;
+    border-radius:10px
+}
+
+.userName {
+    grid-area: name;
+}
+
+.userEmail {
+    grid-area: email;
+}
+
+.userInquiry {
+    grid-area: inquiry;
+}
+
+.contactFormSubmit {
+    grid-area: submit;
+}
+
+.submitButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 240px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 9999px;
+    background-color: var(--red-orange);
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
