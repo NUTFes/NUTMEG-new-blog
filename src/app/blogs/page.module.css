@@ -1,73 +1,142 @@
+/* コンテナ全体 */
 .container {
   margin-top: 4rem;
   padding: 2rem 8rem;
-  /* background-color: white; */
   min-height: 100vh;
   text-align: left;
 }
+
+/* タイトル部分 */
 .title {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  
-  /* margin-bottom: 2rem; */
-  /* border-bottom: 1px solid #e5e7eb; */
-  /* padding-bottom: 1rem; */
 }
 
-.breadcrumb {
-    color: var(--accent-color-blue);
-    font-family: "Noto Sans JP";
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    /* text-decoration-line: underline; */
-    text-decoration-style: solid;
-    text-decoration-skip-ink: none;
-    text-decoration-thickness: auto;
-    text-underline-offset: auto;
-    text-underline-position: from-font;
+/* パンくずリスト wrapper */
+.breadcrumbWrapper {
+  display: flex;
+  flex-wrap: nowrap;   /* 横並び維持 */
+  align-items: center;
+  gap: 6px;
 }
 
-.breadcrumb:hover {
+/* 個別リンク */
+.breadcrumbLinkSmall {
+  color: var(--accent-color-blue);
+  font-family: "Noto Sans JP";
+  font-size: 32px; /* Bingoと同じ */
+  font-weight: 600;
+  line-height: normal;
+  white-space: nowrap; /* 折り返し防止 */
+  text-decoration: none;
+}
+
+.breadcrumbLinkSmall:hover {
   text-decoration: underline;
 }
 
-.separator {
-    color: var(--accent-color-blue);
-    font-family: "Noto Sans JP";
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+.breadcrumbLinkArrow {
+  color: var(--accent-color-blue);
+  font-family: "Noto Sans JP";
+  font-size: 32px;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0 5px;       /* Bingoと同じ */
+  white-space: nowrap;
+  flex-shrink: 0;      /* 矢印は縮まない */
 }
 
+.breadcrumbLinkBig {
+  color: var(--accent-color-blue);
+  font-family: "Noto Sans JP";
+  font-size: 50px; /* Bingoと同じ */
+  font-weight: 700;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.breadcrumbLinkBig:hover {
+  text-decoration: underline;
+}
+
+/* 区切り */
+.separator {
+  color: var(--accent-color-blue);
+  font-family: "Noto Sans JP";
+  font-size: 32px; /* Bingoと同じ */
+  font-weight: 500;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* ページ見出し */
 .heading {
-    color: var(--blog-AccentColorBlue, #00749B);
-    font-family: "Noto Sans JP";
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    /* text-decoration-line: underline; */
-    text-decoration-style: solid;
-    text-decoration-skip-ink: none;
-    text-decoration-thickness: auto;
-    text-underline-offset: auto;
-    text-underline-position: from-font;
+  color: var(--accent-color-blue);
+  font-family: "Noto Sans JP";
+  font-size: 50px; /* Bingoと同じ */
+  font-weight: 700;
+  line-height: normal;
 }
 
 .heading:hover {
   text-decoration: underline;
 }
 
-
-
+/* 説明文 */
 .description {
   font-size: 16px;
   color: #374151;
+  margin-top: 20px;
   margin-bottom: 2.5rem;
   line-height: 1.75;
-  margin-top: 20px;
+}
+
+/* モバイル版（768px以下） */
+@media screen and (max-width: 768px) {
+
+  .container {
+    margin-top: 90px;   /* Bingoと同じ */
+    padding: 0 16px;
+  }
+
+  .title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+
+  .breadcrumbWrapper {
+    gap: 4px;
+  }
+
+  .breadcrumbLinkSmall {
+    font-size: 18px;
+  }
+
+  .breadcrumbLinkArrow {
+    font-size: 18px;
+  }
+
+  .breadcrumbLinkBig {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .separator {
+    font-size: 18px;
+  }
+
+  .heading {
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 12px;
+    margin-bottom: 20px;
+  }
 }

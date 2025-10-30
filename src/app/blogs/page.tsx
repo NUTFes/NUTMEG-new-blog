@@ -11,9 +11,11 @@ const Blogs = async () => {
     <div className={styles.container}>
       
       <div className={styles.title}>
-        <Link href="/" className={styles.breadcrumb}>Home</Link>
-        <span className={styles.separator}>&gt;</span>
-        <Link href="/blogs" className={styles.heading}>Blogs</Link>
+        <div className={styles.breadcrumbWrapper}>
+          <Link href="/" className={styles.breadcrumbLinkSmall}>Home</Link>
+          <span className={styles.breadcrumbLinkArrow}>&gt;</span>
+          <Link href="/blogs" className={styles.breadcrumbLinkBig}>Blogs</Link>
+        </div>
       </div>
 
 
