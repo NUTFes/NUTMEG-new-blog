@@ -23,7 +23,7 @@
 
 /* 個別リンク */
 .breadcrumbLinkSmall {
-  color: var(--accent-color-blue);
+  color: var(--red-orange);
   font-family: "Noto Sans JP";
   font-size: 32px; /* Bingoと同じ */
   font-weight: 600;
@@ -37,18 +37,18 @@
 }
 
 .breadcrumbLinkArrow {
-  color: var(--accent-color-blue);
+  color: var(--red-orange);
   font-family: "Noto Sans JP";
   font-size: 32px;
   font-weight: 500;
   line-height: normal;
-  margin: 0 5px;       /* Bingoと同じ */
+  margin: 0 2px;       /* Bingoと同じ */
   white-space: nowrap;
   flex-shrink: 0;      /* 矢印は縮まない */
 }
 
 .breadcrumbLinkBig {
-  color: var(--accent-color-blue);
+  color: var(--red-orange);
   font-family: "Noto Sans JP";
   font-size: 50px; /* Bingoと同じ */
   font-weight: 700;
@@ -62,7 +62,7 @@
 
 /* 区切り */
 .separator {
-  color: var(--accent-color-blue);
+  color: var(--red-orange);
   font-family: "Noto Sans JP";
   font-size: 32px; /* Bingoと同じ */
   font-weight: 500;
@@ -72,7 +72,7 @@
 
 /* ページ見出し */
 .heading {
-  color: var(--accent-color-blue);
+  color: var(--red-orange);
   font-family: "Noto Sans JP";
   font-size: 50px; /* Bingoと同じ */
   font-weight: 700;

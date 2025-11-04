@@ -8,7 +8,7 @@
 }
 
 .projects{
-  width: 100vw;
+  width: 100%;
   display: flex;
   text-align: left;
   justify-content: center; /* 中央揃え */
@@ -39,14 +39,18 @@
   justify-content: center;
   margin-top: 0px;
   /* margin-bottom: 60px; */
+  margin: 0 auto;
 }
-.cardsContainerProject{
-  width: 80%;
+.cardsContainerProject {
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: left;
-
+  justify-content: center; /* ← 左寄せに変更！ */
+  margin: 0 auto;
 }
+
+
+
 
 
 
@@ -79,6 +83,8 @@
 
 .breadcrumb{
   margin-left: 150px;
+
+  
 }
 .breadcrumbLinkSmall{
     /* color: var(--accent-color-blue); */
@@ -150,10 +156,10 @@
 }
 
 .cardsContainerTeams{
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: left;
+  justify-content: center; /* ← 左寄せに変更！ */
   margin: 0 auto;
 }
 
@@ -184,6 +190,25 @@
     gap: 6px;
     text-align: left;
   }
+.breadcrumb {
+  margin: 0;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center; /* ← これを追加！縦方向中央揃え */
+  gap: 6px;
+  text-align: left;
+}
+
+/* 矢印やテキストの高さを揃える */
+.breadcrumbLinkSmall,
+.breadcrumbLinkArrow,
+.breadcrumbLinkBig {
+  line-height: 1; /* ← 行の高さを統一 */
+  display: flex;
+  align-items: center; /* ← 文字を縦方向中央に */
+}
 
   .breadcrumbLinkSmall {
     font-size: 20px;

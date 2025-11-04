@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { getAllMembers } from '../lib/member';
 import Link from 'next/link';
+import styles from './members.module.css';
 
 export const revalidate = 60;
 
@@ -8,22 +9,23 @@ export default async function Members() {
   const members = await getAllMembers();
 
   return (
-    <div className='container mx-auto mb-20'>
-      <main className="flex min-h-screen flex-col items-center justify-center p-8 lg:w-5/6 mx-auto">
-        <h1 className="text-md md:text-xl font-bold mb-6">Members</h1>
-        <div className="grid gap-8 p-3 md:p-10 pt-5 md:grid-cols-2 lg:grid-cols-3">
-          {members.map((member, index) => (
-            // <Link
-            //   href={`/members/${member.id}`}
-            //   key={index}
-            //   className="bg-white  rounded-lg p-10 shadow-lg transition-shadow hover:shadow-xl"
-            // >
-          <Link
-            href={`/members/${member.id}`}
-            key={index}
-            className="bg-white rounded-lg p-10 transition-shadow shadow-[0_4px_20px_rgba(255,184,8,0.05)] hover:shadow-[0_8px_30px_rgba(255,184,8,0.3)]"
-          >
+    <div className="container mx-auto mb-20">
+      {/* ✅ パンくず */}
+      <div className={styles.breadcrumb}>
+        <Link href="/" className={styles.breadcrumbLinkSmall}>Home</Link>
+        <span className={styles.breadcrumbLinkArrow}> &gt; </span>
+        <Link href="/members" className={styles.breadcrumbLinkBig}>Members</Link>
+      </div>
 
+      {/* ✅ カード群（幅揃え） */}
+<main className="flex min-h-screen flex-col items-center justify-center px-8 pt-0 pb-8 mx-auto">
+        <div className={`${styles.cardsWrapper} grid gap-8 p-3 md:p-10 pt-5 md:grid-cols-2 lg:grid-cols-3`}>
+          {members.map((member, index) => (
+            <Link
+              href={`/members/${member.id}`}
+              key={index}
+              className="bg-white rounded-lg p-10 transition-shadow shadow-[0_4px_20px_rgba(255,184,8,0.05)] hover:shadow-[0_8px_30px_rgba(255,184,8,0.3)]"
+            >
               <div className="mb-4">
                 {member.icon && (
                   <Image
