@@ -1,0 +1,68 @@
+/* =============================
+   Breadcrumb 共通スタイル
+============================= */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0;
+  margin-top: 20px;
+
+  padding-left: 9rem;   /* PC版左余白 */
+  padding-right: 1rem;
+  box-sizing: border-box;
+  flex-wrap: wrap;      /* 幅狭い場合に折り返す */
+}
+
+/* リンク・矢印共通 */
+.breadcrumbLinkSmall,
+.breadcrumbLinkBig,
+.breadcrumbLinkArrow {
+  color: var(--red-orange);
+  font-family: "Noto Sans JP";
+  font-weight: 700;
+  display: flex;
+  align-items: center; /* 縦方向中央揃え */
+  line-height: 1;      /* 高さ統一 */
+}
+
+/* 個別フォントサイズ */
+.breadcrumbLinkSmall { font-size: 32px; }
+.breadcrumbLinkArrow { font-size: 32px; margin: 0 5px; }
+.breadcrumbLinkBig { font-size: 50px; }
+
+/* ホバー装飾 */
+.breadcrumbLinkSmall:hover,
+.breadcrumbLinkBig:hover {
+  text-decoration: underline;
+}
+
+/* =============================
+   レスポンシブ調整
+============================= */
+@media screen and (max-width: 1024px) {
+  /* タブレット */
+  .breadcrumb {
+    padding-left: 6rem;  /* 左余白を少なく */
+    padding-right: 1rem;
+  }
+
+  .breadcrumbLinkSmall { font-size: 24px; }
+  .breadcrumbLinkArrow { font-size: 24px; margin: 0 4px; }
+  .breadcrumbLinkBig { font-size: 36px; }
+}
+
+@media screen and (max-width: 768px) {
+  /* スマホ */
+  .breadcrumb {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    justify-content: flex-start; /* 左寄せ */
+    margin-top: 12px;
+    gap: 4px;
+  }
+
+  .breadcrumbLinkSmall { font-size: 20px; }
+  .breadcrumbLinkArrow { font-size: 20px; margin: 0 2px; }
+  .breadcrumbLinkBig { font-size: 28px; }
+}
