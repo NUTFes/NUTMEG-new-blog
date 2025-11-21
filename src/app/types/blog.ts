@@ -1,14 +1,15 @@
 export interface BlogPost {
   id: string;
-  title: string;        // タイトル
-  thumbnail?: string;   // サムネイル画像のURL (オプション)
-  content?: string;     // コンテンツ（オプション）
-  publishedAt?: string; // 公開日
-  slug?: string;    // スラッグ（URLの一部として使用）
-  tags?: string[];  // タグの配列
-  summary?: string; // 要約
-  author?: string;  // 著者名 (オプション)
+  title: string;
+  thumbnail?: string;
+  publishedAt?: string;
+  slug: string;
+  tags?: string[];
+  summary?: string;
+  author?: string;
+  authorIcon?: string;  // ← これを追加
 }
+
 
 export interface NotionPage {
   id: string;

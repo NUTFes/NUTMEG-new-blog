@@ -78,34 +78,51 @@ export default function BlogCard({ post }: BlogCardProps) {
         )}
 
 
-        <div className="p-6">
-          {/* タイトルを表示 */}
-          <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2">
-            {post.title}
-          </h3>
-          {/* 要約が存在する場合は表示 */}
-          {post.summary && (
-            <p className="text-gray-700 mb-4 line-clamp-3">
-              {post.summary}
-            </p>
-          )}
-          {/* タグを#で区切って表示 */}
-          {post.tags && post.tags.length > 0 && (
-            <p className="text-gray-500 text-sm mb-2">
-              {post.tags.map((tag, index) => (
-                <span key={index} className="mr-1">
-                  #{tag}
-                </span>
-              ))}
-            </p>
-          )}
-          {/* 公開日が存在する場合は表示 */}
-          {post.publishedAt && (
-            <p className="text-gray-500 text-sm">
-              {formatDate(post.publishedAt)}
-            </p>
-          )}
-        </div>
+<div className="p-6">
+  {/* タイトル */}
+  <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2">
+    {post.title}
+  </h3>
+
+  {/* 作者情報 */}
+  {post.author && (
+    <div className="flex items-center mb-4">
+      {post.authorIcon && (
+        <Image
+          src={post.authorIcon}
+          alt={post.author}
+          width={32}
+          height={32}
+          className="rounded-full mr-2"
+        />
+      )}
+      <span className="text-gray-700 text-sm">{post.author}</span>
+    </div>
+  )}
+
+  {/* 要約 */}
+  {post.summary && (
+    <p className="text-gray-700 mb-4 line-clamp-3">
+      {post.summary}
+    </p>
+  )}
+
+  {/* タグ */}
+  {post.tags && post.tags.length > 0 && (
+    <p className="text-gray-500 text-sm mb-2">
+      {post.tags.map((tag, index) => (
+        <span key={index} className="mr-1">#{tag}</span>
+      ))}
+    </p>
+  )}
+
+  {/* 公開日 */}
+  {post.publishedAt && (
+    <p className="text-gray-500 text-sm">
+      {formatDate(post.publishedAt)}
+    </p>
+  )}
+</div>
       </div>
     </Link>
   );

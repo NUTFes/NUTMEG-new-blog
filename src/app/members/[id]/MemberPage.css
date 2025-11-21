@@ -1,0 +1,90 @@
+.member-page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 208px); /* フッター分を引く */
+}
+
+.member-page-content {
+  flex-grow: 1;
+  margin: 0 auto;
+  padding: 2.5rem; /* 40px */
+  max-width: 768px; /* PC版の横幅 */
+  width: 100%;
+  padding-bottom: 5rem; /* フッターとの余白 */
+}
+
+.member-page-back-button {
+  margin: 4rem 0 2.5rem 0; /* 上下の余白 */
+  text-align: center;
+}
+
+.member-info {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.member-icon {
+  border-radius: 50%;
+  margin: 0 auto 1rem auto;
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+}
+
+.member-name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.member-project {
+  color: #4B5563; /* gray-600 */
+}
+
+.member-about {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #374151; /* gray-700 */
+}
+
+/* 投稿一覧 */
+.post-list-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.post-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.no-posts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 0;
+  text-align: center;
+  color: #6B7280; /* gray-500 */
+}
+
+/* モバイル対応 */
+@media (max-width: 767px) {
+  .member-page-content {
+    padding: 1.5rem;
+  }
+
+  .member-name {
+    font-size: 1.5rem;
+  }
+
+  .post-list-title {
+    font-size: 1rem;
+  }
+
+  .member-icon {
+    width: 120px;
+    height: 120px;
+  }
+}

@@ -14,53 +14,49 @@ const notion = new Client({
 });
 
 // ブログ記事を取得する関数
+import { getAllMembers } from './member';
+
 export async function getBlogPosts(): Promise<BlogPost[]> {
   try {
     const response = await notion.databases.query({
       database_id: process.env.BLOG_DATABASE_ID!,
       sorts: [
-        {
-          property: '日付',
-          direction: 'descending',
-        },
+        { property: '日付', direction: 'descending' },
       ],
     });
 
-    const posts: BlogPost[] = [];
-    
-    for (const page of response.results) {
-      try {
-        const notionPage = page as unknown as NotionPage;
-        
-        // 必要なプロパティが存在するかチェック
-        if (!notionPage.id || !notionPage.properties) {
-          console.warn('Invalid page data:', notionPage.id);
-          continue;
-        }
+    const members = await getAllMembers(); // ここで全メンバー情報を取得
 
-        const post: BlogPost = {
-          id: notionPage.id,
-          title: getTitle(notionPage.properties),
-          thumbnail: getThumbnail(notionPage.properties),
-          publishedAt: getPublishedAt(notionPage.properties),
-          slug: notionPage.id,
-          tags: getTags(notionPage.properties),
-          summary: getSummary(notionPage.properties),
-          author: getAuthor(notionPage.properties),
-        };
-        
-        posts.push(post);
-      } catch (error) {
-        console.error('Error processing blog post:', error);
-      }
+    const posts: BlogPost[] = [];
+
+    for (const page of response.results) {
+      const notionPage = page as unknown as NotionPage;
+
+      const authorName = getAuthor(notionPage.properties);
+      const authorMember = members.find(m => m.nickname === authorName);
+
+      const post: BlogPost = {
+        id: notionPage.id,
+        title: getTitle(notionPage.properties),
+        thumbnail: getThumbnail(notionPage.properties),
+        publishedAt: getPublishedAt(notionPage.properties),
+        slug: notionPage.id,
+        tags: getTags(notionPage.properties),
+        summary: getSummary(notionPage.properties),
+        author: authorName,
+        authorIcon: authorMember?.icon,  // アイコンを紐付け
+      };
+
+      posts.push(post);
     }
-    
+
     return posts;
   } catch (error) {
     console.error('Error fetching blog posts:', error);
     return [];
   }
 }
+
 
 // Notionページ構成を取得する関数
 export async function getNotionPage(pageId: string): Promise<ExtendedRecordMap> {
