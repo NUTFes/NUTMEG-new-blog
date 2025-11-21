@@ -57,24 +57,43 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
 
 
-        {/* --- 作成者情報 --- */}
-        <div className="flex items-center mb-4 text-gray-600">
-          作成者:
-          <Link href="#" className="flex items-center group ml-2">
-            {postData.authorIcon && (
-              <Image
-                src={postData.authorIcon}
-                alt={postData.author ?? "Author"}
-                width={40}
-                height={40}
-                className="rounded-full mr-2 transition-transform group-hover:scale-105"
-              />
-            )}
-            <span className="underline decoration-gray-700 group-hover:decoration-orange-500 group-hover:text-orange-500 transition-colors">
-              {postData.author}
-            </span>
-          </Link>
-        </div>
+{/* --- 作成者情報 --- */}
+<div className="flex items-center mb-4 text-gray-600">
+  作成者:
+  {postData.authorSlug ? (
+    <Link
+      href={`/members/${postData.authorSlug}`}
+      className="flex items-center group ml-2"
+    >
+      {postData.authorIcon && (
+        <Image
+          src={postData.authorIcon}
+          alt={postData.author ?? "Author"}
+          width={40}
+          height={40}
+          className="rounded-full mr-2 transition-transform group-hover:scale-105"
+        />
+      )}
+      <span className="underline decoration-gray-700 group-hover:decoration-orange-500 group-hover:text-orange-500 transition-colors">
+        {postData.author}
+      </span>
+    </Link>
+  ) : (
+    <div className="flex items-center group ml-2">
+      {postData.authorIcon && (
+        <Image
+          src={postData.authorIcon}
+          alt={postData.author ?? "Author"}
+          width={40}
+          height={40}
+          className="rounded-full mr-2"
+        />
+      )}
+      <span className="text-gray-700">{postData.author}</span>
+    </div>
+  )}
+</div>
+
 
         {/* --- 公開日・タグ --- */}
         <p className="text-gray-600 mb-2">公開日: {postData.publishedAt}</p>
