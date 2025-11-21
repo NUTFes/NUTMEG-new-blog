@@ -48,7 +48,7 @@
 .whiteBox{
    margin: 0 auto;
 
-  width: 1340px; /* 全幅 */
+  width: 1200px; /* 全幅 */
   height: 811px;
   background-color: #FFFFFF;
   border-radius: 20px;
@@ -199,7 +199,7 @@
 }
 .HeroImageimageMisson {
   position: absolute;
-  top: 20%;
+  top: 16%;
   left: 20%;
   animation: bounceText 1.5s ease-in-out 1;
   animation-fill-mode: forwards;
@@ -461,3 +461,51 @@
   color: #0B556E;
   margin-bottom: 20px;
 }
+
+/* タブレット用 */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  /* HeroImage / Mission文字 */
+  .HeroImage {
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+
+  .HeroImageimageMisson {
+    top: 120px;
+    left: 15%;
+    width: 40%;
+    height: auto;
+  }
+
+  /* Projectセクション - レイアウトはPCと同じ、画像と文字サイズだけ調整 */
+  .projectsWhiteBox {
+    padding: 40px 30px;
+    height: auto;
+  }
+
+  .projectsBox img {
+    width: 50%;   /* 適度に小さめに */
+    max-width: 320px;
+    height: auto;
+  }
+
+  .projectsBox p {
+    font-size: 16px;  /* 少し小さめに */
+    line-height: 1.6;
+  }
+
+  /* ProjectタイトルとBlogタイトルを揃える */
+  .titleProjects,
+  .titleBlogs {
+    width: 200px;
+    height: auto;
+    margin: 0 auto 24px;
+  }
+
+  /* Blogセクション */
+  .BlogwhiteBox {
+    padding: 40px 30px;
+  }
+}
+
