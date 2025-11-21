@@ -3,12 +3,15 @@ export interface BlogPost {
   title: string;
   thumbnail?: string;
   publishedAt?: string;
-  slug: string;
   tags?: string[];
   summary?: string;
   author?: string;
-  authorIcon?: string;  // ← これを追加
+  authorIcon?: string;
+  slug?: string;       // ← 追加
+  authorSlug?: string; // ← 追加
 }
+
+
 
 
 export interface NotionPage {

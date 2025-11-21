@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getProjectProfile, getProjectRecordMap } from "../../lib/project";
 import NotionPage from "../../../app/components/NotionPage/notionPage";
 import styles from "./projectDetail.module.css";
+import BackButtonClient from './BackButtonClient';
 
 interface ProjectPageProps {
   params: { id: string };
@@ -21,7 +22,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <div className="align-left text-left">
-      <div className={styles.container}>
+      <div className={`${styles.container} space-y-6`}>
+
+        {/* --- 上の戻るボタン --- */}
+        <div className="mt-4">
+          <BackButtonClient />
+        </div>
 
         {/* --- サムネイル --- */}
         {project.thumbnail && (
@@ -69,10 +75,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
       </div>
 
-      {/* --- Notion本文 --- */}
-      <div className={styles.notionWrapper}>
+        {/* --- Notion本文 --- */}
+        <div className="mb-32 space-y-6">
+
         {recordMap && <NotionPage recordMap={recordMap} />}
-      </div>
+
+        {/* --- 下の戻るボタン --- */}
+
+        <div className="mt-4 max-w-[688px] mx-auto px-4">
+        <BackButtonClient />
+        </div>
+
+        </div>
+
     </div>
   );
 }

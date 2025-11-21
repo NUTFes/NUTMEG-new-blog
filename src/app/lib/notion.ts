@@ -20,12 +20,10 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   try {
     const response = await notion.databases.query({
       database_id: process.env.BLOG_DATABASE_ID!,
-      sorts: [
-        { property: '日付', direction: 'descending' },
-      ],
+      sorts: [{ property: '日付', direction: 'descending' }],
     });
 
-    const members = await getAllMembers(); // ここで全メンバー情報を取得
+    const members = await getAllMembers(); // 全メンバー情報取得
 
     const posts: BlogPost[] = [];
 
@@ -44,7 +42,8 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         tags: getTags(notionPage.properties),
         summary: getSummary(notionPage.properties),
         author: authorName,
-        authorIcon: authorMember?.icon,  // アイコンを紐付け
+        authorIcon: authorMember?.icon,
+        authorSlug: authorMember?.id, // ← ここを追加
       };
 
       posts.push(post);

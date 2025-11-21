@@ -1,84 +1,76 @@
-const { Client } = require("@notionhq/client");
+import { Client } from "@notionhq/client";
+import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 const notion = new Client({
   auth: process.env.INTEGRATION_TOKEN,
 });
 
-
-interface MemberProfile {
+export interface MemberProfile {
   id: string;
   nickname: string;
-  icon: string;      // 画像URL
+  icon: string;
   project: string;
   about: string;
+  slug: string;
 }
-
+// 全メンバー情報を取得
 export async function getAllMembers(): Promise<MemberProfile[]> {
-console.log("API KEY:", process.env.INTEGRATION_TOKEN);
-console.log("DB ID:", process.env.MEMBER_DATABASE_ID);
+  if (!process.env.MEMBER_DATABASE_ID) throw new Error("MEMBER_DATABASE_ID is not set");
+
   const response = await notion.databases.query({
-    database_id: process.env.MEMBER_DATABASE_ID, // メンバー用DBのID
-    
+    database_id: process.env.MEMBER_DATABASE_ID,
   });
-// const response = await notion.databases.retrieve({
-//   database_id: "28641f1920638072b59a000c65a52f31", // ← .env.localを使わず直接書く
-// });
-console.log("✅ DB取得成功:", response.id);
-  
 
-  const members = response.results;
-  const memberProperties = members.map((member: any) => {
+  const members: MemberProfile[] = response.results.map((member: any) => {
     const id = member.id;
-
     const nickname = member.properties.nickname?.title?.[0]?.plain_text ?? '';
     const project = member.properties.project?.multi_select?.map((p: any) => p.name).join(', ') ?? '';
     const icon =
-    member.properties.icon?.files?.[0]?.file?.url ??
-    member.properties.icon?.files?.[0]?.external?.url ??
-    '';
+      member.properties.icon?.files?.[0]?.file?.url ??
+      member.properties.icon?.files?.[0]?.external?.url ??
+      '';
     const about = member.properties.about?.rich_text?.[0]?.plain_text ?? '';
+    const slug = member.properties.slug?.rich_text?.[0]?.plain_text ?? '';
 
-    return { id, nickname, icon, project, about };
+    return { id, nickname, icon, project, about, slug };
   });
-await notion.databases.query({
-  database_id: process.env.MEMBER_DATABASE_ID,
-});
-  return memberProperties;
+
+  return members;
 }
 
+// NotionページをMarkdownに変換するサンプル関数
 import { NotionToMarkdown } from "notion-to-md";
-
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
 export async function getPageContent(pageId: string) {
   const mdblocks = await n2m.pageToMarkdown(pageId, 2);
-//   console.log("Markdown Content:", mdblocks);
   return mdblocks;
 }
-
-interface MemberProfile {
-  id: string;
-  nickname: string;
-  icon: string;      // 画像URL
-  project: string;
-  about: string;
-}
-
 export async function getMemberProfile(pageId: string): Promise<MemberProfile> {
   const response = await notion.pages.retrieve({ page_id: pageId });
-  const pageInfo = response.properties;
 
-  const id = response.id;
+  // 型ガードで PageObjectResponse にキャスト
+  if (!("properties" in response)) {
+    throw new Error("ページに properties が存在しません");
+  }
 
-    const titleProperty = Object.values(response.properties).find(
-    (p) => (p as any).type === 'title'
-    ) as { type: 'title'; title: { plain_text: string }[] };
-    
+  const page = response as PageObjectResponse;
+  const properties = page.properties;
+
+  const id = page.id;
+
+  const titleProperty = Object.values(properties).find(
+    (p: any) => p.type === 'title'
+  ) as { type: 'title'; title: { plain_text: string }[] } | undefined;
+
   const nickname = titleProperty?.title?.[0]?.plain_text ?? '';
-  const icon = pageInfo.icon?.files?.[0]?.file?.url ?? '';
-  const project = pageInfo.project?.rich_text?.[0]?.plain_text ?? '';
-  const about = pageInfo.about?.rich_text?.[0]?.plain_text ?? '';
+  const icon =
+    (properties.icon as any)?.files?.[0]?.file?.url ??
+    (properties.icon as any)?.files?.[0]?.external?.url ??
+    '';
+  const project = (properties.project as any)?.rich_text?.[0]?.plain_text ?? '';
+  const about = (properties.about as any)?.rich_text?.[0]?.plain_text ?? '';
+  const slug = (properties.slug as any)?.rich_text?.[0]?.plain_text ?? '';
 
-  return { id, nickname, icon, project, about };
+  return { id, nickname, icon, project, about, slug };
 }
-
