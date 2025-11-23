@@ -69,3 +69,36 @@
 .navigation-button .arrow-wrapper.left img {
   transform: rotate(180deg); /* 右向きを左向きに */
 }
+
+.navigation-button {
+  min-width: max-content;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.arrow-wrapper {
+  width: 40px !important;
+  height: 40px !important;
+  flex-shrink: 0;
+}
+
+.arrow-wrapper img {
+  width: 40px !important;
+  height: 40px !important;
+}
+/* Home.module.css */
+.NavigationButtonBox img {
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* NavigationButton.module.css */
+.buttonIcon {
+  box-shadow: none;
+  filter: none;
+}
+/* Home.module.css または NavigationButton.css のどちらか */
+.navigation-button .arrow-wrapper img {
+  box-shadow: none !important;
+  filter: none !important;
+}

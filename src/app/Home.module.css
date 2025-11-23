@@ -238,7 +238,7 @@
     position: absolute;
     top: 25%;   /* ← 元より少し下げる（画面サイズに応じて調整可） */
     left: 10%;  /* ← スマホではやや左寄りに */
-    width: 50%; /* ← 元の約半分のサイズ感 */
+    width: 40%; /* ← 元の約半分のサイズ感 */
     height: auto;
     animation: bounceText 1.5s ease-in-out 1;
     animation-fill-mode: forwards;
@@ -463,49 +463,111 @@
 }
 
 /* タブレット用 */
+/* -----------------------------
+   📱 タブレット（769px〜1024px）
+----------------------------- */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
 
-  /* HeroImage / Mission文字 */
+  /* HeroImage 調整 */
   .HeroImage {
     padding-top: 100px;
     padding-bottom: 60px;
   }
 
   .HeroImageimageMisson {
-    top: 120px;
+    top:100px;
     left: 15%;
-    width: 40%;
-    height: auto;
+    width: 45%;
   }
 
-  /* Projectセクション - レイアウトはPCと同じ、画像と文字サイズだけ調整 */
+  /* WhiteBox（プロジェクト全体の白枠） */
+  .whiteBox,
   .projectsWhiteBox {
-    padding: 40px 30px;
+    width: 90%;                  /* タブレットにフィット */
+    max-width: 900px;
+    padding: 40px 32px;
+    margin: 0 auto;
     height: auto;
+    border-radius: 16px;
   }
 
+  /* Title（Projects画像） */
+  .titleProjects {
+    width: 220px;
+    height: auto;
+    margin: 0 auto 30px;
+  }
+
+  /* 見出しまわりの余白調整 */
+  .projects {
+    margin-bottom: 150px;
+  }
+
+  /* プロジェクト内レイアウト（画像＋テキスト） */
+  .projectsBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+  }
+
+  /* 画像サイズをタブレット用に最適化 */
   .projectsBox img {
-    width: 50%;   /* 適度に小さめに */
-    max-width: 320px;
+    width: 42%;
+    max-width: 300px;
     height: auto;
+    border-radius: 12px;
   }
 
-  .projectsBox p {
-    font-size: 16px;  /* 少し小さめに */
-    line-height: 1.6;
+    /* テキスト部分を少し小さめにして余白を作る */
+.projectsBox > div {
+  width: 50%;
+  min-width: 330px; /* ← これだけで100%直る */
+}
+
+  /* NavigationButton がテキストに巻き込まれないよう独立させる */
+  .NavigationButtonBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    flex-shrink: 0;      /* ← これが超重要！縮まないようにする */
   }
 
-  /* ProjectタイトルとBlogタイトルを揃える */
-  .titleProjects,
-  .titleBlogs {
-    width: 200px;
-    height: auto;
-    margin: 0 auto 24px;
+  /* ボタン自身も幅に影響されないようにする */
+  .NavigationButtonBox a {
+    white-space: nowrap;  /* ← ボタン内の改行を禁止（ズレ防止） */
   }
+
+
 
   /* Blogセクション */
   .BlogwhiteBox {
-    padding: 40px 30px;
+    width: 90%;
+    padding: 40px 32px;
+    margin: 0 auto;
+    border-radius: 16px;
   }
-}
 
+  .titleBlogs {
+    width: 120px;
+    margin: 0 auto 24px;
+    height: auto;
+  }
+
+  /* 飾りの位置調整 */
+  .decoration1{
+    position: absolute;
+    left: 0%;
+    top: -20px;
+  }
+
+  .decoration2{
+    position: absolute;
+    right: 0%;
+    bottom: -120px;
+  }
+
+  
+}

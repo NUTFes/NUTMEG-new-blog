@@ -49,3 +49,45 @@ footer {
   padding-left: 20px;
 }
 
+
+/* footer.css に追加 */
+@media screen and (max-width: 1024px) {
+  footer {
+    padding-left: 40px;
+    padding-right: 40px;
+    height: auto; /* 高さを自動にしてアイコンが詰まらないように */
+  }
+
+  .links {
+    gap: 16px; /* アイコンやテキスト間のスペースを調整 */
+    font-size: 16px;
+    flex-wrap: wrap; /* 幅が狭くなったら折り返す */
+  }
+
+  .links-sns {
+    gap: 16px;
+  }
+
+  .column1 {
+    flex-direction: column; /* タブレットでは縦並びにする */
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .links a {
+    font-size: 16px;
+  }
+
+  .links-sns img {
+    width: 20px !important;
+    height: 20px !important;
+    margin-top: 25px;
+  }
+
+  .column1 img {
+    width: 180px !important; /* ロゴのサイズを少し小さめに */
+    height: auto !important;
+    margin-bottom: -20px;
+    margin-left: -8px;
+  }
+}

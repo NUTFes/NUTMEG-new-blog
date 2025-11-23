@@ -75,7 +75,7 @@ const TopBar = () => {
           <Link href="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
         </li>
         <li className={pathname === "/blogs" ? styles.active : ""}>
-          <Link href="/blogs" onClick={() => setMenuOpen(false)}>Blogs</Link>
+          <Link href="/blogs" onClick={() => setMenuOpen(false)}>Blog</Link>
         </li>
         <li className={pathname === "/members" ? styles.active : ""}>
           <Link href="/members" onClick={() => setMenuOpen(false)}>Members</Link>
