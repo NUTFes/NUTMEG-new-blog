@@ -1,11 +1,8 @@
-// pages/index.tsx
-import React from "react";
-
 const Contact = () => {
   return (
-    <>
-      <p>コンタクトページです</p>
-    </>
+    <div className="flex flex-col justify-center items-center h-[70vh] text-center">
+      <p className="text-lg text-gray-700">このページは現在準備中です。しばらくお待ちください。</p>
+    </div>
   );
 };
 

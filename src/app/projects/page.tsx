@@ -1,58 +1,36 @@
 "use client";
 
 import React from "react";
-import styles from "./TeamsProjects.module.css";
-import { teamsData } from "../components/teamsData";
-import { projectsData } from "../components/projectsData";
+import ProjectCard from "../components/ProjectCard2";
+import { getAllProjects } from "../lib/project";
+import Breadcrumb from "../components/Breadcrumb"; 
+import styles from "./ProjectsPage.module.css";
 
-import TeamCard from "../components/TeamCard";
-import ProjectCard from "../components/ProjectCard";
-
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-
-const TeamsAndProjects = () => {
-  const router = useRouter();
+export default async function ProjectsPage() {
+  const projects = await getAllProjects();
 
   return (
-    <>
-      <div className={styles.projects}>
-        <div className={styles.projectsBox}>
+    <div className={styles.projects}>
+      <div className={styles.projectsBox}>
+        {/* パンくずリスト */}
+        <Breadcrumb current="Projects" />
 
-          <div className={styles.breadcrumb}>
-            <button onClick={() => router.replace("/")} className={styles.breadcrumbLinkSmall}>Home</button>
-            <span className={styles.breadcrumbLinkArrow}> &gt; </span>
-            <button
-              className={styles.breadcrumbLinkBig}
-              onClick={() => router.replace("/projects")}
-            >
-              Projects
-            </button>
-          </div>
-
-          <div className={styles.cardsContainer}>
-            <div className={styles.cardsContainerProject}>
-                {projectsData.map((project) => (
-                  <ProjectCard key={project.id} {...project} />
-                ))}
-              </div>
-            </div>
-
+        {/* プロジェクトカード */}
+        <div className={styles.cardsContainerProject}>
+          {projects.map((project) => (
+            <ProjectCard
+            name={project.name}
+            logo={project.logo}
+            summary={project.summary || ""} // ← undefined の場合は空文字
+            pm={{ name: project.pmName || "未設定", icon: project.pmIcon || undefined }}
+            href={`/projects2/${project.id}`}
+            />
+          ))}
         </div>
-      </div>
 
-      <div className={styles.teams}>
-        <div className={styles.teamsBox}>
-          <div className={styles.bigTitleTeams}>Teams</div>
-          <div className={styles.cardsContainerTeams}>
-            {teamsData.map((team) => (
-              <TeamCard key={team.id} {...team} />
-            ))}
-          </div>
-        </div>
+        {/* フッターとの余白 */}
+        <div className={styles.footerSpacer} />
       </div>
-    </>
+    </div>
   );
-};
-
-export default TeamsAndProjects;
+}
