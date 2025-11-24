@@ -23,7 +23,7 @@ export default async function ProjectsPage() {
             logo={project.logo}
             summary={project.summary || ""} // ← undefined の場合は空文字
             pm={{ name: project.pmName || "未設定", icon: project.pmIcon || undefined }}
-            href={`/projects2/${project.id}`}
+            href={`/projects/${project.id}`}
             />
           ))}
         </div>
