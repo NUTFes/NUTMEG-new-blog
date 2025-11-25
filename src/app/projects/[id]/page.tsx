@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getProjectProfile, getProjectRecordMap } from "../../lib/project";
-import NotionPage from "../../../app/components/NotionPage/notionPage";
+import NotionPage from "../../components/NotionPage/notionPage";
 import styles from "./projectDetail.module.css";
 import BackButtonClient from './BackButtonClient';
 

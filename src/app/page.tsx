@@ -35,23 +35,23 @@ export default async function Home() {
           <iframe
             className="speakerdeck-iframe"
             frameBorder="0"
-            src="https://speakerdeck.com/player/1819b163900a490d8153268b8ef1b0f1"
-            title="Test-NUTMEG紹介スライド"
+            src="https://speakerdeck.com/player/932e848101334f1db860ffc35d581f8c"
+            title="NUTMEG紹介スライド"
             allowFullScreen
             style={{
               border: "0px",
-              background: "rgba(0, 0, 0, 0.1)",
+              background: "padding-box padding-box rgba(0, 0, 0, 0.1)",
               margin: "0px",
               padding: "0px",
               borderRadius: "20px",
-              boxShadow: "0px 5px 40px rgba(240, 147, 46, 0.40)",
-              width: "80vw",
+              boxShadow: "rgba(0, 0, 0, 0.2) 0px 5px 40px",
+              width: "85%",
               height: "auto",
-              aspectRatio: "560 / 315",
+              aspectRatio: "560 / 315"
             }}
             data-ratio="1.7777777777777777"
           />
-        </div>
+          </div>
       </FadeInSection>
 
       <FadeInSection>
