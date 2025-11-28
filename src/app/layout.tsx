@@ -25,6 +25,16 @@ export const metadata = {
     locale: "ja_JP",
     type: "website",
   },
+    keywords: [
+    "NUTMEG",
+    "長岡技術科学大学",
+    "技大祭",
+    "学生プロジェクト",
+    "学生エンジニア",
+    "デザイン",
+    "アプリ開発",
+    "大学生",
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
