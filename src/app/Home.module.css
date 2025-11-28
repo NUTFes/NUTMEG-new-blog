@@ -1,19 +1,27 @@
-/* Home.module.css */
-.HeroImage{
-
+.HeroImage {
+  position: relative;       /* Mission の基準になる親 */
   width: 100%;
+  height: auto;             /* 高さはコンテンツに応じて調整 */
   display: flex;
-  justify-content: center; /* 水平方向中央 */
-  align-items: center;     /* 垂直方向中央 */
-  /* padding-top: 65px; */
+  justify-content: center;
+  align-items: center;
   padding-bottom: 70px;
-  /* margin-top: 20px; */
   margin-bottom: 80px;
 }
 
-.HeroImageimage{
-  width: 100vw;
-  /* height: 700px; */
+.HeroImageimage {
+  width: 100%;
+  height: auto;
+}
+
+.HeroImageimageMisson {
+  position: absolute;       /* HeroImage に対して相対 */
+  top: 25%;                 /* HeroImage の高さの20% */
+  left: 20%;                /* HeroImage の幅の15% */
+  width: 25%;               /* HeroImage に対して幅25% */
+  height: auto;             /* 高さは自動 */
+  animation: bounceText 1.5s ease-in-out 1;
+  animation-fill-mode: forwards;
 }
 
 
@@ -50,7 +58,7 @@
 
   width: 1200px; /* 全幅 */
   height: 811px;
-  background-color: #FFFFFF;
+  background-color: var(--sub-color);
   border-radius: 20px;
   box-shadow: var(--white-box-shadow);
   padding-top: 92px;
@@ -121,6 +129,7 @@
   display: flex;
   justify-content: end;
   margin-top: 40px;
+    color: var(--red-orange); /* ボタン用に上書き */
 }
 
 .slide {
@@ -197,13 +206,7 @@
     transform: translateY(0);
   }
 }
-.HeroImageimageMisson {
-  position: absolute;
-  top: 16%;
-  left: 20%;
-  animation: bounceText 1.5s ease-in-out 1;
-  animation-fill-mode: forwards;
-}
+
 
 
 
@@ -236,7 +239,7 @@
 
   .HeroImageimageMisson {
     position: absolute;
-    top: 25%;   /* ← 元より少し下げる（画面サイズに応じて調整可） */
+    top: 30%;   /* ← 元より少し下げる（画面サイズに応じて調整可） */
     left: 10%;  /* ← スマホではやや左寄りに */
     width: 40%; /* ← 元の約半分のサイズ感 */
     height: auto;
@@ -322,6 +325,7 @@
 
   .BlogNavigationButtonBox {
     margin-top: 30px;
+      color: var(--red-orange); /* ボタン用に上書き */
   }
 
   /* ✅ 装飾画像 */
@@ -362,7 +366,7 @@
 
   /* ✅ Project WhiteBox内レイアウトをおしゃれに */
   .projectsWhiteBox {
-    background: #ffffff;
+    background: var(--sub-color);
     border-radius: 8px;
     box-shadow: 0px 4px 20px rgba(240, 147, 46, 0.2);
     padding: 32px 20px;
@@ -395,11 +399,12 @@
   .NavigationButtonBox {
     justify-content: center;
     margin-top: 24px;
+      color: var(--red-orange); /* ボタン用に上書き */
   }
 
   /* ✅ Blog 白枠も軽く整える */
   .BlogwhiteBox {
-    background: #ffffff;
+    background: var(--sub-color);
     border-radius: 8px;
     box-shadow: 0px 4px 20px rgba(240, 147, 46, 0.15);
     padding: 32px 20px;
@@ -415,7 +420,7 @@
 
 /* ✅ Projectセクション */
 .projectsWhiteBox {
-  background: #ffffff;
+  background: var(--sub-color);
   border-radius: 8px;
   box-shadow: 0px 4px 20px rgba(240, 147, 46, 0.2);
   text-align: center;
@@ -448,7 +453,7 @@
 
 /* ✅ Blogセクションも同じ横余白で整える */
 .BlogwhiteBox {
-  background: #ffffff;
+  background: var(--sub-color);
   border-radius: 8px;
   box-shadow: 0px 4px 20px rgba(240, 147, 46, 0.15);
   height: auto;
@@ -474,11 +479,15 @@
     padding-bottom: 60px;
   }
 
-  .HeroImageimageMisson {
-    top:100px;
-    left: 15%;
-    width: 45%;
-  }
+.HeroImageimageMisson {
+  position: absolute;       /* HeroImage に対して相対 */
+  top: 30%;                 /* HeroImage の高さの20% */
+  left: 20%;                /* HeroImage の幅の15% */
+  width: 30%;               /* HeroImage に対して幅25% */
+  height: auto;             /* 高さは自動 */
+  animation: bounceText 1.5s ease-in-out 1;
+  animation-fill-mode: forwards;
+}
 
   /* WhiteBox（プロジェクト全体の白枠） */
   .whiteBox,
@@ -570,4 +579,15 @@
   }
 
   
+}
+
+/* 🌙 ダークモード時の説明文を白にする */
+@media (prefers-color-scheme: dark) {
+  .projectsBox p {
+    color: #d4d4d4; /* 白 */
+  }
+
+  .BlogExplanation {
+    color: #d4d4d4; /* 白 */
+  }
 }

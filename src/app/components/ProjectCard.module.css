@@ -5,7 +5,7 @@
   text-align: left;
   /* border: 2.5px solid var(--accent-color-blue); */
   border-radius: 10px;
-  background-color: #FFFFFF;
+  background-color: var(--card-color);
   overflow: hidden;
   width: 300px;
   height: 280px;
@@ -159,4 +159,19 @@
   font-size: 20px;
   font-weight: bold;
   color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    color: #f5f5f5; /* 文字を白っぽく */
+    background-color: var(--card-color); /* 背景は変数で管理済み */
+  }
+
+  .cardAbstract,
+  .pmName,
+  .cardTitleFallback,
+  .sectionTitle,
+  .tag {
+    color: #f5f5f5; /* 各文字も白っぽく */
+  }
 }

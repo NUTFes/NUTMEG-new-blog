@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import styles from "./topbar.module.css";
 import { usePathname } from "next/navigation";
-
+import { useEffect } from "react";
 const TopBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -12,6 +12,11 @@ const TopBar = () => {
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    // ページが変わったらメニューを閉じる
+    setMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header>

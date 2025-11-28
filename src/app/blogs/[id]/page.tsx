@@ -37,79 +37,73 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const recordMap = await getNotionPage(NOTION_PAGE_ID);
 
   return (
-    <div className="align-left text-left">
-      <div className="max-w-[688px] mt-32 mx-auto px-4 space-y-6">
-        {/* --- 上の戻るボタン --- */}
-        <BackButtonClient />
-        {/* --- サムネイル --- */}
-        {postData.thumbnail && (
-          <div className="relative h-64">
-            <Image
-              src={postData.thumbnail}
-              alt={postData.title ?? ""}
-              fill
-              className="object-contain rounded-lg mb-4"
-            />
-          </div>
-        )}
-        {/* --- 記事タイトル --- */}
-        <h2 className="text-4xl font-bold">{postData.title}</h2>
+<div className="align-left text-left dark:text-white">
+  <div className="max-w-[688px] mt-32 mx-auto px-4 space-y-6">
 
+    <BackButtonClient />
 
-
-{/* --- 作成者情報 --- */}
-<div className="flex items-center mb-4 text-gray-600">
-  作成者:
-  {postData.authorSlug ? (
-    <Link
-      href={`/members/${postData.authorSlug}`}
-      className="flex items-center group ml-2"
-    >
-      {postData.authorIcon && (
+    {postData.thumbnail && (
+      <div className="relative h-64">
         <Image
-          src={postData.authorIcon}
-          alt={postData.author ?? "Author"}
-          width={40}
-          height={40}
-          className="rounded-full mr-2 transition-transform group-hover:scale-105"
+          src={postData.thumbnail}
+          alt={postData.title ?? ""}
+          fill
+          className="object-contain rounded-lg mb-4"
         />
-      )}
-      <span className="underline decoration-gray-700 group-hover:decoration-orange-500 group-hover:text-orange-500 transition-colors">
-        {postData.author}
-      </span>
-    </Link>
-  ) : (
-    <div className="flex items-center group ml-2">
-      {postData.authorIcon && (
-        <Image
-          src={postData.authorIcon}
-          alt={postData.author ?? "Author"}
-          width={40}
-          height={40}
-          className="rounded-full mr-2"
-        />
-      )}
-      <span className="text-gray-700">{postData.author}</span>
-    </div>
-  )}
-</div>
-
-
-        {/* --- 公開日・タグ --- */}
-        <p className="text-gray-600 mb-2">公開日: {postData.publishedAt}</p>
-        <p className="text-gray-600 mb-2">タグ: {postData.tags?.join(", ")}</p>
-
-        {/* --- Notion本文 --- */}
-        <div className="mb-32">
-          <NotionPage recordMap={recordMap} />
-          <div className="mb-32"></div>
-
-            {/* --- 下の戻るボタン --- */}
-            <BackButtonClient />
-        </div>
-
-
       </div>
+    )}
+
+    <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
+      {postData.title}
+    </h2>
+
+    <div className="flex items-center mb-4 text-gray-600 dark:text-gray-300">
+      作成者:
+      {postData.authorSlug ? (
+        <Link href={`/members/${postData.authorSlug}`} className="flex items-center group ml-2">
+          {postData.authorIcon && (
+            <Image
+              src={postData.authorIcon}
+              alt={postData.author ?? "Author"}
+              width={40}
+              height={40}
+              className="rounded-full mr-2 border border-gray-300 dark:border-gray-600"
+            />
+          )}
+          <span className="underline decoration-gray-700 dark:text-gray-200 group-hover:decoration-orange-500 group-hover:text-orange-500 transition-colors">
+            {postData.author}
+          </span>
+        </Link>
+      ) : (
+        <div className="flex items-center group ml-2">
+          {postData.authorIcon && (
+            <Image
+              src={postData.authorIcon}
+              alt={postData.author ?? "Author"}
+              width={40}
+              height={40}
+              className="rounded-full mr-2 border border-gray-300 dark:border-gray-600"
+            />
+          )}
+          <span className="text-gray-700 dark:text-gray-300">{postData.author}</span>
+        </div>
+      )}
     </div>
+
+    <p className="text-gray-600 dark:text-gray-300 mb-2">
+      公開日: {postData.publishedAt}
+    </p>
+    <p className="text-gray-600 dark:text-gray-300 mb-2">
+      タグ: {postData.tags?.join(", ")}
+    </p>
+
+    <div className="mb-32">
+      <NotionPage recordMap={recordMap} />
+      <div className="mb-32"></div>
+      <BackButtonClient />
+    </div>
+
+  </div>
+</div>
   );
 }

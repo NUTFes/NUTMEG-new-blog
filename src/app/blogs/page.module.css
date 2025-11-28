@@ -140,3 +140,10 @@
     margin-bottom: 20px;
   }
 }
+
+/* 🌙 ダークモード時の説明文を白にする */
+@media (prefers-color-scheme: dark) {
+ .description{
+  color: #d4d4d4;
+ }
+}

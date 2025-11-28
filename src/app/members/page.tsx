@@ -24,7 +24,7 @@ export default async function Members() {
             <Link
               href={`/members/${member.id}`}
               key={index}
-              className="bg-white rounded-lg p-10 transition-shadow shadow-[0_4px_20px_rgba(255,184,8,0.05)] hover:shadow-[0_8px_30px_rgba(255,184,8,0.3)]"
+              className="bg-[var(--card-color)] rounded-lg p-10 transition-shadow shadow-[0_4px_20px_rgba(255,184,8,0.05)] hover:shadow-[0_8px_30px_rgba(255,184,8,0.3)]"
             >
               <div className="mb-4">
                 {member.icon && (

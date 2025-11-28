@@ -24,7 +24,7 @@ export default function NotionPage({ recordMap }: NotionPageProps) {
       <NotionRenderer 
         recordMap={recordMap} // レコードマップ(Notionのデータ構造)を渡す
         fullPage={false} // フルページ表示を無効化 (レスポンシブ対応)
-        darkMode={false} // ダークモードを無効化
+        darkMode={true} // ダークモードを無効化
         // 独自のコンポーネントを指定したい場合は、ここで指定
         components={{
           Code: Code,     // コードブロックのコンポーネント

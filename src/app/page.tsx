@@ -20,7 +20,7 @@ export default async function Home() {
           className={styles.HeroImageimageMisson}
         />
         <img
-          src="/home/HeroImage_backImage.svg"
+          src="/home/HeroImage_BackImage.png"
           alt="HeroImage"
           className={styles.HeroImageimage}
         />
@@ -71,9 +71,9 @@ export default async function Home() {
               />
               <div>
                 <p>
-                  NUTMEGでは現在、8つのプロジェクトが進行中です。<br />
-                  他学年の学生同士でチームを組み、<br />
-                  ヒアリングから開発を通じて、技大祭運営のお悩み解決や、<br />
+                  NUTMEGでは現在、8つのプロジェクトが進行中です。
+                  他学年の学生同士でチームを組み、
+                  ヒアリングから開発を通じて、技大祭運営のお悩み解決や、
                   効率向上に貢献しています。
                 </p>
                 <div className={styles.NavigationButtonBox}>
@@ -120,7 +120,7 @@ export default async function Home() {
 
             </div>
               <p className={styles.BlogExplanation}>
-                NUTMEGでは、文書化して記録に残すことと、アウトプットの機会を目的として、定期的に学生がブログを投稿しています。
+                NUTMEGでは、外部の方へ活動の様子を伝えることと、アウトプットの機会を目的として、定期的に学生がブログを投稿しています。
               </p>          
             <BlogList posts={posts.slice(0, 3)} />
             <div className={styles.BlogNavigationButtonBox}>

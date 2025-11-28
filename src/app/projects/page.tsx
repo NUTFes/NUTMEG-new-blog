@@ -1,6 +1,4 @@
-"use client";
-
-import React from "react";
+// src/app/projects/page.tsx
 import ProjectCard from "../components/ProjectCard2";
 import { getAllProjects } from "../lib/project";
 import Breadcrumb from "../components/Breadcrumb"; 
@@ -12,23 +10,19 @@ export default async function ProjectsPage() {
   return (
     <div className={styles.projects}>
       <div className={styles.projectsBox}>
-        {/* パンくずリスト */}
         <Breadcrumb current="Projects" />
-
-        {/* プロジェクトカード */}
         <div className={styles.cardsContainerProject}>
-          {projects.map((project) => (
+          {projects.map(project => (
             <ProjectCard
-            name={project.name}
-            logo={project.logo}
-            summary={project.summary || ""} // ← undefined の場合は空文字
-            pm={{ name: project.pmName || "未設定", icon: project.pmIcon || undefined }}
-            href={`/projects/${project.id}`}
+              key={project.id}
+              name={project.name}
+              logo={project.logo}
+              summary={project.summary || ""}
+              pm={{ name: project.pmName || "未設定", icon: project.pmIcon || undefined }}
+              href={`/projects/${project.id}`}
             />
           ))}
         </div>
-
-        {/* フッターとの余白 */}
         <div className={styles.footerSpacer} />
       </div>
     </div>

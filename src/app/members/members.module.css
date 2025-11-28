@@ -97,3 +97,17 @@
     max-width: 92%;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+
+
+  /* メンバーカード内の文字 */
+  .cardsWrapper a h2{
+    color: #f5f5f5; /* 白に */
+  }
+
+  /* プロジェクト名や概要の薄い文字も調整 */
+.cardsWrapper a p{
+    color: #d3d3d3;
+  }
+}

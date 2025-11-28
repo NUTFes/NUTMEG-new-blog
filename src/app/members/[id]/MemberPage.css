@@ -88,3 +88,33 @@
     height: 120px;
   }
 }
+
+
+/* ダークモード対応 */
+@media (prefers-color-scheme: dark) {
+  .member-page-container,
+  .member-page-content {
+    background-color: #1c1c1c; /* 必要に応じて背景色変更 */
+    color: #f5f5f5; /* 基本文字を白に */
+  }
+
+  .member-project,
+  .member-about,
+  .no-posts {
+    color: #d1d1d1; /* 薄めの白で読みやすく */
+  }
+
+  .post-list-title {
+    color: #ffffff;
+  }
+
+  /* BlogCard 内の文字も白にしたい場合は追加 */
+  .post-grid a {
+    color: #f5f5f5;
+  }
+
+  /* 必要に応じてリンクやホバー色も調整 */
+  .member-page-back-button button {
+    color: #f5f5f5;
+  }
+}

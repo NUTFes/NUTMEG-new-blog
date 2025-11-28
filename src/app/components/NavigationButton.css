@@ -18,7 +18,10 @@
 
 .navigation-button:hover {
   background: linear-gradient(91deg, #FFB808 0.01%, #FF5C2B 137.22%);
+}
+.navigation-button:hover p{
   color: #FFFFFF;
+
 }
 
 /* 画像切り替え用 */
@@ -101,4 +104,44 @@
 .navigation-button .arrow-wrapper img {
   box-shadow: none !important;
   filter: none !important;
+}
+
+.navigation-button p {
+  color: var(--red-orange) !important; /* ← ここを追加 */
+}
+
+
+.navigation-button:hover p {
+  color: #FFFFFF !important; /* ← ここを追加 */
+}
+
+
+/* 🌙 Dark mode */
+@media (prefers-color-scheme: dark) {
+  .navigation-button {
+    background-color: transparent; /* 通常は透明 */
+  color: var(--red-orange) !important;  
+}
+
+.navigation-button p {
+  color: var(--red-orange) !important;
+}
+.navigation-button:hover p {
+  color: var(--red-orange) !important;
+}
+
+
+  .navigation-button:hover {
+    background-color: transparent;   /* ホバー→白背景 */
+    background-image: none;      /* ライトモードのグラデーション無効化 */
+  }
+
+  /* hover時の矢印切り替え */
+  .navigation-button:hover .arrow-normal {
+    opacity: 0;
+  }
+
+  .navigation-button:hover .arrow-hover {
+    opacity: 1;
+  }
 }

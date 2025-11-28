@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   /* align-items: center; */
-  z-index: 20;
+  z-index: 1000;
   transition: background-color 0.3s ease, color 0.3s ease, border-bottom 0.3s ease;
   font-size: 20px;
 }
@@ -281,3 +281,24 @@ line-height: normal;
   }
 
 }
+
+/* ダークモード全体対応 */
+@media (prefers-color-scheme: dark) {
+  /* ハンバーガーメニューの背景色 */
+  .menuPanel {
+    background: var(--background);
+  }
+
+  .menuPanel a,
+  .menuPanel li {
+    color: #f5f5f5; /* 文字を白に */
+  }
+
+  /* トップバーのロゴを白ロゴに差し替え */
+  .topbar img[src*="NUTMEG_Icon.svg"] {
+    content: url('/topbar_icons/NUTMEG_Icon_White.svg');
+  }
+
+  /* ハンバーガーメニュー内のロゴは既に白なので不要 */
+}
+

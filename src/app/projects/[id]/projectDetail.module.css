@@ -65,3 +65,18 @@
     margin-bottom: 8rem;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .container {
+    color: #f5f5f5; /* 全体文字を白っぽく */
+  }
+
+  .pmLabel,
+  .pmName {
+    color: #f5f5f5; /* PMラベルや名前も白に */
+  }
+
+  .pmName:hover {
+    color: #ea580c; /* hover はオレンジのまま */
+  }
+}

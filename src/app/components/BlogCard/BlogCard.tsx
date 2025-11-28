@@ -47,7 +47,7 @@ export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link href={`/blogs/${post.id}?${queryParams}`} className="block">
       {/* <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"> */}
-      <div className="bg-white rounded-lg shadow-[0_12px_24px_0_rgba(188,99,4,0.10)] hover:shadow-[0_12px_24px_0_rgba(188,99,4,0.30)] active:shadow-[0_12px_24px_0_rgba(188,99,4,0.15)] transition-shadow transition-transform duration-300 hover:-translate-y-1 active:translate-y-0 overflow-hidden">
+      <div className="bg-[var(--card-color)] rounded-lg shadow-[0_12px_24px_0_rgba(188,99,4,0.10)] hover:shadow-[0_12px_24px_0_rgba(188,99,4,0.30)] active:shadow-[0_12px_24px_0_rgba(188,99,4,0.15)] transition-shadow transition-transform duration-300 hover:-translate-y-1 active:translate-y-0 overflow-hidden">
         {/* サムネイル画像が存在する場合は表示 */}
         {/* {post.thumbnail && (
           <div className="relative h-48 w-full">
@@ -72,15 +72,27 @@ export default function BlogCard({ post }: BlogCardProps) {
             />
           </div>
         ) : (
-          <div className="h-48 w-full bg-gray-200 flex items-center justify-center text-gray-500">
-            No Image
-          </div>
+<div className="
+  h-48 w-full 
+  bg-gray-200 dark:bg-gray-400 
+  bg-opacity-100
+  flex items-center justify-center
+  text-gray-500 dark:text-gray-300
+">
+  No Image
+</div>
+
+
+
         )}
 
 
 <div className="p-6">
+
   {/* タイトル */}
-  <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2">
+  <h3 className="text-xl font-semibold 
+                 text-gray-900 dark:text-white 
+                 mb-2 line-clamp-2">
     {post.title}
   </h3>
 
@@ -93,23 +105,25 @@ export default function BlogCard({ post }: BlogCardProps) {
           alt={post.author}
           width={32}
           height={32}
-          className="rounded-full mr-2"
+          className="rounded-full mr-2 border border-gray-300 dark:border-gray-600"
         />
       )}
-      <span className="text-gray-700 text-sm">{post.author}</span>
+      <span className="text-gray-700 dark:text-gray-300 text-sm">
+        {post.author}
+      </span>
     </div>
   )}
 
   {/* 要約 */}
   {post.summary && (
-    <p className="text-gray-700 mb-4 line-clamp-3">
+    <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
       {post.summary}
     </p>
   )}
 
   {/* タグ */}
   {post.tags && post.tags.length > 0 && (
-    <p className="text-gray-500 text-sm mb-2">
+    <p className="text-gray-500 dark:text-gray-400 text-sm mb-2">
       {post.tags.map((tag, index) => (
         <span key={index} className="mr-1">#{tag}</span>
       ))}
@@ -118,7 +132,7 @@ export default function BlogCard({ post }: BlogCardProps) {
 
   {/* 公開日 */}
   {post.publishedAt && (
-    <p className="text-gray-500 text-sm">
+    <p className="text-gray-500 dark:text-gray-400 text-sm">
       {formatDate(post.publishedAt)}
     </p>
   )}
