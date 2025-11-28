@@ -1,21 +1,40 @@
 // src/app/layout.tsx
+
 import TopBar from './components/topbar';
 import Footer from './components/footer';
-import './globals.css'; // 必要なスタイルをここで
+import './globals.css';
 
+export const metadata = {
+  title: "NUTMEG",
+  description: "長岡技術科学大学、技大祭実行委員会情報局、NUTMEG の公式サイトです。",
+  icons: {
+    icon: "/icon.png",
+  },
+  openGraph: {
+    title: "NUTMEG",
+    description: "多様な学生が活躍するプロジェクトチーム",
+    url: "https://blog.nutmeg.cloud",
+    siteName: "NUTMEG",
+    images: [
+      {
+        url: "/ogp.png",
+        width: 1200,
+        height: 630,
+      }
+    ],
+    locale: "ja_JP",
+    type: "website",
+  },
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
       <body>
         <TopBar />
         <main>{children}</main>
         <div className='hide-on-mobile'>
-        <Footer />
+          <Footer />
         </div>
       </body>
     </html>
