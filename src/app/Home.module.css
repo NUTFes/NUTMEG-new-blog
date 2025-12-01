@@ -22,6 +22,7 @@
   height: auto;             /* 高さは自動 */
   animation: bounceText 1.5s ease-in-out 1;
   animation-fill-mode: forwards;
+  margin-top: -2%;
 }
 
 
