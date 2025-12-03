@@ -127,17 +127,18 @@
   
 }
 .hamburgerMenuTop {
+  box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px;             /* 高さを固定して中央揃えしやすくする */
-  padding: 40px, 16px;          /* 上下の padding は 0 に */
+  padding: 16px 40px 0px 40px; /* topbar と完全一致 */
   display: flex;
   justify-content: space-between;
-  align-items: center;      /* ← ここを有効にする */
-  z-index: 20;
+  align-items: center; 
+  z-index: 2000;
 }
+
 
 
 .menuPanel ul {

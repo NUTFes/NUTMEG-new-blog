@@ -20,7 +20,11 @@ const TopBar = () => {
 
   return (
     <header>
-      <div className={styles.topbar}>
+      
+        <div
+          className={styles.topbar}
+          style={{ display: menuOpen ? "none" : "flex" }}
+        >
         <Link href="/">
           <img
             src="/topbar_icons/NUTMEG_Icon.svg"
