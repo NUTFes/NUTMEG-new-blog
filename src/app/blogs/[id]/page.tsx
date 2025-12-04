@@ -5,6 +5,7 @@ import { getNotionPage, getBlogPosts } from '../../lib/notion';
 import NotionPage from '../../../app/components/NotionPage/notionPage';
 import { BlogPost } from '../../types/blog';
 import BackButtonClient from './BackButtonClient';
+import NavigationButton from '../../components/NavigationButton';
 
 interface BlogPostPageProps {
   params: Promise<{ id: string }>;
@@ -19,24 +20,72 @@ interface BlogPostPageProps {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { id } = await params;
-  const NOTION_PAGE_ID = id;
+  try {
+    const { id } = await params;
+    const NOTION_PAGE_ID = id;
 
-  // ブログ記事データを取得
-  const allPosts = await getBlogPosts();
-  const postData = allPosts.find((p: BlogPost) => p.id === id);
+    // ブログ記事データを取得
+    let allPosts: BlogPost[];
+    try {
+      allPosts = await getBlogPosts();
+    } catch (error) {
+      console.error('Failed to fetch blog posts:', error);
+      return (
+        <div className="max-w-2xl mx-auto mt-32 px-4 text-center">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            記事一覧の取得に失敗しました
+          </h1>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">
+            しばらく時間をおいてから再度お試しください。
+          </p>
+          <div className="flex justify-center">
+            <NavigationButton text="ブログ一覧に戻る" href="/blogs" arrowLeft={true} />
+          </div>
+        </div>
+      );
+    }
 
-  if (!postData) {
+    const postData = allPosts.find((p: BlogPost) => p.id === id);
+
+    if (!postData) {
+      return (
+        <div className="max-w-2xl mx-auto mt-32 px-4 text-center">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            記事が見つかりません
+          </h1>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">
+            お探しの記事は削除されたか、URLが間違っている可能性があります。
+          </p>
+          <div className="flex justify-center">
+            <NavigationButton text="ブログ一覧に戻る" href="/blogs" arrowLeft={true} />
+          </div>
+        </div>
+      );
+    }
+
+    // Notionページデータを取得
+    let recordMap;
+    try {
+      recordMap = await getNotionPage(NOTION_PAGE_ID);
+    } catch (error) {
+      console.error('Failed to fetch Notion page:', error);
+      return (
+        <div className="max-w-2xl mx-auto mt-32 px-4 text-center">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            記事の読み込みに失敗しました
+          </h1>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">
+            Notion APIからの記事取得に失敗しました。<br />
+            しばらく時間をおいてから再度お試しください。
+          </p>
+          <div className="flex justify-center">
+            <NavigationButton text="ブログ一覧に戻る" href="/blogs" arrowLeft={true} />
+          </div>
+        </div>
+      );
+    }
+
     return (
-      <div className="error-page">
-        <h1>記事が見つかりません</h1>
-      </div>
-    );
-  }
-
-  const recordMap = await getNotionPage(NOTION_PAGE_ID);
-
-  return (
 <div className="align-left text-left dark:text-white">
   <div className="max-w-[688px] mt-32 mx-auto px-4 space-y-6">
 
@@ -105,5 +154,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   </div>
 </div>
-  );
+    );
+  } catch (error) {
+    console.error('Unexpected error in BlogPostPage:', error);
+    return (
+      <div className="max-w-2xl mx-auto mt-32 px-4 text-center">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          エラーが発生しました
+        </h1>
+        <p className="text-gray-600 dark:text-gray-300 mb-6">
+          予期しないエラーが発生しました。しばらく時間をおいてから再度お試しください。
+        </p>
+        <div className="flex justify-center">
+          <NavigationButton text="ブログ一覧に戻る" href="/blogs" arrowLeft={true} />
+        </div>
+      </div>
+    );
+  }
 }
