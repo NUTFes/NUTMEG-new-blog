@@ -91,3 +91,31 @@ footer {
     margin-left: -8px;
   }
 }
+
+.bottom-container{
+  display: flex;
+  align-items: baseline;
+  gap: 36px;
+}
+
+.oldSiteLink{
+  color: rgba(255, 255, 255, 0.80);
+  font-size: 14px;
+  display: flex;
+  gap: 5px;
+}
+.oldSiteLink:hover{
+  text-decoration: underline;
+}
+
+.oldSiteLinkAnchor {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  display: flex;
+  gap: 5px;
+  text-decoration: none; /* 初期は消しておく */
+}
+
+.oldSiteLinkAnchor:hover {
+  text-decoration: underline;
+}

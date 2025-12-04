@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import "./footer.css"; // CSS ファイルをインポート
+import { SITE_URLS } from "../config"
 
 const Footer = () => {
   return (
@@ -53,7 +54,22 @@ const Footer = () => {
             </Link>
           </div>
         </div>
-        <div className="address">〒940-2188 新潟県長岡市上富岡町1603-1</div>
+        <div className="bottom-container">
+          <div className="address">〒940-2188 新潟県長岡市上富岡町1603-1</div>
+<div className="oldSiteLink">
+  <Link href={SITE_URLS.oldSite} className="oldSiteLinkAnchor" target="_blank">
+    <span>旧サイトはこちら</span>
+    <Image
+      src="/footer_icons/link_icon.svg"
+      alt="link_icon"
+      width={12}
+      height={12}
+    />
+  </Link>
+</div>
+
+        </div>
+
       </div>
     </footer>
   );

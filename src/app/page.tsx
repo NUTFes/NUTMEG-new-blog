@@ -6,6 +6,7 @@ import FadeInSection from "./components/FadeInSection/FadeInSection";
 import Carousel from "./components/carousel";
 import BlogList from "./components/BlogList/BlogList";
 import { getBlogPosts } from "./../app/lib/notion";
+import OldSitePreview from "./components/OldSitePreview";
 
 
 export default async function Home() {
@@ -133,6 +134,10 @@ export default async function Home() {
         </div>
 
       </FadeInSection>
+      <FadeInSection>
+        <OldSitePreview />
+      </FadeInSection>
+
     </>
   );
 };

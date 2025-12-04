@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@notionhq/client": "^4.0.2",
+    "cheerio": "^1.1.2",
     "dotenv": "^17.2.3",
     "next": "15.3.1",
     "notion-client": "^7.4.3",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/cheerio": "^0.22.35",
     "@types/node": "^20.19.11",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19",
