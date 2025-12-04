@@ -8,14 +8,14 @@ import BackButtonClient from './BackButtonClient';
 
 interface BlogPostPageProps {
   params: Promise<{ id: string }>;
-  searchParams: {
+  searchParams: Promise<{
     title?: string;
     thumbnail?: string;
     publishedAt?: string;
     tags?: string;
     summary?: string;
     author?: string;
-  };
+  }>;
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {

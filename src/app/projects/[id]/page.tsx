@@ -7,11 +7,11 @@ import styles from "./projectDetail.module.css";
 import BackButtonClient from './BackButtonClient';
 
 interface ProjectPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const { id } = params;
+  const { id } = await params;
 
   const project = await getProjectProfile(id);
   const recordMap = await getProjectRecordMap(id);

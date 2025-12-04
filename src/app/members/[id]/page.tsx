@@ -10,11 +10,12 @@ export async function generateStaticParams() {
 }
 
 interface MemberPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function MemberPage({ params }: MemberPageProps) {
-  const member = await getMemberProfile(params.id);
+  const { id } = await params;
+  const member = await getMemberProfile(id);
   const posts: BlogPost[] = await getBlogPostsByAuthor(member.nickname);
 
   return <MemberPageClient member={member} posts={posts} />;
