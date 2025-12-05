@@ -1,5 +1,6 @@
 // "use client";
 // import React, { useEffect, useState } from "react";
+import { Suspense } from "react";
 import NavigationButton from "./components/NavigationButton";
 import styles from "./Home.module.css"; // CSSファイルのインポート
 import FadeInSection from "./components/FadeInSection/FadeInSection";
@@ -123,7 +124,9 @@ export default async function Home() {
               <p className={styles.BlogExplanation}>
                 NUTMEGでは、外部の方へ活動の様子を伝えることと、アウトプットの機会を目的として、定期的に学生がブログを投稿しています。
               </p>          
-            <BlogList posts={posts.slice(0, 3)} />
+            <Suspense fallback={<div>読み込み中...</div>}>
+              <BlogList posts={posts.slice(0, 3)} />
+            </Suspense>
             <div className={styles.BlogNavigationButtonBox}>
               <NavigationButton
                       text="ブログ一覧ページへ"
