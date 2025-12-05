@@ -12,13 +12,13 @@ interface CardProps {
   link: string;
 }
 
-const Card: React.FC<CardProps> = ({
+const Card = ({
   thumbnail,
   tags,
   title,
   abstract,
   link,
-}) => {
+}: CardProps) => {
   return (
     <a href={link} className="card">
       <Image src={thumbnail} alt={title} width={318} height={179} className="card-thumbnail" />

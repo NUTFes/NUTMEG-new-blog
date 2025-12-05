@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import styles from "./page.module.css";
 import BlogList from "../components/BlogList/BlogList";
 import { getBlogPosts } from "../../app/lib/notion";
@@ -24,7 +24,9 @@ const Blogs = async () => {
         定期的にメンバーがブログの更新を行っています。
       </p>
 
-      <BlogList posts={posts} />
+      <Suspense fallback={<div>読み込み中...</div>}>
+        <BlogList posts={posts} />
+      </Suspense>
       
     </div>
   );
