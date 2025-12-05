@@ -38,7 +38,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <p className="text-gray-600 dark:text-gray-300 mb-6">
             しばらく時間をおいてから再度お試しください。
           </p>
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-8">
             <NavigationButton text="ブログ一覧に戻る" href="/blogs" arrowLeft={true} />
           </div>
         </div>
@@ -56,7 +56,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <p className="text-gray-600 dark:text-gray-300 mb-6">
             お探しの記事は削除されたか、URLが間違っている可能性があります。
           </p>
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-8">
             <NavigationButton text="ブログ一覧に戻る" href="/blogs" arrowLeft={true} />
           </div>
         </div>
@@ -75,10 +75,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             記事の読み込みに失敗しました
           </h1>
           <p className="text-gray-600 dark:text-gray-300 mb-6">
-            Notion APIからの記事取得に失敗しました。<br />
+            記事取得に失敗しました。<br />
             しばらく時間をおいてから再度お試しください。
           </p>
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-8">
             <NavigationButton text="ブログ一覧に戻る" href="/blogs" arrowLeft={true} />
           </div>
         </div>
@@ -165,7 +165,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <p className="text-gray-600 dark:text-gray-300 mb-6">
           予期しないエラーが発生しました。しばらく時間をおいてから再度お試しください。
         </p>
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-8">
           <NavigationButton text="ブログ一覧に戻る" href="/blogs" arrowLeft={true} />
         </div>
       </div>
