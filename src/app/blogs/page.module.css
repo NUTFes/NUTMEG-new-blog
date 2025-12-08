@@ -1,0 +1,149 @@
+/* コンテナ全体 */
+.container {
+  margin-top: 4rem;
+  padding: 2rem 8rem;
+  min-height: 100vh;
+  text-align: left;
+}
+
+/* タイトル部分 */
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* パンくずリスト wrapper */
+.breadcrumbWrapper {
+  display: flex;
+  flex-wrap: nowrap;   /* 横並び維持 */
+  align-items: center;
+  gap: 6px;
+}
+
+/* 個別リンク */
+.breadcrumbLinkSmall {
+  color: var(--red-orange);
+  font-family: "Noto Sans JP";
+  font-size: 32px; /* Bingoと同じ */
+  font-weight: 600;
+  line-height: normal;
+  white-space: nowrap; /* 折り返し防止 */
+  text-decoration: none;
+}
+
+.breadcrumbLinkSmall:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbLinkArrow {
+  color: var(--red-orange);
+  font-family: "Noto Sans JP";
+  font-size: 32px;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0 2px;       /* Bingoと同じ */
+  white-space: nowrap;
+  flex-shrink: 0;      /* 矢印は縮まない */
+}
+
+.breadcrumbLinkBig {
+  color: var(--red-orange);
+  font-family: "Noto Sans JP";
+  font-size: 50px; /* Bingoと同じ */
+  font-weight: 700;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.breadcrumbLinkBig:hover {
+  text-decoration: underline;
+}
+
+/* 区切り */
+.separator {
+  color: var(--red-orange);
+  font-family: "Noto Sans JP";
+  font-size: 32px; /* Bingoと同じ */
+  font-weight: 500;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* ページ見出し */
+.heading {
+  color: var(--red-orange);
+  font-family: "Noto Sans JP";
+  font-size: 50px; /* Bingoと同じ */
+  font-weight: 700;
+  line-height: normal;
+}
+
+.heading:hover {
+  text-decoration: underline;
+}
+
+/* 説明文 */
+.description {
+  font-size: 16px;
+  color: #374151;
+  margin-top: 20px;
+  margin-bottom: 2.5rem;
+  line-height: 1.75;
+}
+
+/* モバイル版（768px以下） */
+@media screen and (max-width: 768px) {
+
+  .container {
+    margin-top: 90px;   /* Bingoと同じ */
+    padding: 0 16px;
+  }
+
+  .title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+
+  .breadcrumbWrapper {
+    gap: 4px;
+  }
+
+  .breadcrumbLinkSmall {
+    font-size: 18px;
+  }
+
+  .breadcrumbLinkArrow {
+    font-size: 18px;
+  }
+
+  .breadcrumbLinkBig {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .separator {
+    font-size: 18px;
+  }
+
+  .heading {
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 12px;
+    margin-bottom: 20px;
+  }
+}
+
+/* 🌙 ダークモード時の説明文を白にする */
+@media (prefers-color-scheme: dark) {
+ .description{
+  color: #d4d4d4;
+ }
+}

@@ -1,0 +1,177 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  /* border: 2.5px solid var(--accent-color-blue); */
+  border-radius: 10px;
+  background-color: var(--card-color);
+  overflow: hidden;
+  width: 300px;
+  height: 280px;
+  text-decoration: none;
+  color: inherit;
+  margin: 15px;
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+    box-shadow: 0 12px 24px 0 rgba(188, 99, 4, 0.10);
+
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+}
+.card:hover {
+  /* 影をふわっと広げる */
+  /* box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 12px 24px 0 rgba(188, 99, 4, 0.30);
+
+  transform: translateY(-4px); /* 少し浮かせる */
+}
+
+.card:active {
+  /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); */
+    box-shadow: 0 12px 24px 0 rgba(188, 99, 4, 0.15);
+
+  transform: translateY(0); /* 押した感じに戻す */
+}
+
+/* .card:hover {
+  background-color: var(--accent-color-blue);
+}
+.card:hover .cardAbstract,
+.card:hover .pmName {
+  color: #FFFFFF;
+}
+
+.card:active {
+  background-color: var(--sub-color-skyblue);
+} */
+/* .card:active .cardAbstract,
+.card:active .pmName {
+  color: #FFFFFF;
+} */
+
+.cardPadding {
+  padding: 20px;
+}
+
+
+
+.cardAbstract {
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 14px;
+}
+
+.cardTags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  color: orange;
+  font-size: 15px;
+}
+
+.pmInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pmName {
+  font-size: 15px;
+}
+
+.arrowBox {
+  width: 100%;
+  position:absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+
+.arrow {
+  transition: 0.2s ease;
+}
+/* 
+.card:hover .arrow,
+.card:active .arrow {
+  content: url("/ArrowWhite.svg");
+} */
+
+.techInline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pmInline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pmIcon {
+  border-radius: 50%;
+}
+
+.cardTitle {
+  position: relative;
+  width: 244px; /* 必要に応じて調整 */
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* ← 左寄せ */
+  overflow: hidden;
+  margin-bottom: 20px;
+
+}
+.logoImage{
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+
+}
+
+.pmIcon {
+  border-radius: 50%; /* 丸くする */
+  object-fit: cover;
+}
+
+.arrowBox {
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cardTitleFallback {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    color: #f5f5f5; /* 文字を白っぽく */
+    background-color: var(--card-color); /* 背景は変数で管理済み */
+  }
+
+  .cardAbstract,
+  .pmName,
+  .cardTitleFallback,
+  .sectionTitle,
+  .tag {
+    color: #f5f5f5; /* 各文字も白っぽく */
+  }
+}

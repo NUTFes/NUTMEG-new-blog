@@ -1,0 +1,128 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  /* border: 2.5px solid var(--accent-color-blue); */
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  overflow: hidden;
+  width: 330px;
+  height: 300px;
+  text-decoration: none;
+  color: inherit;
+  margin: 15px;
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+      box-shadow: 0 12px 24px 0 rgba(188, 99, 4, 0.10);
+
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+}
+.card:hover {
+  /* 影をふわっと広げる */
+  /* box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); */
+      box-shadow: 0 12px 24px 0 rgba(188, 99, 4, 0.30);
+
+  transform: translateY(-4px); /* 少し浮かせる */
+}
+
+.card:active {
+  /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); */
+      box-shadow: 0 12px 24px 0 rgba(188, 99, 4, 0.15);
+
+  transform: translateY(0); /* 押した感じに戻す */
+}
+
+/* .card:hover {
+  background-color: var(--red-orange);
+}
+.card:hover .cardAbstract,
+.card:hover .pmName {
+  color: #FFFFFF;
+}
+
+.card:active {
+  background-color: var(--yellow-orange);
+}
+.card:active .cardAbstract,
+.card:active .pmName {
+  color: #FFFFFF;
+} */
+
+.cardPadding {
+  padding: 20px;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.cardAbstract {
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 14px;
+}
+
+.cardTags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  color: orange;
+  font-size: 15px;
+}
+
+.pmInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pmName {
+  font-size: 15px;
+}
+
+.arrowBox {
+  width: 100%;
+  position:absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+
+.arrow {
+  transition: 0.2s ease;
+}
+
+/* .card:hover .arrow,
+.card:active .arrow {
+  content: url("/ArrowWhite.svg");
+} */
+
+.techInline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pmInline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pmIcon {
+  border-radius: 50%;
+}

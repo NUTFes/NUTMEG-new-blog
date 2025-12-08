@@ -1,0 +1,594 @@
+.HeroImage {
+  position: relative;       /* Mission の基準になる親 */
+  width: 100%;
+  height: auto;             /* 高さはコンテンツに応じて調整 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 70px;
+  margin-bottom: 80px;
+}
+
+.HeroImageimage {
+  width: 100%;
+  height: auto;
+}
+
+.HeroImageimageMisson {
+  position: absolute;       /* HeroImage に対して相対 */
+  top: 25%;                 /* HeroImage の高さの20% */
+  left: 20%;                /* HeroImage の幅の15% */
+  width: 25%;               /* HeroImage に対して幅25% */
+  height: auto;             /* 高さは自動 */
+  animation: bounceText 1.5s ease-in-out 1;
+  animation-fill-mode: forwards;
+  margin-top: -2%;
+}
+
+
+
+.projects{
+  width: 100%;
+  display: flex;
+  text-align: left;
+  justify-content: center; /* 中央揃え */
+  margin-bottom: 200px;
+  color: #0B556E;
+  font-size: 20px;
+}
+.projectsBox{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.blogs{
+  width: 100%;
+  display: flex;
+  text-align: left;
+  justify-content: center; /* 中央揃え */
+  margin-bottom: 300px;
+  /* color: var(--accent-color-blue); */
+  font-size: 18px;
+
+}
+
+.whiteBox{
+   margin: 0 auto;
+
+  width: 1200px; /* 全幅 */
+  height: 811px;
+  background-color: var(--sub-color);
+  border-radius: 20px;
+  box-shadow: var(--white-box-shadow);
+  padding-top: 92px;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+.BlogwhiteBox{
+  /* height: 811px; */
+  /* background-color: #FFFFFF; */
+   margin: 0 auto;
+
+  border-radius: 20px;
+  /* box-shadow: var(--white-box-shadow); */
+  padding-top: 92px;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+.projectsWhiteBox{
+  height: 700px;
+}
+
+.titleProjects{
+  width: 258px;
+  height: 74px;
+  text-align: left;
+  margin-bottom: 40px;
+  margin-left: 10px;
+}
+
+.titleBlogs{
+  text-align: left;
+  margin-bottom: 25px;
+  margin-left: 0px;
+}
+
+.description{
+  margin-bottom: 20px;
+}
+.cardContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+
+}
+.BlogNavigationButtonBox{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+
+
+.BlogTitle{
+  font-size: 70px;
+  font-weight: bold;
+  /* color: var(--accent-color-blue); */
+  color: var(--red-orange);
+
+  margin-left: 40px;
+}
+.NavigationButtonBox{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-top: 40px;
+    color: var(--red-orange); /* ボタン用に上書き */
+}
+
+.slide {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* お好みで余白調整 */
+  margin-bottom: 200px;
+}
+
+.decoration1{
+  position: absolute;
+  left: 5%;
+  bottom: 0px;
+}
+.decoration2{
+  position: absolute;
+  right: 5%;
+  bottom: 35px;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.decoration1,
+.decoration2 {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes bounceText {
+  0% {
+    transform: translateY(-130px);
+    animation-timing-function: ease-in;
+  }
+  40% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  60% {
+    transform: translateY(-100px);
+    animation-timing-function: ease-in;
+  }
+  75% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  85% {
+    transform: translateY(-20px);
+    animation-timing-function: ease-in;
+  }
+  92% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  96% {
+    transform: translateY(-10px);
+    animation-timing-function: ease-in;
+  }
+  98% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+
+
+.flexBox{
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  align-items: end;
+}
+
+/* -----------------------------
+  📱 モバイルレイアウト調整
+----------------------------- */
+@media screen and (max-width: 768px) {
+
+  /* ✅ 全体 */
+  .HeroImage {
+    padding-top: 80px;
+    flex-direction: column;
+    padding-bottom: 40px;
+    margin-bottom: 0px;
+    position: relative; /* Missionを重ねるために必要 */
+    overflow: hidden;
+  }
+
+  .HeroImageimage {
+    width: 100%;
+    height: auto;
+  }
+
+  .HeroImageimageMisson {
+    position: absolute;
+    top: 30%;   /* ← 元より少し下げる（画面サイズに応じて調整可） */
+    left: 10%;  /* ← スマホではやや左寄りに */
+    width: 40%; /* ← 元の約半分のサイズ感 */
+    height: auto;
+    animation: bounceText 1.5s ease-in-out 1;
+    animation-fill-mode: forwards;
+  }
+  
+
+  /* ✅ スライド */
+  .slide {
+    margin-bottom: 100px;
+    padding: 10px;
+  }
+
+  .slide iframe {
+    width: 95vw !important;
+    border-radius: 12px !important;
+  }
+
+  /* ✅ プロジェクトセクション */
+  .projects {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 120px;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .whiteBox {
+    width: 95%;
+    height: auto;
+    padding: 40px 20px;
+  }
+
+  .projectsWhiteBox {
+    height: auto;
+  }
+
+  .projectsBox {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .projectsBox img {
+    width: 90%;
+    height: auto;
+  }
+
+  .NavigationButtonBox {
+    justify-content: center;
+    margin-top: 24px;
+  }
+
+  .titleProjects {
+    width: 180px;
+    height: auto;
+    margin: 0 auto 24px;
+  }
+
+  /* ✅ ブログセクション */
+  .blogs {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 150px;
+    font-size: 16px;
+  }
+
+  .BlogwhiteBox {
+    width: 95%;
+    padding: 40px 20px;
+  }
+
+  .flexBox {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .titleBlogs {
+    width: 180px;
+    margin: 0 auto 20px;
+  }
+
+  .BlogNavigationButtonBox {
+    margin-top: 30px;
+      color: var(--red-orange); /* ボタン用に上書き */
+  }
+
+  /* ✅ 装飾画像 */
+  .decoration1,
+  .decoration2 {
+    display: none; /* ← モバイルで非表示に */
+  }
+    /* .decoration1 {
+    position: absolute;
+    left: 3%;
+    bottom: -10px;
+    width: 80px; 
+    height: auto;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .decoration2 {
+    position: absolute;
+    right: 3%;
+    bottom: -30px;
+    width: 90px; 
+    height: auto;
+    animation: float 3s ease-in-out infinite;
+  } */
+  /* ✅ Projectセクション見出し */
+  .titleProjects {
+    width: 150px;         /* 小さめに */
+    height: auto;
+    margin: 0 auto 16px;
+  }
+
+  /* ✅ Blogセクション見出し */
+  .titleBlogs {
+    width: 80px;
+    height: auto;
+    margin: 0 auto 16px;
+  }
+
+  /* ✅ Project WhiteBox内レイアウトをおしゃれに */
+  .projectsWhiteBox {
+    background: var(--sub-color);
+    border-radius: 8px;
+    box-shadow: 0px 4px 20px rgba(240, 147, 46, 0.2);
+    padding: 32px 20px;
+    text-align: center;
+    height: auto;
+  }
+
+  .projectsBox {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .projectsBox img {
+    width: 85%;
+    max-width: 360px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  .projectsBox p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #0B556E;
+    margin: 0 auto;
+    max-width: 90%;
+    text-align: left; /* ✅ ← 中央寄せを左寄せに変更 */
+  }
+
+
+  .NavigationButtonBox {
+    justify-content: center;
+    margin-top: 24px;
+      color: var(--red-orange); /* ボタン用に上書き */
+  }
+
+  /* ✅ Blog 白枠も軽く整える */
+  .BlogwhiteBox {
+    background: var(--sub-color);
+    border-radius: 8px;
+    box-shadow: 0px 4px 20px rgba(240, 147, 46, 0.15);
+    padding: 32px 20px;
+  }
+  /* ✅ WhiteBox 共通の横余白統一 */
+.whiteBox,
+.projectsWhiteBox,
+.BlogwhiteBox {
+  width: 92%;
+  padding: 32px 24px; /* ← 横のpaddingを統一 */
+  margin: 0 auto;
+}
+
+/* ✅ Projectセクション */
+.projectsWhiteBox {
+  background: var(--sub-color);
+  border-radius: 8px;
+  box-shadow: 0px 4px 20px rgba(240, 147, 46, 0.2);
+  text-align: center;
+  height: auto;
+}
+
+.projectsBox {
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* ✅ 写真を少し大きくする */
+.projectsBox img {
+  width: 95%; /* ← 以前より少し大きめに */
+  max-width: 420px; /* ← スマホでも自然に収まる */
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ 説明文の整形 */
+.projectsBox p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #0B556E;
+  margin: 0 auto;
+  max-width: 90%;
+  text-align: left;
+}
+
+/* ✅ Blogセクションも同じ横余白で整える */
+.BlogwhiteBox {
+  background: var(--sub-color);
+  border-radius: 8px;
+  box-shadow: 0px 4px 20px rgba(240, 147, 46, 0.15);
+  height: auto;
+}
+
+
+}
+
+.BlogExplanation{
+  color: #0B556E;
+  margin-bottom: 20px;
+}
+
+/* タブレット用 */
+/* -----------------------------
+   📱 タブレット（769px〜1024px）
+----------------------------- */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  /* HeroImage 調整 */
+  .HeroImage {
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+
+.HeroImageimageMisson {
+  position: absolute;       /* HeroImage に対して相対 */
+  top: 30%;                 /* HeroImage の高さの20% */
+  left: 20%;                /* HeroImage の幅の15% */
+  width: 30%;               /* HeroImage に対して幅25% */
+  height: auto;             /* 高さは自動 */
+  animation: bounceText 1.5s ease-in-out 1;
+  animation-fill-mode: forwards;
+}
+
+  /* WhiteBox（プロジェクト全体の白枠） */
+  .whiteBox,
+  .projectsWhiteBox {
+    width: 90%;                  /* タブレットにフィット */
+    max-width: 900px;
+    padding: 40px 32px;
+    margin: 0 auto;
+    height: auto;
+    border-radius: 16px;
+  }
+
+  /* Title（Projects画像） */
+  .titleProjects {
+    width: 220px;
+    height: auto;
+    margin: 0 auto 30px;
+  }
+
+  /* 見出しまわりの余白調整 */
+  .projects {
+    margin-bottom: 150px;
+  }
+
+  /* プロジェクト内レイアウト（画像＋テキスト） */
+  .projectsBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+  }
+
+  /* 画像サイズをタブレット用に最適化 */
+  .projectsBox img {
+    width: 42%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 12px;
+  }
+
+    /* テキスト部分を少し小さめにして余白を作る */
+.projectsBox > div {
+  width: 50%;
+  min-width: 330px; /* ← これだけで100%直る */
+}
+
+  /* NavigationButton がテキストに巻き込まれないよう独立させる */
+  .NavigationButtonBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    flex-shrink: 0;      /* ← これが超重要！縮まないようにする */
+  }
+
+  /* ボタン自身も幅に影響されないようにする */
+  .NavigationButtonBox a {
+    white-space: nowrap;  /* ← ボタン内の改行を禁止（ズレ防止） */
+  }
+
+
+
+  /* Blogセクション */
+  .BlogwhiteBox {
+    width: 90%;
+    padding: 40px 32px;
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+
+  .titleBlogs {
+    width: 120px;
+    margin: 0 auto 24px;
+    height: auto;
+  }
+
+  /* 飾りの位置調整 */
+  .decoration1{
+    position: absolute;
+    left: 0%;
+    top: -20px;
+  }
+
+  .decoration2{
+    position: absolute;
+    right: 0%;
+    bottom: -120px;
+  }
+
+  
+}
+
+/* 🌙 ダークモード時の説明文を白にする */
+@media (prefers-color-scheme: dark) {
+  .projectsBox p {
+    color: #d4d4d4; /* 白 */
+  }
+
+  .BlogExplanation {
+    color: #d4d4d4; /* 白 */
+  }
+}

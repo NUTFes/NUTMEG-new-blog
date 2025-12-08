@@ -1,45 +1,100 @@
-"use client";
+'use client'
 
+import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 import styles from "./topbar.module.css";
-
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 const TopBar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
-  const [isTransparent, setIsTransparent] = useState(true);
+
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 250) {
-        setIsTransparent(false);
-      } else {
-        setIsTransparent(true);
-      }
-    };
-
-    if (pathname === "/home") {
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    } else {
-      setIsTransparent(false); // 他のページでは白背景
-    }
+    // ページが変わったらメニューを閉じる
+    setMenuOpen(false);
   }, [pathname]);
 
-  const topbarClass = `${styles.topbar} ${
-    isTransparent && pathname === "/home" ? styles.transparent : styles.whiteBg
-  }`;
-
   return (
-    <header className={topbarClass}>
-      <img src="/logo.png" alt="ロゴ" className={styles.logo} />
-      <div className={styles.links}>
-        <Link href="/home" className={pathname === "/home" ? styles.active : ""}>Home</Link>
-        <Link href="/home/teams&projects" className={pathname === "/home/teams&projects" ? styles.active : ""}>Teams & Projects</Link>
-        <Link href="/home/blogs" className={pathname === "/home/blogs" ? styles.active : ""}>Blogs</Link>
-        <Link href="/home/members" className={pathname === "/home/members" ? styles.active : ""}>Members</Link>
-        <Link href="/home/contact" className={pathname === "/home/contact" ? styles.active : ""}>Contact</Link>
+    <header>
+      
+        <div
+          className={styles.topbar}
+          style={{ display: menuOpen ? "none" : "flex" }}
+        >
+        <Link href="/">
+          <img
+            src="/topbar_icons/NUTMEG_Icon.svg"
+            alt="NUTMEG"
+            className={styles.icon}
+          />
+        </Link>
+
+        <div className={styles.topbarRight}>
+          <Link href="/contact">
+            <img
+              src="/topbar_icons/ContactButton.svg"
+              alt="Contact"
+              className={styles.icon}
+            />
+          </Link>
+
+          {/* ←ここを修正して棒2本を入れる */}
+          <div className={styles.hamburgerButton} onClick={toggleMenu}>
+            <span
+              className={`${styles.bar} ${menuOpen ? styles.bar1Open : ""}`}
+            ></span>
+            <span
+              className={`${styles.bar} ${menuOpen ? styles.bar2Open : ""}`}
+            ></span>
+          </div>
+        </div>
       </div>
+
+      {/* ハンバーガーメニュー */}
+      <nav
+        className={`${styles.menuPanel} ${menuOpen ? styles.menuOpen : ""}`}
+      >
+        <div className={styles.hamburgerMenuTop}>
+          <Link href="/">
+            <img
+              src="/topbar_icons/NUTMEG_Icon_White.svg"
+              alt="NUTMEG"
+              className={styles.icon}
+            />
+          </Link>
+          <div className={styles.hamburgerButton} onClick={toggleMenu}>
+            <span
+              className={`${styles.bar} ${menuOpen ? styles.bar1Open : ""}`}
+            ></span>
+            <span
+              className={`${styles.bar} ${menuOpen ? styles.bar2Open : ""}`}
+            ></span>
+          </div>
+        </div>
+
+      <ul>
+        <li className={pathname === "/" ? styles.active : ""}>
+          <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
+        </li>
+        <li className={pathname === "/projects" ? styles.active : ""}>
+          <Link href="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
+        </li>
+        <li className={pathname === "/blogs" ? styles.active : ""}>
+          <Link href="/blogs" onClick={() => setMenuOpen(false)}>Blog</Link>
+        </li>
+        <li className={pathname === "/members" ? styles.active : ""}>
+          <Link href="/members" onClick={() => setMenuOpen(false)}>Members</Link>
+        </li>
+        <li className={pathname === "/contact" ? styles.active : ""}>
+          <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+        </li>
+      </ul>
+
+      </nav>
     </header>
   );
 };

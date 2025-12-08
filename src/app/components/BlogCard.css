@@ -1,0 +1,94 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  overflow: hidden;
+  width: 360px;
+  height: 400px;
+  text-decoration: none;
+  color: inherit;
+  margin: 5px;
+
+  /* 影とアニメーション追加 */
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 2px 8px 0 rgba(188, 99, 4, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  /* 影をふわっと広げる */
+  /* box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); */
+  box-shadow: 0 12px 24px 0 rgba(188, 99, 4, 0.20);
+
+  transform: translateY(-4px); /* 少し浮かせる */
+}
+
+.card:active {
+  /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); */
+    box-shadow: 0 6px 12px 0 rgba(188, 99, 4, 0.15);
+  transform: translateY(0); /* 押した感じに戻す */
+}
+
+.card-padding{
+  padding: 20px;
+}
+
+.card-tags {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+}
+
+.tag {
+  background: none;
+  /* color: orange; */
+  color: #545454;
+  /* padding: 4px 8px; */
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.card-title {
+  width: 100%;
+  margin-top: 8px;
+  font-size: 16px;
+  word-wrap: break-word; 
+  text-decoration: underline;
+}
+
+.card-abstract {
+  color: #000;
+
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.ArrowBox{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;  
+}
+
+.Arrow {
+  transition: 0.2s ease;
+}
+
+.card:hover .Arrow,
+.card:active .Arrow {
+  content: url("/ArrowWhite.svg");
+}
+
+.card-thumbnail{
+ overflow: hidden;
+}

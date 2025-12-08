@@ -1,0 +1,113 @@
+.breadcrumb {
+  width: 100%;
+  max-width: 72%; /* ← カード幅より少し狭くする（以前83%だった） */
+  margin: 100px auto 10px auto; /* 上に少し余裕を作る */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 10px; /* 左端の微調整 */
+  box-sizing: border-box;
+}
+
+/* ---- 各リンク ---- */
+.breadcrumbLinkSmall {
+  color: var(--red-orange);
+  font-family: "Noto Sans JP";
+  font-size: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.breadcrumbLinkSmall:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbLinkArrow {
+  color: var(--red-orange);
+  font-family: "Noto Sans JP";
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0 5px;
+}
+
+.breadcrumbLinkBig {
+  color: var(--red-orange);
+  font-family: "Noto Sans JP";
+  font-size: 46px;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.breadcrumbLinkBig:hover {
+  text-decoration: underline;
+}
+
+/* ---- カード全体も少し幅を絞る ---- */
+.cardsWrapper {
+  width: 100%;
+  max-width: 72%;
+  margin: 0 auto;
+}
+
+/* 📱 タブレットサイズ */
+@media screen and (max-width: 1024px) {
+  .breadcrumb {
+    max-width: 88%; /* コンテンツ幅を広げる */
+    margin-top: 120px; /* トップバー下に余白 */
+    margin-bottom: 40px;
+    padding-left: 0;
+  }
+
+  .cardsWrapper {
+    max-width: 88%;
+  }
+}
+
+/* 📱 スマホサイズ */
+@media screen and (max-width: 768px) {
+  .breadcrumb {
+    max-width: 92%;
+    margin-top: 100px; /* ← トップバーとの距離を確保 */
+    margin-bottom: 30px;
+    padding-left: 20px;
+    justify-content: flex-start; /* 左寄せ */
+    text-align: left;
+    gap: 6px;
+  }
+
+  .breadcrumbLinkSmall {
+    font-size: 20px;
+  }
+
+  .breadcrumbLinkArrow {
+    font-size: 20px;
+    margin: 0 2px;
+  }
+
+  .breadcrumbLinkBig {
+    font-size: 28px;
+  }
+
+  .cardsWrapper {
+    max-width: 92%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
+
+  /* メンバーカード内の文字 */
+  .cardsWrapper a h2{
+    color: #f5f5f5; /* 白に */
+  }
+
+  /* プロジェクト名や概要の薄い文字も調整 */
+.cardsWrapper a p{
+    color: #d3d3d3;
+  }
+}

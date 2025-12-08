@@ -1,103 +1,148 @@
-import Image from "next/image";
+// "use client";
+// import React, { useEffect, useState } from "react";
+import { Suspense } from "react";
+import NavigationButton from "./components/NavigationButton";
+import styles from "./Home.module.css"; // CSSファイルのインポート
+import FadeInSection from "./components/FadeInSection/FadeInSection";
+import Carousel from "./components/carousel";
+import BlogList from "./components/BlogList/BlogList";
+import { getBlogPosts } from "./../app/lib/notion";
+import OldSitePreview from "./components/OldSitePreview";
 
-export default function Home() {
+
+export default async function Home() {
+
+  const posts = await getBlogPosts();
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <>
+      <div className={styles.HeroImage}>
+        <img
+          src="/home/HeroImage_Mission.svg"
+          alt="HeroImage"
+          className={styles.HeroImageimageMisson}
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+        <img
+          src="/home/HeroImage_BackImage.png"
+          alt="HeroImage"
+          className={styles.HeroImageimage}
+        />
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+      <FadeInSection>
+        <Carousel />
+      </FadeInSection>
+
+      <FadeInSection>
+        <div className={styles.slide}>
+          <iframe
+            className="speakerdeck-iframe"
+            frameBorder="0"
+            src="https://speakerdeck.com/player/932e848101334f1db860ffc35d581f8c"
+            title="NUTMEG紹介スライド"
+            allowFullScreen
+            style={{
+              border: "0px",
+              background: "padding-box padding-box rgba(0, 0, 0, 0.1)",
+              margin: "0px",
+              padding: "0px",
+              borderRadius: "20px",
+              boxShadow: "rgba(0, 0, 0, 0.2) 0px 5px 40px",
+              width: "85%",
+              height: "auto",
+              aspectRatio: "560 / 315"
+            }}
+            data-ratio="1.7777777777777777"
+          />
+          </div>
+      </FadeInSection>
+
+      <FadeInSection>
+        <div className={styles.projects}>
+          <div className={`${styles.whiteBox} ${styles.projectsWhiteBox}`}>
+            <img
+              src="/home/TitleProjects.svg"
+              className={styles.titleProjects}
+              alt="Projects"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <div className={styles.projectsBox}>
+              <img
+                src="/home/Picture_Projects.svg"
+                alt="写真"
+                width={440}
+                height={320}
+              />
+              <div>
+                <p>
+                  NUTMEGでは現在、8つのプロジェクトが進行中です。
+                  他学年の学生同士でチームを組み、
+                  ヒアリングから開発を通じて、技大祭運営のお悩み解決や、
+                  効率向上に貢献しています。
+                </p>
+                <div className={styles.NavigationButtonBox}>
+                  <NavigationButton
+                    text="プロジェクト紹介ページへ"
+                    href="/projects"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <img
+            src="/decoration.svg"
+            alt="decoration"
+            width={154.96}
+            height={138.2}
+            className={styles.decoration1}
+          />
+          <img
+            src="/decoration2.svg"
+            alt="decoration"
+            width={170.9}
+            height={193.2}
+            className={styles.decoration2}
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </FadeInSection>
+
+      <FadeInSection>
+        <div className={styles.blogs}>
+          <div className={styles.BlogwhiteBox}>
+            {/* <img
+              src="/home/TitleBlogs.svg"
+              className={styles.titleBlogs}
+              alt="blogs"
+            /> */}
+            <div className={styles.flexBox}>
+              {/* <h1 className={styles.BlogTitle}>Blog</h1> */}
+            <img
+              src="/home/TitleBlog.svg"
+              className={styles.titleBlogs}
+              alt="Blog"
+            />
+
+            </div>
+              <p className={styles.BlogExplanation}>
+                NUTMEGでは、外部の方へ活動の様子を伝えることと、アウトプットの機会を目的として、定期的に学生がブログを投稿しています。
+              </p>          
+            <Suspense fallback={<div>読み込み中...</div>}>
+              <BlogList posts={posts.slice(0, 3)} />
+            </Suspense>
+            <div className={styles.BlogNavigationButtonBox}>
+              <NavigationButton
+                      text="ブログ一覧ページへ"
+                      href="/blogs"
+              />
+            </div>
+          </div>
+        </div>
+
+      </FadeInSection>
+      <FadeInSection>
+        <OldSitePreview />
+      </FadeInSection>
+
+    </>
   );
-}
+};
+
+// export default Home;

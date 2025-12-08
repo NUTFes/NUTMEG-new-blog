@@ -1,0 +1,147 @@
+/* NavigationButton.css */
+.navigation-button {
+  height: 64px;
+  width: fit-content;
+  /* border: 2px solid var(--yellow-orange);
+  border-radius: 200px; */
+  background-color: #FFFFFF;
+  font-size: 16px;
+  color: var(--red-orange);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 20px;
+  padding-right: 12px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.navigation-button:hover {
+  background: linear-gradient(91deg, #FFB808 0.01%, #FF5C2B 137.22%);
+}
+.navigation-button:hover p{
+  color: #FFFFFF;
+
+}
+
+/* 画像切り替え用 */
+.arrow-wrapper {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.arrow-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.2s ease;
+}
+
+.arrow-normal {
+  opacity: 1;
+}
+
+.arrow-hover {
+  opacity: 0;
+}
+
+.navigation-button:hover .arrow-normal {
+  opacity: 0;
+}
+
+.navigation-button:hover .arrow-hover {
+  opacity: 1;
+}
+
+.navigation-button:active{
+    background: var(--red-orange);
+}
+/* 左矢印用 */
+.navigation-button.arrow-left {
+  flex-direction: row-reverse; /* 矢印が文字の左に */
+  padding-left: 12px;
+  padding-right: 20px;
+}
+/* NavigationButton.css に追加 */
+.navigation-button .arrow-wrapper img {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* 左矢印の場合 */
+.navigation-button .arrow-wrapper.left img {
+  transform: rotate(180deg); /* 右向きを左向きに */
+}
+
+.navigation-button {
+  min-width: max-content;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.arrow-wrapper {
+  width: 40px !important;
+  height: 40px !important;
+  flex-shrink: 0;
+}
+
+.arrow-wrapper img {
+  width: 40px !important;
+  height: 40px !important;
+}
+/* Home.module.css */
+.NavigationButtonBox img {
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* NavigationButton.module.css */
+.buttonIcon {
+  box-shadow: none;
+  filter: none;
+}
+/* Home.module.css または NavigationButton.css のどちらか */
+.navigation-button .arrow-wrapper img {
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.navigation-button p {
+  color: var(--red-orange) !important; /* ← ここを追加 */
+}
+
+
+.navigation-button:hover p {
+  color: #FFFFFF !important; /* ← ここを追加 */
+}
+
+
+/* 🌙 Dark mode */
+@media (prefers-color-scheme: dark) {
+  .navigation-button {
+    background-color: transparent; /* 通常は透明 */
+  color: var(--red-orange) !important;  
+}
+
+.navigation-button p {
+  color: var(--red-orange) !important;
+}
+.navigation-button:hover p {
+  color: var(--red-orange) !important;
+}
+
+
+  .navigation-button:hover {
+    background-color: transparent;   /* ホバー→白背景 */
+    background-image: none;      /* ライトモードのグラデーション無効化 */
+  }
+
+  /* hover時の矢印切り替え */
+  .navigation-button:hover .arrow-normal {
+    opacity: 0;
+  }
+
+  .navigation-button:hover .arrow-hover {
+    opacity: 1;
+  }
+}
