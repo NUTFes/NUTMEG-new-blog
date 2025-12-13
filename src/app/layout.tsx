@@ -4,7 +4,6 @@ import TopBar from './components/topbar';
 import Footer from './components/footer';
 import { Noto_Sans_JP } from 'next/font/google';
 import './globals.css';
-export const runtime = "nodejs";
 
 const noto = Noto_Sans_JP({
   subsets: ['latin'],
