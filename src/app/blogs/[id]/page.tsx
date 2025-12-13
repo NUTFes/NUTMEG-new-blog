@@ -19,6 +19,8 @@ interface BlogPostPageProps {
   }>;
 }
 
+export const runtime = 'edge';
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   try {
     const { id } = await params;
@@ -78,7 +80,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             記事取得に失敗しました。<br />
             しばらく時間をおいてから再度お試しください。
           </p>
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-20">
             <NavigationButton text="ブログ一覧に戻る" href="/blogs" arrowLeft={true} />
           </div>
         </div>
