@@ -115,11 +115,11 @@ export default function BlogCard({ post }: BlogCardProps) {
   )}
 
   {/* 要約 */}
-  {/* {post.summary && (
+  {post.summary && (
     <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
       {post.summary}
     </p>
-  )} */}
+  )}
 
   {/* タグ */}
   {post.tags && post.tags.length > 0 && (
