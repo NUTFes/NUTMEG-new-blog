@@ -26,11 +26,12 @@ const TopBar = () => {
           style={{ display: menuOpen ? "none" : "flex" }}
         >
         <Link href="/">
-          <img
-            src="/topbar_icons/NUTMEG_Icon.svg"
-            alt="NUTMEG"
-            className={styles.icon}
-          />
+            <img
+              src="/topbar_icons/NUTMEG_Icon.svg"
+              // src="/topbar_icons/NUTMEG_logo.svg"
+              alt="NUTMEG"
+              className={styles.icon}
+            />
         </Link>
 
         <div className={styles.topbarRight}>

@@ -166,7 +166,6 @@ line-height: normal;
 
 
 
-
 .menuPanel li {
   font-size: 20px;
   color: #FFFFFF;
@@ -242,6 +241,8 @@ line-height: normal;
     width: 130px; /* ← ロゴ小さめに */
     height: auto;
   }
+
+
 
   .topbarRight .icon {
     height: 30px;
