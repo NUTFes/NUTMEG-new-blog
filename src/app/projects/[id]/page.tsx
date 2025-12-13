@@ -10,7 +10,7 @@ interface ProjectPageProps {
   params: Promise<{ id: string }>;
 }
 
-export const runtime = 'edge';
+export const runtime = "nodejs";
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { id } = await params;

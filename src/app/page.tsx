@@ -59,11 +59,12 @@ export default async function Home() {
       <FadeInSection>
         <div className={styles.projects}>
           <div className={`${styles.whiteBox} ${styles.projectsWhiteBox}`}>
-            <img
+            {/* <img
               src="/home/TitleProjects.svg"
               className={styles.titleProjects}
               alt="Projects"
-            />
+            /> */}
+            <h1 className={styles.Sectiontitle}>Projects</h1>
             <div className={styles.projectsBox}>
               <img
                 src="/home/Picture_Projects.svg"
@@ -114,11 +115,13 @@ export default async function Home() {
             /> */}
             <div className={styles.flexBox}>
               {/* <h1 className={styles.BlogTitle}>Blog</h1> */}
-            <img
+            {/* <img
               src="/home/TitleBlog.svg"
               className={styles.titleBlogs}
               alt="Blog"
-            />
+            /> */}
+            <h1 className={styles.Sectiontitle}>Blog</h1>
+
 
             </div>
               <p className={styles.BlogExplanation}>

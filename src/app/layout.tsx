@@ -2,7 +2,14 @@
 
 import TopBar from './components/topbar';
 import Footer from './components/footer';
+import { Noto_Sans_JP } from 'next/font/google';
 import './globals.css';
+export const runtime = "nodejs";
+
+const noto = Noto_Sans_JP({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+});
 
 export const metadata = {
   title: "NUTMEG",
@@ -39,7 +46,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ja">
+    <html lang="ja" className={noto.className}>
       <body>
         <TopBar />
         <main>{children}</main>

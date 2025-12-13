@@ -1,5 +1,5 @@
 // src/app/projects/page.tsx
-import ProjectCard from "../components/ProjectCard2";
+import ProjectCard from "../components/ProjectCard";
 import { getAllProjects } from "../lib/project";
 import Breadcrumb from "../components/Breadcrumb"; 
 import styles from "./ProjectsPage.module.css";

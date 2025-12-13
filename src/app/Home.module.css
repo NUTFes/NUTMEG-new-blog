@@ -592,3 +592,10 @@
     color: #d4d4d4; /* 白 */
   }
 }
+
+.Sectiontitle{
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--red-orange);
+  margin-bottom: 20px;
+}
