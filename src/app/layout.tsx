@@ -14,7 +14,7 @@ export const metadata = {
   title: "NUTMEG",
   description: "長岡技術科学大学、技大祭実行委員会情報局、NUTMEG の公式サイトです。",
   icons: {
-    icon: "/icon.png",
+    icon: "/favicon.png",
   },
   openGraph: {
     title: "NUTMEG",

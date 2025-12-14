@@ -108,6 +108,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {postData.title}
     </h2>
 
+    {/* summaryを表示 */}
+    {postData.summary && (
+      <p className="text-gray-700 dark:text-gray-300 text-lg mt-2 mb-4">
+        {postData.summary}
+      </p>
+    )}
+
     <div className="flex items-center mb-4 text-gray-600 dark:text-gray-300">
       作成者:
       {postData.authorSlug ? (
