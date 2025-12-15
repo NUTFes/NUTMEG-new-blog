@@ -69,6 +69,7 @@ export default function BlogCard({ post }: BlogCardProps) {
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              unoptimized
             />
           </div>
         ) : (
@@ -106,6 +107,7 @@ export default function BlogCard({ post }: BlogCardProps) {
           width={32}
           height={32}
           className="rounded-full mr-2 border border-gray-300 dark:border-gray-600"
+          unoptimized
         />
       )}
       <span className="text-gray-700 dark:text-gray-300 text-sm">
