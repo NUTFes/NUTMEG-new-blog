@@ -1,8 +1,12 @@
 // src/app/projects/page.tsx
-import ProjectCard from "../components/ProjectCard2";
+import ProjectCard from "../components/ProjectCard";
 import { getAllProjects } from "../lib/project";
 import Breadcrumb from "../components/Breadcrumb"; 
 import styles from "./ProjectsPage.module.css";
+
+// NotionのS3署名付きURLは1時間で期限切れになるため、
+// 30分ごとに再検証して新しいURLを取得する
+export const revalidate = 1800;
 
 export default async function ProjectsPage() {
   const projects = await getAllProjects();

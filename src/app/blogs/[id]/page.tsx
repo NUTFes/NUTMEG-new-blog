@@ -80,7 +80,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             記事取得に失敗しました。<br />
             しばらく時間をおいてから再度お試しください。
           </p>
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-20">
             <NavigationButton text="ブログ一覧に戻る" href="/blogs" arrowLeft={true} />
           </div>
         </div>
@@ -107,6 +107,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
       {postData.title}
     </h2>
+
+    {/* summaryを表示 */}
+    {postData.summary && (
+      <p className="text-gray-700 dark:text-gray-300 text-lg mt-2 mb-4">
+        {postData.summary}
+      </p>
+    )}
 
     <div className="flex items-center mb-4 text-gray-600 dark:text-gray-300">
       作成者:

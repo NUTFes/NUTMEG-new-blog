@@ -3,74 +3,62 @@ import Image from "next/image";
 import styles from "./ProjectCard.module.css";
 
 type ProjectProps = {
-  logo: string;
-  description: string;
-  technologies: string[];
+  logo?: string;
+  name: string; // ロゴがない場合は名前を表示
+  summary: string;
   pm: {
     name: string;
-    icon: string;
+    icon?: string;
   };
   href: string;
 };
 
-const ProjectCard: React.FC<ProjectProps> = ({
-  logo,
-  description,
-  technologies,
-  pm,
-  href,
-}) => {
+const ProjectCard: React.FC<ProjectProps> = ({ logo, name, summary, pm, href }) => {
   return (
-    <Link href={href} className={styles.cardLink}>
-      <div className={styles.card}>
-        <div className={styles.cardPadding}>
-          <div className={styles.cardTitle}>
+    <Link href={href} className={styles.card}>
+      <div className={styles.cardPadding}>
+        {/* ロゴ or 名前表示 */}
+        <div className={styles.cardTitle}>
+          {logo ? (
             <Image
               src={logo}
               alt="Project Logo"
-              // width={150}
-              // height={47}
               fill
               className={styles.logoImage}
+              unoptimized
             />
-          </div>
+          ) : (
+            <span className={styles.cardTitleFallback}>{name}</span>
+          )}
+        </div>
 
-          <p className={styles.cardAbstract}>{description}</p>
+        {/* 概要 */}
+        <p className={styles.cardAbstract}>{summary}</p>
 
-          <div className={`${styles.cardSection} ${styles.techInline}`}>
-            <h3 className={styles.sectionTitle}>使用技術：</h3>
-            <div className={styles.cardTags}>
-              {technologies.map((tech, index) => (
-                <span key={index} className={styles.tag}>
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className={`${styles.cardSection} ${styles.pmInline}`}>
-            <h3 className={styles.sectionTitle}>PM：</h3>
-            <div className={styles.pmInfo}>
-              <Image
-                src={pm.icon}
-                alt={pm.name}
-                width={30}
-                height={30}
-                className={styles.pmIcon}
-              />
-              <span className={styles.pmName}>{pm.name}</span>
-            </div>
-          </div>
-
-          <div className={styles.arrowBox}>
+        {/* PM情報 */}
+        <div className={styles.pmInline}>
+          {pm.icon && (
             <Image
-              src="/ArrowOrange.svg"
-              alt="Arrow"
-              width={40}
+              src={pm.icon}
+              alt={pm.name}
+              width={40} // サイズ指定
               height={40}
-              className={styles.arrow}
+              className={styles.pmIcon}
+              unoptimized
             />
-          </div>
+          )}
+          <span className={styles.pmName}>{pm.name}</span>
+        </div>
+
+        {/* 矢印アイコン */}
+        <div className={styles.arrowBox}>
+          <Image
+            src="/ArrowOrange.svg"
+            alt="Arrow"
+            width={40}
+            height={40}
+            className={styles.arrow}
+          />
         </div>
       </div>
     </Link>

@@ -54,4 +54,6 @@ body {
 
 body, html {
   overflow-x: hidden;
+  font-family: "Noto Sans JP", system-ui, -apple-system,
+  BlinkMacSystemFont, "Segoe UI", sans-serif;
 }

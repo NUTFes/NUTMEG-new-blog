@@ -64,6 +64,7 @@ export default async function Home() {
               className={styles.titleProjects}
               alt="Projects"
             />
+            {/* <h1 className={styles.Sectiontitle}>Projects</h1> */}
             <div className={styles.projectsBox}>
               <img
                 src="/home/Picture_Projects.svg"
@@ -119,6 +120,8 @@ export default async function Home() {
               className={styles.titleBlogs}
               alt="Blog"
             />
+            {/* <h1 className={styles.Sectiontitle}>Blog</h1> */}
+
 
             </div>
               <p className={styles.BlogExplanation}>
