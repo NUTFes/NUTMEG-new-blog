@@ -1,6 +1,7 @@
 // "use client";
 // import React, { useEffect, useState } from "react";
 import { Suspense } from "react";
+import Image from "next/image";
 import NavigationButton from "./components/NavigationButton";
 import styles from "./Home.module.css"; // CSSファイルのインポート
 import FadeInSection from "./components/FadeInSection/FadeInSection";
@@ -16,15 +17,23 @@ export default async function Home() {
   return (
     <>
       <div className={styles.HeroImage}>
-        <img
+        <Image
           src="/home/HeroImage_Mission.svg"
           alt="HeroImage"
           className={styles.HeroImageimageMisson}
+          width={437}
+          height={256}
+          priority
+          sizes="(max-width: 768px) 40vw, 25vw"
         />
-        <img
+        <Image
           src="/home/HeroImage_BackImage.png"
           alt="HeroImage"
           className={styles.HeroImageimage}
+          width={5232}
+          height={2496}
+          priority
+          sizes="100vw"
         />
       </div>
 
@@ -59,18 +68,24 @@ export default async function Home() {
       <FadeInSection>
         <div className={styles.projects}>
           <div className={`${styles.whiteBox} ${styles.projectsWhiteBox}`}>
-            <img
+            <Image
               src="/home/TitleProjects.svg"
               className={styles.titleProjects}
               alt="Projects"
+              width={251}
+              height={61}
+              loading="lazy"
+              sizes="(max-width: 768px) 180px, 251px"
             />
             {/* <h1 className={styles.Sectiontitle}>Projects</h1> */}
             <div className={styles.projectsBox}>
-              <img
+              <Image
                 src="/home/Picture_Projects.svg"
                 alt="写真"
                 width={440}
                 height={320}
+                loading="lazy"
+                sizes="(max-width: 768px) 90vw, 440px"
               />
               <div>
                 <p>
@@ -88,19 +103,23 @@ export default async function Home() {
               </div>
             </div>
           </div>
-          <img
+          <Image
             src="/decoration.svg"
             alt="decoration"
-            width={154.96}
-            height={138.2}
+            width={155}
+            height={139}
             className={styles.decoration1}
+            loading="lazy"
+            sizes="(max-width: 768px) 0px, 155px"
           />
-          <img
+          <Image
             src="/decoration2.svg"
             alt="decoration"
-            width={170.9}
-            height={193.2}
+            width={171}
+            height={194}
             className={styles.decoration2}
+            loading="lazy"
+            sizes="(max-width: 768px) 0px, 171px"
           />
         </div>
       </FadeInSection>
@@ -115,11 +134,15 @@ export default async function Home() {
             /> */}
             <div className={styles.flexBox}>
               {/* <h1 className={styles.BlogTitle}>Blog</h1> */}
-            <img
-              src="/home/TitleBlog.svg"
-              className={styles.titleBlogs}
-              alt="Blog"
-            />
+              <Image
+                src="/home/TitleBlog.svg"
+                className={styles.titleBlogs}
+                alt="Blog"
+                width={134}
+                height={61}
+                sizes="(max-width: 768px) 180px, 134px"
+                loading="lazy"
+              />
             {/* <h1 className={styles.Sectiontitle}>Blog</h1> */}
 
 

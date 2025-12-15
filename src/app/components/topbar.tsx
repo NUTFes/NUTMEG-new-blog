@@ -5,6 +5,7 @@ import Link from "next/link";
 import styles from "./topbar.module.css";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import Image from "next/image";
 const TopBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -26,20 +27,28 @@ const TopBar = () => {
           style={{ display: menuOpen ? "none" : "flex" }}
         >
         <Link href="/">
-            <img
+            <Image
               src="/topbar_icons/NUTMEG_Icon.svg"
               // src="/topbar_icons/NUTMEG_logo.svg"
               alt="NUTMEG"
-              className={styles.icon}
+              className={`${styles.icon} ${styles.brandIcon}`}
+              width={149}
+              height={62}
+              priority
+              sizes="(max-width: 768px) 130px, 149px"
             />
         </Link>
 
         <div className={styles.topbarRight}>
           <Link href="/contact">
-            <img
+            <Image
               src="/topbar_icons/ContactButton.svg"
               alt="Contact"
               className={styles.icon}
+              width={176}
+              height={48}
+              priority
+              sizes="(max-width: 768px) 140px, 176px"
             />
           </Link>
 
@@ -61,10 +70,14 @@ const TopBar = () => {
       >
         <div className={styles.hamburgerMenuTop}>
           <Link href="/">
-            <img
+            <Image
               src="/topbar_icons/NUTMEG_Icon_White.svg"
               alt="NUTMEG"
               className={styles.icon}
+              width={149}
+              height={62}
+              priority
+              sizes="(max-width: 768px) 130px, 149px"
             />
           </Link>
           <div className={styles.hamburgerButton} onClick={toggleMenu}>

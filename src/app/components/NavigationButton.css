@@ -31,6 +31,11 @@
   height: 40px;
 }
 
+.arrow-wrapper > span {
+  position: absolute !important;
+  inset: 0;
+}
+
 .arrow-wrapper img {
   position: absolute;
   top: 0;

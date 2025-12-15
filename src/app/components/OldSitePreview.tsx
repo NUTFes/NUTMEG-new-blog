@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import styles from "./OldSitePreview.module.css";
 import { SITE_URLS } from "@/app/config";
 
@@ -28,12 +29,15 @@ export default function OldSitePreview() {
           rel="noopener noreferrer"
           className={styles.card}
         >
-        <img
-        src={ogImage}
-        alt="旧サイトのプレビュー"
-        className="old-site-preview"
-        // styleつけてもいい
-        />
+          <Image
+            src={ogImage}
+            alt="旧サイトのプレビュー"
+            className={styles.thumbnail}
+            width={1200}
+            height={630}
+            loading="lazy"
+            sizes="(max-width: 768px) 90vw, 70vw"
+          />
 
         </a>
       ) : (

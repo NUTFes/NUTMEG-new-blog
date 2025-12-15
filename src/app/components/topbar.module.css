@@ -14,6 +14,9 @@
   transition: background-color 0.3s ease, color 0.3s ease, border-bottom 0.3s ease;
   font-size: 20px;
 }
+.brandIcon {
+  display: block;
+}
 .topbarRight {
   display: flex;
   width: 282px;
@@ -297,10 +300,9 @@ line-height: normal;
   }
 
   /* トップバーのロゴを白ロゴに差し替え */
-  .topbar img[src*="NUTMEG_Icon.svg"] {
+  .brandIcon {
     content: url('/topbar_icons/NUTMEG_Icon_White.svg');
   }
 
   /* ハンバーガーメニュー内のロゴは既に白なので不要 */
 }
-
