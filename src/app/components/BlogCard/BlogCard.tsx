@@ -104,6 +104,7 @@ export default function BlogCard({ post }: BlogCardProps) {
   {/* 作者情報 */}
   {post.author && (
     <div className="flex items-center mb-4">
+<<<<<<< HEAD
       {post.authorIcon && (
         <Image
           src={post.authorIcon}
@@ -114,6 +115,20 @@ export default function BlogCard({ post }: BlogCardProps) {
           unoptimized
         />
       )}
+=======
+          {post.authorIcon && (
+            <Image
+              src={post.authorIcon}
+              alt={post.author}
+              width={32}
+              height={32}
+              className="rounded-full mr-2 border border-gray-300 dark:border-gray-600"
+              placeholder="blur"
+              blurDataURL={DEFAULT_BLUR_DATA_URL}
+              loading="lazy"
+            />
+          )}
+>>>>>>> c06ec130035ebdd7575503be232bbd8b440c209b
       <span className="text-gray-700 dark:text-gray-300 text-sm">
         {post.author}
       </span>
