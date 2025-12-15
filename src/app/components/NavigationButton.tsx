@@ -1,5 +1,6 @@
 import "./NavigationButton.css";
 import Link from "next/link";
+import Image from "next/image";
 
 interface NavigationButtonProps {
   text: string;
@@ -13,15 +14,47 @@ const NavigationButton = ({ text, href, onClick, arrowLeft = false }: Navigation
     <>
       {arrowLeft && (
         <div className="arrow-wrapper left">
-          <img className="arrow-normal" src="/ArrowYellowOrange.svg" alt="Arrow" width={40} height={40} />
-          <img className="arrow-hover" src="/ArrowWhite.svg" alt="Arrow" width={40} height={40} />
+          <Image
+            className="arrow-normal"
+            src="/ArrowYellowOrange.svg"
+            alt="Arrow"
+            width={40}
+            height={40}
+            loading="lazy"
+            sizes="40px"
+          />
+          <Image
+            className="arrow-hover"
+            src="/ArrowWhite.svg"
+            alt="Arrow"
+            width={40}
+            height={40}
+            loading="lazy"
+            sizes="40px"
+          />
         </div>
       )}
       <p>{text}</p>
       {!arrowLeft && (
         <div className="arrow-wrapper">
-          <img className="arrow-normal" src="/ArrowYellowOrange.svg" alt="Arrow" width={40} height={40} />
-          <img className="arrow-hover" src="/ArrowWhite.svg" alt="Arrow" width={40} height={40} />
+          <Image
+            className="arrow-normal"
+            src="/ArrowYellowOrange.svg"
+            alt="Arrow"
+            width={40}
+            height={40}
+            loading="lazy"
+            sizes="40px"
+          />
+          <Image
+            className="arrow-hover"
+            src="/ArrowWhite.svg"
+            alt="Arrow"
+            width={40}
+            height={40}
+            loading="lazy"
+            sizes="40px"
+          />
         </div>
       )}
     </>

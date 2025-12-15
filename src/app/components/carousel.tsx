@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import styles from "./carousel.module.css";
 
 const images = [
@@ -18,7 +19,16 @@ export default function Carousel() {
       <div className={styles.sliderTrack}>
         {/* 画像を2回繰り返すことで途切れない無限ループにする */}
         {[...images, ...images].map((src, idx) => (
-          <img key={idx} src={src} alt="活動写真" className={styles.pics} />
+          <Image
+            key={idx}
+            src={src}
+            alt="活動写真"
+            className={styles.pics}
+            width={640}
+            height={640}
+            loading="lazy"
+            sizes="(max-width: 768px) 220px, 400px"
+          />
         ))}
       </div>
     </div>
