@@ -4,6 +4,8 @@ import BlogList from "../components/BlogList/BlogList";
 import { getBlogPosts } from "../../app/lib/notion";
 import Link from "next/link";
 
+export const revalidate = 1800; // 30 minutes
+
 const Blogs = async () => {
   const posts = await getBlogPosts();
 

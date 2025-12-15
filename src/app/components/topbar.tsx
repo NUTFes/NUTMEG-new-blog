@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./topbar.module.css";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import { DEFAULT_BLUR_DATA_URL } from "../lib/imagePlaceholder";
 const TopBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -26,20 +28,32 @@ const TopBar = () => {
           style={{ display: menuOpen ? "none" : "flex" }}
         >
         <Link href="/">
-            <img
+            <Image
               src="/topbar_icons/NUTMEG_Icon.svg"
               // src="/topbar_icons/NUTMEG_logo.svg"
               alt="NUTMEG"
               className={styles.icon}
+              width={160}
+              height={48}
+              priority
+              placeholder="blur"
+              blurDataURL={DEFAULT_BLUR_DATA_URL}
+              sizes="160px"
             />
         </Link>
 
         <div className={styles.topbarRight}>
           <Link href="/contact">
-            <img
+            <Image
               src="/topbar_icons/ContactButton.svg"
               alt="Contact"
               className={styles.icon}
+              width={160}
+              height={48}
+              priority
+              placeholder="blur"
+              blurDataURL={DEFAULT_BLUR_DATA_URL}
+              sizes="(max-width: 768px) 130px, 160px"
             />
           </Link>
 
@@ -61,10 +75,16 @@ const TopBar = () => {
       >
         <div className={styles.hamburgerMenuTop}>
           <Link href="/">
-            <img
+            <Image
               src="/topbar_icons/NUTMEG_Icon_White.svg"
               alt="NUTMEG"
               className={styles.icon}
+              width={160}
+              height={48}
+              placeholder="blur"
+              blurDataURL={DEFAULT_BLUR_DATA_URL}
+              loading="lazy"
+              sizes="(max-width: 768px) 130px, 160px"
             />
           </Link>
           <div className={styles.hamburgerButton} onClick={toggleMenu}>

@@ -4,9 +4,16 @@ import { getMemberProfile, getAllMembers } from '@/app/lib/member';
 import { getBlogPostsByAuthor } from '@/app/lib/notion';
 import { BlogPost } from '@/app/types/blog';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateStaticParams() {
-  const members = await getAllMembers();
-  return members.map(member => ({ id: member.id }));
+  try {
+    const members = await getAllMembers();
+    return members.map(member => ({ id: member.id }));
+  } catch (error) {
+    console.error('Failed to fetch members for static params:', error);
+    return [];
+  }
 }
 
 interface MemberPageProps {

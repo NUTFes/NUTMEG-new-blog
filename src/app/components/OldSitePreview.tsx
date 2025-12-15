@@ -1,17 +1,19 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "./OldSitePreview.module.css";
 import { SITE_URLS } from "@/app/config";
+import { DEFAULT_BLUR_DATA_URL } from "../lib/imagePlaceholder";
 
 export default function OldSitePreview() {
   const [ogImage, setOgImage] = useState<string | null>(null);
 
-    useEffect(() => {
+  useEffect(() => {
     fetch(`/api/ogp?url=${encodeURIComponent(SITE_URLS.oldSite)}`)
-        .then(res => res.json())
-        .then(data => setOgImage(data.ogImage));
-    }, []);
+      .then((res) => res.json())
+      .then((data) => setOgImage(data.ogImage));
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -28,11 +30,16 @@ export default function OldSitePreview() {
           rel="noopener noreferrer"
           className={styles.card}
         >
-        <img
-        src={ogImage}
-        alt="旧サイトのプレビュー"
-        className="old-site-preview"
-        // styleつけてもいい
+        <Image
+          src={ogImage}
+          alt="旧サイトのプレビュー"
+          className={styles.thumbnail}
+          width={1200}
+          height={630}
+          placeholder="blur"
+          blurDataURL={DEFAULT_BLUR_DATA_URL}
+          loading="lazy"
+          sizes="(max-width: 768px) 90vw, 70vw"
         />
 
         </a>

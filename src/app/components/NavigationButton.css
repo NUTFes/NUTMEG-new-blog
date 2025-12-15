@@ -29,6 +29,12 @@
   position: relative;
   width: 40px;
   height: 40px;
+  display: block;
+}
+
+.arrow-wrapper span {
+  position: absolute !important;
+  inset: 0;
 }
 
 .arrow-wrapper img {

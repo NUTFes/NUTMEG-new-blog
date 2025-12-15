@@ -1,5 +1,7 @@
 import "./NavigationButton.css";
+import Image from "next/image";
 import Link from "next/link";
+import { DEFAULT_BLUR_DATA_URL } from "../lib/imagePlaceholder";
 
 interface NavigationButtonProps {
   text: string;
@@ -13,15 +15,51 @@ const NavigationButton = ({ text, href, onClick, arrowLeft = false }: Navigation
     <>
       {arrowLeft && (
         <div className="arrow-wrapper left">
-          <img className="arrow-normal" src="/ArrowYellowOrange.svg" alt="Arrow" width={40} height={40} />
-          <img className="arrow-hover" src="/ArrowWhite.svg" alt="Arrow" width={40} height={40} />
+          <Image
+            className="arrow-normal"
+            src="/ArrowYellowOrange.svg"
+            alt="Arrow"
+            width={40}
+            height={40}
+            placeholder="blur"
+            blurDataURL={DEFAULT_BLUR_DATA_URL}
+            loading="lazy"
+          />
+          <Image
+            className="arrow-hover"
+            src="/ArrowWhite.svg"
+            alt="Arrow"
+            width={40}
+            height={40}
+            placeholder="blur"
+            blurDataURL={DEFAULT_BLUR_DATA_URL}
+            loading="lazy"
+          />
         </div>
       )}
       <p>{text}</p>
       {!arrowLeft && (
         <div className="arrow-wrapper">
-          <img className="arrow-normal" src="/ArrowYellowOrange.svg" alt="Arrow" width={40} height={40} />
-          <img className="arrow-hover" src="/ArrowWhite.svg" alt="Arrow" width={40} height={40} />
+          <Image
+            className="arrow-normal"
+            src="/ArrowYellowOrange.svg"
+            alt="Arrow"
+            width={40}
+            height={40}
+            placeholder="blur"
+            blurDataURL={DEFAULT_BLUR_DATA_URL}
+            loading="lazy"
+          />
+          <Image
+            className="arrow-hover"
+            src="/ArrowWhite.svg"
+            alt="Arrow"
+            width={40}
+            height={40}
+            placeholder="blur"
+            blurDataURL={DEFAULT_BLUR_DATA_URL}
+            loading="lazy"
+          />
         </div>
       )}
     </>

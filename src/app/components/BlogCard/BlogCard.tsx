@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 // import { BlogPost } from '@/types/blog';
 import { BlogPost } from '../../types/blog';
+import { DEFAULT_BLUR_DATA_URL } from '../../lib/imagePlaceholder';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -68,6 +69,9 @@ export default function BlogCard({ post }: BlogCardProps) {
               alt={post.title}
               fill
               className="object-cover"
+              placeholder="blur"
+              blurDataURL={DEFAULT_BLUR_DATA_URL}
+              loading="lazy"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
@@ -99,15 +103,18 @@ export default function BlogCard({ post }: BlogCardProps) {
   {/* 作者情報 */}
   {post.author && (
     <div className="flex items-center mb-4">
-      {post.authorIcon && (
-        <Image
-          src={post.authorIcon}
-          alt={post.author}
-          width={32}
-          height={32}
-          className="rounded-full mr-2 border border-gray-300 dark:border-gray-600"
-        />
-      )}
+          {post.authorIcon && (
+            <Image
+              src={post.authorIcon}
+              alt={post.author}
+              width={32}
+              height={32}
+              className="rounded-full mr-2 border border-gray-300 dark:border-gray-600"
+              placeholder="blur"
+              blurDataURL={DEFAULT_BLUR_DATA_URL}
+              loading="lazy"
+            />
+          )}
       <span className="text-gray-700 dark:text-gray-300 text-sm">
         {post.author}
       </span>
