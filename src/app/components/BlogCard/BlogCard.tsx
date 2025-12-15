@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 // import { BlogPost } from '@/types/blog';
 import { BlogPost } from '../../types/blog';
+import { DEFAULT_BLUR_DATA_URL } from '../../lib/imagePlaceholder';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -68,6 +69,9 @@ export default function BlogCard({ post }: BlogCardProps) {
               alt={post.title}
               fill
               className="object-cover"
+              placeholder="blur"
+              blurDataURL={DEFAULT_BLUR_DATA_URL}
+              loading="lazy"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               unoptimized
             />

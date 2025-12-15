@@ -1,12 +1,13 @@
 import { Client } from '@notionhq/client';
-import { 
-  BlogPost, 
-  NotionPage, 
-  NotionProperty, 
-  // NotionBlock 
+import {
+  BlogPost,
+  NotionPage,
+  NotionProperty,
+  // NotionBlock
 } from '../types/blog';
 import { NotionAPI } from 'notion-client';
 import { ExtendedRecordMap } from 'notion-types';
+import { unstable_cache } from 'next/cache';
 
 const notionAPI = new NotionAPI();
 const notion = new Client({
@@ -16,44 +17,54 @@ const notion = new Client({
 // ブログ記事を取得する関数
 import { getAllMembers } from './member';
 
-export async function getBlogPosts(): Promise<BlogPost[]> {
-  try {
-    const response = await notion.databases.query({
-      database_id: process.env.BLOG_DATABASE_ID!,
-      sorts: [{ property: '日付', direction: 'descending' }],
-    });
+export const BLOG_POSTS_REVALIDATE = 60 * 30; // 30 minutes
 
-    const members = await getAllMembers(); // 全メンバー情報取得
+const getBlogPostsCached = unstable_cache(
+  async (): Promise<BlogPost[]> => {
+    try {
+      const response = await notion.databases.query({
+        database_id: process.env.BLOG_DATABASE_ID!,
+        sorts: [{ property: '日付', direction: 'descending' }],
+      });
 
-    const posts: BlogPost[] = [];
+      const members = await getAllMembers(); // 全メンバー情報取得
 
-    for (const page of response.results) {
-      const notionPage = page as unknown as NotionPage;
+      const posts: BlogPost[] = [];
 
-      const authorName = getAuthor(notionPage.properties);
-      const authorMember = members.find(m => m.nickname === authorName);
+      for (const page of response.results) {
+        const notionPage = page as unknown as NotionPage;
 
-      const post: BlogPost = {
-        id: notionPage.id,
-        title: getTitle(notionPage.properties),
-        thumbnail: getThumbnail(notionPage.properties),
-        publishedAt: getPublishedAt(notionPage.properties),
-        slug: notionPage.id,
-        tags: getTags(notionPage.properties),
-        summary: getSummary(notionPage.properties),
-        author: authorName,
-        authorIcon: authorMember?.icon,
-        authorSlug: authorMember?.id, // ← ここを追加
-      };
+        const authorName = getAuthor(notionPage.properties);
+        const authorMember = members.find((m) => m.nickname === authorName);
 
-      posts.push(post);
+        const post: BlogPost = {
+          id: notionPage.id,
+          title: getTitle(notionPage.properties),
+          thumbnail: getThumbnail(notionPage.properties),
+          publishedAt: getPublishedAt(notionPage.properties),
+          slug: notionPage.id,
+          tags: getTags(notionPage.properties),
+          summary: getSummary(notionPage.properties),
+          author: authorName,
+          authorIcon: authorMember?.icon,
+          authorSlug: authorMember?.id, // ← ここを追加
+        };
+
+        posts.push(post);
+      }
+
+      return posts;
+    } catch (error) {
+      console.error('Error fetching blog posts:', error);
+      return [];
     }
+  },
+  ['blog-posts'],
+  { revalidate: BLOG_POSTS_REVALIDATE }
+);
 
-    return posts;
-  } catch (error) {
-    console.error('Error fetching blog posts:', error);
-    return [];
-  }
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  return getBlogPostsCached();
 }
 
 

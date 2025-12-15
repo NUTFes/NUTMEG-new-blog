@@ -1,14 +1,17 @@
 // "use client";
 // import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { Suspense } from "react";
 import NavigationButton from "./components/NavigationButton";
 import styles from "./Home.module.css"; // CSSファイルのインポート
 import FadeInSection from "./components/FadeInSection/FadeInSection";
 import Carousel from "./components/carousel";
 import BlogList from "./components/BlogList/BlogList";
-import { getBlogPosts } from "./../app/lib/notion";
+import { getBlogPosts } from "./lib/notion";
 import OldSitePreview from "./components/OldSitePreview";
+import { DEFAULT_BLUR_DATA_URL } from "./lib/imagePlaceholder";
 
+export const revalidate = 1800; // 30 minutes
 
 export default async function Home() {
 
@@ -16,15 +19,26 @@ export default async function Home() {
   return (
     <>
       <div className={styles.HeroImage}>
-        <img
-          src="/home/HeroImage_Mission.svg"
-          alt="HeroImage"
-          className={styles.HeroImageimageMisson}
-        />
-        <img
+        <Image
           src="/home/HeroImage_BackImage.png"
           alt="HeroImage"
           className={styles.HeroImageimage}
+          fill
+          priority
+          placeholder="blur"
+          blurDataURL={DEFAULT_BLUR_DATA_URL}
+          sizes="100vw"
+        />
+        <Image
+          src="/home/HeroImage_Mission.svg"
+          alt="HeroImage"
+          className={styles.HeroImageimageMisson}
+          width={1200}
+          height={360}
+          priority
+          placeholder="blur"
+          blurDataURL={DEFAULT_BLUR_DATA_URL}
+          sizes="(max-width: 768px) 40vw, 25vw"
         />
       </div>
 
@@ -59,18 +73,25 @@ export default async function Home() {
       <FadeInSection>
         <div className={styles.projects}>
           <div className={`${styles.whiteBox} ${styles.projectsWhiteBox}`}>
-            <img
+            <Image
               src="/home/TitleProjects.svg"
               className={styles.titleProjects}
               alt="Projects"
+              width={258}
+              height={74}
+              placeholder="blur"
+              blurDataURL={DEFAULT_BLUR_DATA_URL}
             />
             {/* <h1 className={styles.Sectiontitle}>Projects</h1> */}
             <div className={styles.projectsBox}>
-              <img
+              <Image
                 src="/home/Picture_Projects.svg"
                 alt="写真"
                 width={440}
                 height={320}
+                placeholder="blur"
+                blurDataURL={DEFAULT_BLUR_DATA_URL}
+                loading="lazy"
               />
               <div>
                 <p>
@@ -88,19 +109,25 @@ export default async function Home() {
               </div>
             </div>
           </div>
-          <img
+          <Image
             src="/decoration.svg"
             alt="decoration"
             width={154.96}
             height={138.2}
             className={styles.decoration1}
+            placeholder="blur"
+            blurDataURL={DEFAULT_BLUR_DATA_URL}
+            loading="lazy"
           />
-          <img
+          <Image
             src="/decoration2.svg"
             alt="decoration"
             width={170.9}
             height={193.2}
             className={styles.decoration2}
+            placeholder="blur"
+            blurDataURL={DEFAULT_BLUR_DATA_URL}
+            loading="lazy"
           />
         </div>
       </FadeInSection>
@@ -115,10 +142,14 @@ export default async function Home() {
             /> */}
             <div className={styles.flexBox}>
               {/* <h1 className={styles.BlogTitle}>Blog</h1> */}
-            <img
+            <Image
               src="/home/TitleBlog.svg"
               className={styles.titleBlogs}
               alt="Blog"
+              width={192}
+              height={64}
+              placeholder="blur"
+              blurDataURL={DEFAULT_BLUR_DATA_URL}
             />
             {/* <h1 className={styles.Sectiontitle}>Blog</h1> */}
 

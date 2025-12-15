@@ -7,11 +7,17 @@
   align-items: center;
   padding-bottom: 70px;
   margin-bottom: 80px;
+  aspect-ratio: 5232 / 2496;
+  min-height: 360px;
 }
 
 .HeroImageimage {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  position: absolute !important;
+  inset: 0;
+  z-index: 0;
 }
 
 .HeroImageimageMisson {
@@ -23,6 +29,7 @@
   animation: bounceText 1.5s ease-in-out 1;
   animation-fill-mode: forwards;
   margin-top: -2%;
+  z-index: 1;
 }
 
 
@@ -235,7 +242,10 @@
 
   .HeroImageimage {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    position: absolute !important;
+    inset: 0;
   }
 
   .HeroImageimageMisson {

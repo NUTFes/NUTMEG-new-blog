@@ -6,6 +6,7 @@ import NotionPage from '../../../app/components/NotionPage/notionPage';
 import { BlogPost } from '../../types/blog';
 import BackButtonClient from './BackButtonClient';
 import NavigationButton from '../../components/NavigationButton';
+import { DEFAULT_BLUR_DATA_URL } from '../../lib/imagePlaceholder';
 
 interface BlogPostPageProps {
   params: Promise<{ id: string }>;
@@ -19,7 +20,8 @@ interface BlogPostPageProps {
   }>;
 }
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
+export const revalidate = 1800; // 30 minutes
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   try {
@@ -100,6 +102,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           alt={postData.title ?? ""}
           fill
           className="object-contain rounded-lg mb-4"
+          placeholder="blur"
+          blurDataURL={DEFAULT_BLUR_DATA_URL}
+          priority
+          sizes="(max-width: 768px) 100vw, 688px"
         />
       </div>
     )}
@@ -126,6 +132,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               width={40}
               height={40}
               className="rounded-full mr-2 border border-gray-300 dark:border-gray-600"
+              placeholder="blur"
+              blurDataURL={DEFAULT_BLUR_DATA_URL}
+              loading="lazy"
             />
           )}
           <span className="underline decoration-gray-700 dark:text-gray-200 group-hover:decoration-orange-500 group-hover:text-orange-500 transition-colors">
@@ -141,6 +150,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               width={40}
               height={40}
               className="rounded-full mr-2 border border-gray-300 dark:border-gray-600"
+              placeholder="blur"
+              blurDataURL={DEFAULT_BLUR_DATA_URL}
+              loading="lazy"
             />
           )}
           <span className="text-gray-700 dark:text-gray-300">{postData.author}</span>
