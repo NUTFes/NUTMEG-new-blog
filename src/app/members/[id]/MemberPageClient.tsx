@@ -33,6 +33,7 @@ export default function MemberPageClient({ member, posts }: MemberPageClientProp
               width={160}
               height={160}
               className="member-icon"
+              unoptimized
             />
           )}
           <h1 className="member-name">{member.nickname}</h1>

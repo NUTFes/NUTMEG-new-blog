@@ -29,7 +29,7 @@ const TeamCard: React.FC<TeamProps> = ({ name, description, technologies, pm, hr
         <div className={`${styles.cardSection} ${styles.pmInline}`}>
           <h3 className={styles.sectionTitle}>PM：</h3>
           <div className={styles.pmInfo}>
-            <Image src={pm.icon} alt={pm.name} width={30} height={30} className={styles.pmIcon} />
+            <Image src={pm.icon} alt={pm.name} width={30} height={30} className={styles.pmIcon} unoptimized />
             <span className={styles.pmName}>{pm.name}</span>
           </div>
         </div>

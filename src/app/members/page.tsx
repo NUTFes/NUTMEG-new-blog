@@ -3,7 +3,9 @@ import { getAllMembers } from '../lib/member';
 import Link from 'next/link';
 import styles from './members.module.css';
 
-export const revalidate = 60;
+// NotionのS3署名付きURLは1時間で期限切れになるため、
+// 30分ごとに再検証して新しいURLを取得する
+export const revalidate = 1800;
 
 export default async function Members() {
   const members = await getAllMembers();
@@ -34,6 +36,7 @@ export default async function Members() {
                     width={200}
                     height={200}
                     className="rounded-full object-cover mx-auto mb-4 aspect-square w-40 h-40"
+                    unoptimized
                   />
                 )}
               </div>

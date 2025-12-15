@@ -25,6 +25,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ logo, name, summary, pm, href }) 
               alt="Project Logo"
               fill
               className={styles.logoImage}
+              unoptimized
             />
           ) : (
             <span className={styles.cardTitleFallback}>{name}</span>
@@ -43,6 +44,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ logo, name, summary, pm, href }) 
               width={40} // サイズ指定
               height={40}
               className={styles.pmIcon}
+              unoptimized
             />
           )}
           <span className={styles.pmName}>{pm.name}</span>
