@@ -4,6 +4,10 @@ import BlogList from "../components/BlogList/BlogList";
 import { getBlogPosts } from "../../app/lib/notion";
 import Link from "next/link";
 
+// NotionのS3署名付きURLは1時間で期限切れになるため、
+// 30分ごとに再検証して新しいURLを取得する
+export const revalidate = 1800;
+
 const Blogs = async () => {
   const posts = await getBlogPosts();
 
