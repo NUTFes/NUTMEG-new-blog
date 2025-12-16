@@ -7,6 +7,7 @@ import {
 } from '../types/blog';
 import { NotionAPI } from 'notion-client';
 import { ExtendedRecordMap } from 'notion-types';
+import { unstable_cache } from 'next/cache';
 
 const notionAPI = new NotionAPI();
 const notion = new Client({
@@ -16,8 +17,8 @@ const notion = new Client({
 // ブログ記事を取得する関数
 import { getAllMembers } from './member';
 
-export async function getBlogPosts(): Promise<BlogPost[]> {
-  try {
+const cachedBlogPosts = unstable_cache(
+  async () => {
     const response = await notion.databases.query({
       database_id: process.env.BLOG_DATABASE_ID!,
       sorts: [{ property: '日付', direction: 'descending' }],
@@ -50,6 +51,14 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     }
 
     return posts;
+  },
+  ['getBlogPosts'],
+  { revalidate: 300 },
+);
+
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  try {
+    return await cachedBlogPosts();
   } catch (error) {
     console.error('Error fetching blog posts:', error);
     return [];
@@ -58,8 +67,14 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 
 
 // Notionページ構成を取得する関数
+const cachedNotionPage = unstable_cache(
+  async (pageId: string) => notionAPI.getPage(pageId),
+  ['getNotionPage'],
+  { revalidate: 300 },
+);
+
 export async function getNotionPage(pageId: string): Promise<ExtendedRecordMap> {
-  return await notionAPI.getPage(pageId);
+  return cachedNotionPage(pageId);
 }
 
 // // ブログ記事の詳細を取得する関数
