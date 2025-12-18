@@ -4,9 +4,10 @@ import BlogList from "../components/BlogList/BlogList";
 import { getBlogPosts } from "../../app/lib/notion";
 import Link from "next/link";
 
-// NotionのS3署名付きURLは1時間で期限切れになるため、
-// 30分ごとに再検証して新しいURLを取得する
-export const revalidate = 1800;
+// Cloudflare PagesではISRが非対応のため、動的レンダリングを使用
+// NotionのS3署名付きURLは1時間で期限切れになるため、毎回新しいURLを取得
+export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 const Blogs = async () => {
   const posts = await getBlogPosts();
