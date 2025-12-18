@@ -3,6 +3,11 @@
 import { Suspense } from "react";
 import Image from "next/image";
 import NavigationButton from "./components/NavigationButton";
+
+// Cloudflare PagesではISRが非対応のため、動的レンダリングを使用
+// NotionのS3署名付きURLは1時間で期限切れになるため、毎回新しいURLを取得
+export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 import styles from "./Home.module.css"; // CSSファイルのインポート
 import FadeInSection from "./components/FadeInSection/FadeInSection";
 import Carousel from "./components/carousel";
