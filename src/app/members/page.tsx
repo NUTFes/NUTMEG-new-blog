@@ -3,9 +3,10 @@ import { getAllMembers } from '../lib/member';
 import Link from 'next/link';
 import styles from './members.module.css';
 
-// NotionのS3署名付きURLは1時間で期限切れになるため、
-// 30分ごとに再検証して新しいURLを取得する
-export const revalidate = 1800;
+// Cloudflare PagesではISRが非対応のため、動的レンダリングを使用
+// NotionのS3署名付きURLは1時間で期限切れになるため、毎回新しいURLを取得
+export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 export default async function Members() {
   const members = await getAllMembers();
