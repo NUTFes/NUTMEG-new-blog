@@ -1,13 +1,12 @@
 // src/app/members/[id]/page.tsx
 import MemberPageClient from './MemberPageClient';
-import { getMemberProfile, getAllMembers } from '@/app/lib/member';
+import { getMemberProfile } from '@/app/lib/member';
 import { getBlogPostsByAuthor } from '@/app/lib/notion';
 import { BlogPost } from '@/app/types/blog';
 
-export async function generateStaticParams() {
-  const members = await getAllMembers();
-  return members.map(member => ({ id: member.id }));
-}
+// Cloudflare PagesではISRが非対応のため、動的レンダリングを使用
+export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 interface MemberPageProps {
   params: Promise<{ id: string }>;
