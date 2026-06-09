@@ -19,6 +19,10 @@ interface NotionPageProps {
 }
 
 type RecordMapTable = Record<string, unknown>;
+type NormalizedRecordMapEntry = {
+  role?: unknown;
+  value?: unknown;
+};
 
 const RECORD_MAP_TABLES = [
   'block',
@@ -45,6 +49,49 @@ function normalizeRecordMapEntry(entry: unknown) {
   };
 }
 
+function isValidBlockEntry(entry: unknown): entry is NormalizedRecordMapEntry {
+  if (!isObject(entry) || !isObject(entry.value)) {
+    return false;
+  }
+
+  return typeof entry.value.id === 'string' && typeof entry.value.type === 'string';
+}
+
+function pruneInvalidBlocks(blockTable: RecordMapTable): RecordMapTable {
+  const normalizedBlocks = Object.fromEntries(
+    Object.entries(blockTable)
+      .map(([id, entry]) => [id, normalizeRecordMapEntry(entry)])
+      .filter(([, entry]) => isValidBlockEntry(entry))
+  );
+
+  const validBlockIds = new Set(Object.keys(normalizedBlocks));
+
+  return Object.fromEntries(
+    Object.entries(normalizedBlocks).map(([id, entry]) => {
+      const normalizedEntry = entry as NormalizedRecordMapEntry;
+      const block = normalizedEntry.value;
+
+      if (!isObject(block) || !Array.isArray(block.content)) {
+        return [id, normalizedEntry];
+      }
+
+      return [
+        id,
+        {
+          ...normalizedEntry,
+          value: {
+            ...block,
+            content: block.content.filter(
+              (blockId): blockId is string =>
+                typeof blockId === 'string' && validBlockIds.has(blockId)
+            ),
+          },
+        },
+      ];
+    })
+  );
+}
+
 function normalizeRecordMap(recordMap: ExtendedRecordMap): ExtendedRecordMap {
   const normalizedRecordMap = { ...recordMap } as Record<string, unknown>;
 
@@ -55,12 +102,15 @@ function normalizeRecordMap(recordMap: ExtendedRecordMap): ExtendedRecordMap {
       continue;
     }
 
-    normalizedRecordMap[tableName] = Object.fromEntries(
-      Object.entries(table as RecordMapTable).map(([id, entry]) => [
-        id,
-        normalizeRecordMapEntry(entry),
-      ])
-    );
+    normalizedRecordMap[tableName] =
+      tableName === 'block'
+        ? pruneInvalidBlocks(table as RecordMapTable)
+        : Object.fromEntries(
+            Object.entries(table as RecordMapTable).map(([id, entry]) => [
+              id,
+              normalizeRecordMapEntry(entry),
+            ])
+          );
   }
 
   return normalizedRecordMap as unknown as ExtendedRecordMap;
