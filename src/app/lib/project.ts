@@ -1,12 +1,12 @@
 // lib/project.ts
 import { Client } from "@notionhq/client";
-import { NotionAPI } from "notion-client";
+import { NotionPageClient } from "./notion-page-client";
 
 const notion = new Client({
   auth: process.env.INTEGRATION_TOKEN,
 });
 
-const notionClient = new NotionAPI();
+const notionClient = new NotionPageClient();
 
 /* ===========================
        型定義
