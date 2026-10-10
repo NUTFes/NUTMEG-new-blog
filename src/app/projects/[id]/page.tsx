@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import type { ExtendedRecordMap } from "notion-types";
 import { getProjectProfile, getProjectRecordMap } from "../../lib/project";
 import NotionPage from "../../components/NotionPage/notionPage";
 import styles from "./projectDetail.module.css";
@@ -16,10 +17,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const { id } = await params;
 
   const project = await getProjectProfile(id);
-  const recordMap = await getProjectRecordMap(id);
 
   if (!project) {
     return <div>プロジェクトが見つかりません</div>;
+  }
+
+  // 本文の取得に失敗してもページ全体を落とさず、プロフィール部分は表示する
+  let recordMap: ExtendedRecordMap | null = null;
+  try {
+    recordMap = await getProjectRecordMap(id);
+  } catch (error) {
+    console.error("Failed to fetch project page:", error);
   }
 
   return (
@@ -80,7 +88,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {/* --- Notion本文 --- */}
         <div className="mb-32 space-y-6">
 
-        {recordMap && <NotionPage recordMap={recordMap} />}
+        {recordMap ? (
+          <NotionPage recordMap={recordMap} />
+        ) : (
+          <p className="max-w-[688px] mx-auto px-4 text-gray-600 dark:text-gray-300">
+            本文の読み込みに失敗しました。しばらく時間をおいてから再度お試しください。
+          </p>
+        )}
 
         {/* --- 下の戻るボタン --- */}
 

@@ -166,18 +166,56 @@ for (const [description, response] of [
   ['omitted blocks', chunk({})],
   ['malformed blocks', chunk({ [id(1)]: { value: { role: 'reader', value: {} } } })],
   ['mismatched block IDs', chunk({ [id(1)]: nested(block(id(2))) })],
-  ['a missing recordMap', {}],
 ] as const) {
-  test(`rejects ${description} instead of looping or returning a partial page`, async (t) => {
-    const { client, requests } = mockApi(t, (endpoint) => endpoint === 'loadPageChunk'
-      ? chunk({ [pageId]: nested(block(pageId, 'page', [id(1)])) })
-      : response
-    );
+  test(`retries ${description} once, then treats them as unavailable instead of looping or failing the page`, async (t) => {
+    const warn = t.mock.method(console, 'warn', () => {});
+    const { client, requests } = mockApi(t, (endpoint, body) => {
+      if (endpoint === 'loadPageChunk') {
+        return chunk({ [pageId]: nested(block(pageId, 'page', [id(1), id(2)])) });
+      }
+      return requestIds(body).includes(id(2))
+        ? chunk({ ...response.recordMap.block, [id(2)]: nested(block(id(2))) })
+        : response;
+    });
 
-    await assert.rejects(client.getPage(pageId), /Notion did not return requested blocks/);
-    assert.equal(requests.length, 2);
+    const map = await client.getPage(pageId);
+    assert.deepEqual(map.block[id(1)], { role: 'none' });
+    assert.equal(map.block[id(2)].value.type, 'text');
+    assert.deepEqual(prepareRecordMapForRendering(map).block[pageId].value.content, [id(2)]);
+    assert.deepEqual(
+      requests.filter((request) => request.endpoint === 'syncRecordValuesMain').map((request) => requestIds(request.body)),
+      [[id(1), id(2)], [id(1)]]
+    );
+    assert.equal(warn.mock.callCount(), 1);
   });
 }
+
+test('recovers blocks that only arrive on the retried continuation request', async (t) => {
+  const warn = t.mock.method(console, 'warn', () => {});
+  let continuationRequests = 0;
+  const { client, requests } = mockApi(t, (endpoint) => {
+    if (endpoint === 'loadPageChunk') {
+      return chunk({ [pageId]: nested(block(pageId, 'page', [id(1)])) });
+    }
+    continuationRequests += 1;
+    return continuationRequests === 1 ? chunk({}) : chunk({ [id(1)]: nested(block(id(1))) });
+  });
+
+  const map = await client.getPage(pageId);
+  assert.equal(map.block[id(1)].value.type, 'text');
+  assert.equal(requests.length, 3);
+  assert.equal(warn.mock.callCount(), 0);
+});
+
+test('rejects a continuation response without a record map instead of looping', async (t) => {
+  const { client, requests } = mockApi(t, (endpoint) => endpoint === 'loadPageChunk'
+    ? chunk({ [pageId]: nested(block(pageId, 'page', [id(1)])) })
+    : {}
+  );
+
+  await assert.rejects(client.getPage(pageId), /did not return a record map/);
+  assert.equal(requests.length, 2);
+});
 
 test('propagates a failed continuation request so callers cannot cache partial content', async (t) => {
   const { client, requests } = mockApi(t, (endpoint) => endpoint === 'loadPageChunk'
@@ -244,4 +282,78 @@ test('normalizes record tables without mutating input, pruning missing children,
   assert.deepEqual(result.signed_urls, input.signed_urls);
   assert.deepEqual(input, original);
   assert.deepEqual(normalizeRecordMap(result), result);
+});
+
+test('queries collection views found in the page and normalizes their rows', async (t) => {
+  const viewBlockId = id(1);
+  const rowId = id(2);
+  const collectionId = '33333333-3333-4333-8333-333333333333';
+  const viewId = '44444444-4444-4444-8444-444444444444';
+
+  const { client, requests } = mockApi(t, (endpoint, body) => {
+    if (endpoint === 'loadPageChunk') {
+      return {
+        recordMap: {
+          block: {
+            [pageId]: nested(block(pageId, 'page', [viewBlockId])),
+            // Only the (normalized) view reveals which collection this block shows.
+            [viewBlockId]: nested({ id: viewBlockId, type: 'collection_view', view_ids: [viewId] }),
+          },
+          collection_view: {
+            [viewId]: nested({
+              id: viewId,
+              type: 'table',
+              format: { collection_pointer: { id: collectionId, table: 'collection' } },
+            }),
+          },
+        },
+        cursor: { stack: [] },
+      };
+    }
+
+    assert.equal(endpoint, 'queryCollection');
+    assert.deepEqual(body.collection, { id: collectionId });
+    return {
+      result: { reducerResults: { collection_group_results: { type: 'results', blockIds: [rowId] } } },
+      recordMap: {
+        block: {
+          [rowId]: nested({ ...block(rowId, 'page'), parent_id: collectionId, parent_table: 'collection' }),
+        },
+        collection: {
+          [collectionId]: nested({
+            id: collectionId,
+            name: [['Collection']],
+            schema: { title: { name: 'Name', type: 'title' } },
+          }),
+        },
+      },
+    };
+  });
+
+  const map = await client.getPage(pageId);
+  assert.deepEqual(requests.map((request) => request.endpoint), ['loadPageChunk', 'queryCollection']);
+  assert.deepEqual(map.collection_query[collectionId][viewId].collection_group_results?.blockIds, [rowId]);
+  assert.equal(map.block[rowId].value.type, 'page');
+  assert.equal(map.collection[collectionId].value.schema.title.type, 'title');
+});
+
+test('drops incomplete non-block records before rendering and tolerates a missing block table', () => {
+  const input = {
+    block: { [pageId]: nested(block(pageId, 'page')) },
+    collection: {
+      complete: nested({ id: 'complete', schema: {} }),
+      incomplete: { value: { role: 'reader' } },
+      inaccessible: { role: 'none' },
+    },
+    collection_view: { view: { value: {} } },
+    notion_user: { user: nested({ id: 'user' }) },
+  } as unknown as ExtendedRecordMap;
+
+  const result = prepareRecordMapForRendering(input);
+  assert.deepEqual(Object.keys(result.collection), ['complete']);
+  assert.deepEqual(Object.keys(result.collection_view), []);
+  assert.deepEqual(Object.keys(result.notion_user), ['user']);
+  assert.equal(result.block[pageId].value.type, 'page');
+
+  assert.deepEqual(prepareRecordMapForRendering({} as ExtendedRecordMap).block, {});
 });

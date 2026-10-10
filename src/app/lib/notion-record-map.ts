@@ -32,6 +32,12 @@ export function isUnavailableBlock(entry: unknown): boolean {
   return isObject(entry) && entry.role === 'none';
 }
 
+// An entry whose record actually arrived, as opposed to role:none or an
+// incomplete placeholder such as `{ value: { role: 'reader' } }`.
+export function isValidRecordEntry(entry: unknown): boolean {
+  return isObject(entry) && isObject(entry.value) && typeof entry.value.id === 'string';
+}
+
 export function isValidBlockEntry(entry: unknown): entry is BlockMap[string] {
   return (
     isObject(entry) &&
@@ -58,33 +64,47 @@ export function normalizeRecordMap<T extends RecordMap>(recordMap: T): T {
   return normalized as unknown as T;
 }
 
-// Rendering may omit inaccessible records, but only after fetching is complete.
+// Rendering may omit inaccessible or incomplete records, but only after
+// fetching is complete.
 export function prepareRecordMapForRendering(
   recordMap: ExtendedRecordMap
 ): ExtendedRecordMap {
-  const normalized = normalizeRecordMap(recordMap);
+  const normalized = normalizeRecordMap(recordMap) as unknown as Record<string, unknown>;
+  const result = { ...normalized };
+
+  // react-notion-x reads `.value.schema`, `.value.format` etc. straight off
+  // these tables, so an entry without its record must not reach it.
+  for (const tableName of RECORD_MAP_TABLES) {
+    const table = normalized[tableName];
+    if (tableName === 'block' || !isObject(table)) continue;
+
+    result[tableName] = Object.fromEntries(
+      Object.entries(table).filter(([, entry]) => isValidRecordEntry(entry))
+    );
+  }
+
+  const blockTable = isObject(normalized.block) ? normalized.block : {};
   const blocks = Object.fromEntries(
-    Object.entries(normalized.block).filter(([, entry]) => isValidBlockEntry(entry))
-  );
+    Object.entries(blockTable).filter(([, entry]) => isValidBlockEntry(entry))
+  ) as BlockMap;
   const validIds = new Set(Object.keys(blocks));
 
-  return {
-    ...normalized,
-    block: Object.fromEntries(
-      Object.entries(blocks).map(([id, entry]) => [
-        id,
-        {
-          ...entry,
-          value: {
-            ...entry.value,
-            ...(Array.isArray(entry.value.content) && {
-              content: entry.value.content.filter(
-                (childId) => typeof childId === 'string' && validIds.has(childId)
-              ),
-            }),
-          },
+  result.block = Object.fromEntries(
+    Object.entries(blocks).map(([id, entry]) => [
+      id,
+      {
+        ...entry,
+        value: {
+          ...entry.value,
+          ...(Array.isArray(entry.value.content) && {
+            content: entry.value.content.filter(
+              (childId) => typeof childId === 'string' && validIds.has(childId)
+            ),
+          }),
         },
-      ])
-    ),
-  };
+      },
+    ])
+  );
+
+  return result as unknown as ExtendedRecordMap;
 }
