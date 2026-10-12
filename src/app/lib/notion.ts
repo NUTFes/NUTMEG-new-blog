@@ -5,11 +5,11 @@ import {
   NotionProperty, 
   // NotionBlock 
 } from '../types/blog';
-import { NotionAPI } from 'notion-client';
+import { NotionPageClient } from './notion-page-client';
 import { ExtendedRecordMap } from 'notion-types';
 import { unstable_cache } from 'next/cache';
 
-const notionAPI = new NotionAPI();
+const notionAPI = new NotionPageClient();
 const notion = new Client({
   auth: process.env.INTEGRATION_TOKEN,
 });
@@ -69,7 +69,8 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 // Notionページ構成を取得する関数
 const cachedNotionPage = unstable_cache(
   async (pageId: string) => notionAPI.getPage(pageId),
-  ['getNotionPage'],
+  // Do not reuse partial pages cached before response normalization was added.
+  ['getNotionPage', 'complete-blocks-v1'],
   { revalidate: 300 },
 );
 
