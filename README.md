@@ -37,6 +37,10 @@ npm run dev
 | `npm run build` | 本番用に最適化された静的ファイルをビルド                |
 | `npm start`     | `npm run build` 後に生成物をプロダクションモードで実行 |
 | `npm run lint`  | ESLint による静的解析を実行 (`next lint`)     |
+| `npm test`      | Notion本文取得の回帰テストを実行（外部APIへの接続不要） |
+
+Notion本文のテストでは、初回取得を超える長い記事、後から取得する表の行、
+新旧の応答形式、権限不足・不完全な応答、画像URLの署名を確認します。
 
 ## ディレクトリ構成 (抜粋)
 
